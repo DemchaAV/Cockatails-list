@@ -21,6 +21,19 @@ const allCocktails = [// Signature cocktails (from the previous list)
         ingredients: [{name: "Belvedere", qty: "30ml"}, {name: "Elderflower Cordial", qty: "20ml"}, {
             name: "Henriot", qty: "40ml"
         }]
+    },{
+        id: "sc-french-75",
+        name: "French 75",
+        category: "signature",
+        method: "Shake / top",
+        glass: "Flute",
+        ice: "No ice",
+        garnish: "Lemon twist",
+        ingredients: [{name: "Tanqueray N10", qty: "30ml"}, {name: "Lemon Juice", qty: "20ml"}, {
+            name: "Sugar Syrup",
+            qty: "15ml"
+        }, {name: "Henriot Champagne", qty: "Top"}],
+        allergens: "SULPHITES"
     }, {
         id: "white-negroni-signature",
         name: "White Negroni",
