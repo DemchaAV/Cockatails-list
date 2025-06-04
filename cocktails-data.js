@@ -197,7 +197,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Maraschino",
             qty: "7.5ml"
         }, {name: "Briottet Violette", qty: "7.5ml"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "amaretto-sour",
         name: "Amaretto Sour",
@@ -213,7 +213,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Miraculous Foamer",
             qty: "1/3 pipette"
         }],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "absinthe-frappe",
         name: "Absinthe Frappe",
@@ -226,7 +226,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Soda Water",
             qty: "Top"
         }],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "americano-cocktail",
         name: "Americano Cocktail",
@@ -288,7 +288,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Sugar Syrup",
             qty: "15ml"
         }, {name: "Merlet Mure", qty: "10ml"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "bacardi-cocktail",
         name: "Bacardi Cocktail",
@@ -301,7 +301,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Grenadine",
             qty: "15ml"
         }],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "bellini",
         name: "Bellini",
@@ -324,7 +324,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         ice: "Cubed",
         garnish: "No garnish",
         ingredients: [{name: "Coffee Liqueur", qty: "35ml"}, {name: "Ketel One", qty: "35ml"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "blood-and-sand",
         name: "Blood and Sand",
@@ -350,7 +350,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Sugar Syrup",
             qty: "5ml"
         }, {name: "Cointreau", qty: "5ml"}, {name: "Orange Bitters", qty: "2dash"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "brooklyn",
         name: "Brooklyn",
@@ -444,7 +444,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Lime Juice",
             qty: "30ml"
         }],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "cosmopolitan",
         name: "Cosmopolitan",
@@ -457,7 +457,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Lime Juice",
             qty: "20ml"
         }, {name: "Cranberry Juice", qty: "20ml"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "caipirinha",
         name: "Caipirinha",
@@ -470,7 +470,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Sugar Syrup",
             qty: "15ml"
         }, {name: "Lime Wedges", qty: "2"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "clover-club",
         name: "Clover Club",
@@ -512,7 +512,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Ginger Beer",
             qty: "Top"
         }],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "death-in-the-afternoon",
         name: "Death in the Afternoon",
@@ -535,7 +535,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Lemon Juice",
             qty: "25ml"
         }, {name: "Elderflower Cordial", qty: "20ml"}, {name: "Soda", qty: "Top"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "espresso-martini",
         name: "Espresso Martini",
@@ -548,7 +548,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Ketel One (Vodka)",
             qty: "25ml"
         }, {name: "Kahlúa Coffee Liqueur", qty: "25ml"}, {name: "Giffard Vanille", qty: "15ml"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "el-diablo",
         name: "El Diablo",
@@ -561,7 +561,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Creme de Cassis",
             qty: "15ml"
         }, {name: "Ginger Ale", qty: "Top"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "french-75",
         name: "French 75",
@@ -575,6 +575,20 @@ const allCocktails = [// Signature cocktails (from the previous list)
             qty: "15ml"
         }, {name: "Henriot Champagne", qty: "Top"}],
         allergens: "SULPHITES"
+    },
+    {
+        id: "french-martini",
+        name: "French Martini",
+        category: "classic",
+        method: "Shake / Dry shake",
+        glass: "Nick and nora",
+        ice: "No ice",
+        garnish: null,
+        ingredients: [{name: "Ketel One", qty: "35ml"}, {name: "Pineapple Juice", qty: "30ml"}, {
+            name: "Chambord (Raspberry liqueur)",
+            qty: "20ml"
+        }],
+        allergens: null
     }, {
         id: "gimlet",
         name: "Gimlet",
@@ -584,7 +598,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         ice: "No ice",
         garnish: "Lime twist",
         ingredients: [{name: "Tanqueray LD", qty: "50ml"}, {name: "Lime Cordial", qty: "25ml"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "golden-dawn",
         name: "Golden Dawn",
@@ -597,7 +611,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Tanqueray LD",
             qty: "20ml"
         }, {name: "Apricot Liqueur", qty: "20ml"}, {name: "Orange Juice", qty: "20ml"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "grasshopper",
         name: "Grasshopper",
@@ -636,7 +650,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Lime Juice",
             qty: "15ml"
         }, {name: "Maraschino", qty: "5ml"}, {name: "Sugar Syrup", qty: "5ml"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "horses-neck",
         name: "Horse's Neck",
@@ -646,7 +660,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         ice: "Cubbed",
         garnish: "Long lemon twist",
         ingredients: [{name: "Maker's Mark", qty: "50ml"}, {name: "Ginger Ale", qty: "Top"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "irish-coffee",
         name: "Irish Coffee",
@@ -685,7 +699,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Cointreau",
             qty: "10ml"
         }, {name: "Sugar Syrup", qty: "10ml"}, {name: "Raspberries", qty: "3"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "kir-royal",
         name: "Kir Royal",
@@ -711,7 +725,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Lemon Juice",
             qty: "15ml"
         }, {name: "Sugar Syrup", qty: "15ml"}, {name: "Coke", qty: "Top"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "last-word",
         name: "Last Word",
@@ -775,7 +789,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Sugar Syrup",
             qty: "15ml"
         }, {name: "Mint Leaves", qty: "8"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "martinez",
         name: "Martinez",
@@ -797,7 +811,10 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Rocks",
         ice: "Crushed",
         garnish: "Mint spring, orange wedge and raspberries",
-        ingredients: [{name: "Ron Santiago de Cuba Blanco", qty: "20ml"}, {name: "Ron Santiago de Cuba Añejo 8yo", qty: "20ml"}, {
+        ingredients: [{name: "Ron Santiago de Cuba Blanco", qty: "20ml"}, {
+            name: "Ron Santiago de Cuba Añejo 8yo",
+            qty: "20ml"
+        }, {
             name: "Lime Juice",
             qty: "20ml"
         }, {name: "Cointreau", qty: "10ml"}, {name: "Orgeat Syrup", qty: "10ml"}, {name: "Sugar Syrup", qty: "10ml"}],
@@ -824,7 +841,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Mint Leaves",
             qty: " unspecified"
         }, {name: "Angostura Bitters", qty: "2dash"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "moscow-mule",
         name: "Moscow Mule",
@@ -837,7 +854,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Ginger Beer",
             qty: "Top"
         }],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "negroni-sbagliato",
         name: "Negroni Sbagliato",
@@ -859,7 +876,10 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Rocks",
         ice: "Block",
         garnish: "Orange twist",
-        ingredients: [{name: "Tanqueray LD", qty: "25ml"}, {name: "Antica", qty: "25ml"}, {name: "Campari", qty: "25ml"}],
+        ingredients: [{name: "Tanqueray LD", qty: "25ml"}, {name: "Antica", qty: "25ml"}, {
+            name: "Campari",
+            qty: "25ml"
+        }],
         allergens: "SULPHITES"
     }, {
         id: "new-york-sour",
@@ -873,7 +893,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Sugar Syrup",
             qty: "15ml"
         }, {name: "Miraculous Foamer", qty: "1/3pipette"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "old-fashioned",
         name: "Old Fashioned",
@@ -886,7 +906,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Angostura",
             qty: "3dash"
         }],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "old-pal",
         name: "Old Pal",
@@ -925,7 +945,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Aperol",
             qty: "20ml"
         }, {name: "Lemon Juice", qty: "20ml"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "passionfruit-martini",
         name: "Passionfruit Martini",
@@ -941,7 +961,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Lime Juice",
             qty: "10ml"
         }, {name: "Sugar Syrup", qty: "10ml"}, {name: "Passionfruit", qty: "1/2"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "pisco-sour",
         name: "Pisco Sour",
@@ -957,7 +977,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Sugar Syrup",
             qty: "15ml"
         }, {name: "Miraculous Foamer", qty: "1/3 pipette"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "pina-colada",
         name: "Pina Colada",
@@ -970,7 +990,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Coco Real",
             qty: "35ml"
         }, {name: "Lime Juice", qty: "15ml"}, {name: "Sugar Syrup", qty: "10ml"}, {name: "Angostura", qty: "1dash"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "paloma",
         name: "Paloma",
@@ -983,7 +1003,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Lime Juice",
             qty: "15ml"
         }, {name: "Sugar Syrup", qty: "15ml"}, {name: "Salt", qty: "1pinch"}, {name: "Soda", qty: "Top"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "rusty-nail",
         name: "Rusty Nail",
@@ -993,7 +1013,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         ice: "Block",
         garnish: "Lemon twist",
         ingredients: [{name: "Chivas 12", qty: "50ml"}, {name: "Drambuie", qty: "25ml"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "ramos-gin-fizz",
         name: "Ramos Gin Fizz",
@@ -1022,7 +1042,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Sugar Syrup",
             qty: "15ml"
         }, {name: "Absinthe", qty: "3dash"}, {name: "Miraculous Foamer", qty: "1/3 pipette"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "rob-roy",
         name: "Rob Roy",
@@ -1048,7 +1068,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Sugar Syrup",
             qty: "15ml"
         }, {name: "Mint Leaves", qty: "6"}, {name: "Soda", qty: "Top"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "sidecar",
         name: "Sidecar",
@@ -1061,7 +1081,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Cointreau",
             qty: "25ml"
         }],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "sazerac",
         name: "Sazerac",
@@ -1093,7 +1113,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Cointreau",
             qty: "7.5ml"
         }, {name: "Benedictine", qty: "7.5ml"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "screwdriver",
         name: "Screwdriver",
@@ -1103,7 +1123,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         ice: "Cubed",
         garnish: "Lime wedge",
         ingredients: [{name: "Ketel One", qty: "50ml"}, {name: "Orange juice", qty: "Top"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "twinkle",
         name: "Twinkle",
@@ -1129,7 +1149,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Sugar Syrup",
             qty: "15ml"
         }, {name: "Soda", qty: "Top"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "treacle",
         name: "Treacle",
@@ -1142,7 +1162,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Lime Juice",
             qty: "10ml"
         }, {name: "Sugar Syrup", qty: "5ml"}, {name: "Angostura", qty: "1dash"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "tuxedo",
         name: "Tuxedo",
@@ -1168,7 +1188,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Agave Syrup",
             qty: "20ml"
         }],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "vieux-carre",
         name: "Vieux Carre",
@@ -1197,7 +1217,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Sugar Syrup",
             qty: "15ml"
         }, {name: "Miraculous Foamer", qty: "1/3 pipette"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "white-lady",
         name: "White Lady",
@@ -1210,7 +1230,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Lemon Juice",
             qty: "20ml"
         }, {name: "Miraculous Foamer", qty: "1/3pipette"}],
-        allergens: "N/A"
+        allergens: null
     }, {
         id: "white-russian",
         name: "White Russian",
