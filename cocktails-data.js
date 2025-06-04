@@ -411,9 +411,9 @@ const allCocktails = [// Signature cocktails (from the previous list)
         ice: null,
         garnish: null,
         ingredients: [{name: "Horseradish", qty: "2 bar spoon"}, {
-            name: "Celery seeds",
+            name: "Celery Seeds",
             qty: "6 pinches"
-        }, {name: "Green Tabasco", qty: "45ml"}, {name: "lemon juice", qty: "50ml"}, {
+        }, {name: "Green Tabasco", qty: "45ml"}, {name: "Lemon Juice", qty: "50ml"}, {
             name: "Lime Juice",
             qty: "50ml"
         }, {name: "Worcestershire sauce", qty: "150ml"}, {
