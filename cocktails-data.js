@@ -346,7 +346,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Standard coupe",
         ice: "No ice",
         garnish: "Orange twist",
-        ingredients: [{name: "Chivas 12", qty: "25ml"}, {name: "Antica Formula", qty: "20ml"}, {
+        ingredients: [{name: "JW Black Label", qty: "25ml"}, {name: "Antica Formula", qty: "20ml"}, {
             name: "Orange Juice",
             qty: "20ml"
         }, {name: "Cherry Herring", qty: "20ml"}],
@@ -372,7 +372,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Nick and nora",
         ice: "No ice",
         garnish: "Maraschino sherry",
-        ingredients: [{name: "Woodford Rye", qty: "30ml"}, {name: "Noilly Prat", qty: "30ml"}, {
+        ingredients: [{name: "Woodford Rye", qty: "30ml"}, {name: "SCHOFIELD'S Prat", qty: "30ml"}, {
             name: "Amer Picon",
             qty: "5ml"
         }, {name: "Maraschino", qty: "5ml"}],
@@ -399,7 +399,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         ice: "Cubed",
         garnish: "Lemon wedge",
         ingredients: [{name: "Tomato Juice", qty: "90ml"},
-            {name: "Merry Mix", qty: "15ml(Low), 25ml(Medium), 35ml(Spicy)"},
+            {name: "Mary Mix", qty: "15ml(Low), 25ml(Medium), 35ml(Spicy)"},
             {name: "Lemon Juice", qty: "10ml"}],
         allergens: "MUSTARD, EGGS, FISH, CELERY, SULPHITES"
     }, {
@@ -505,7 +505,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         ice: "No ice",
         garnish: "2 Raspberries on stick",
         ingredients: [{name: "Tanqueray LD", qty: "50ml"}, {name: "Lemon Juice", qty: "25ml"}, {
-            name: "Noilly Prat",
+            name: "SCHOFIELD'S Prat",
             qty: "25ml"
         }, {name: "Sugar Syrup", qty: "15ml"}, {name: "Miraculous Foamer", qty: "1/3 pipette"}, {
             name: "Raspberries",
@@ -520,7 +520,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Nick and nora",
         ice: "No ice",
         garnish: "No garnish",
-        ingredients: [{name: "Tanqueray LD", qty: "20ml"}, {name: "Noilly Prat", qty: "20ml"}, {
+        ingredients: [{name: "Tanqueray LD", qty: "20ml"}, {name: "SCHOFIELD'S Prat", qty: "20ml"}, {
             name: "Cointreau",
             qty: "20ml"
         }, {name: "Lemon Juice", qty: "20ml"}],
@@ -772,10 +772,10 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Martini",
         ice: "No ice",
         garnish: "Lemon twist / 2 olives on stick",
-        ingredients: [{name: "Gin/Vodka", qty: "60ml"}, {name: "Noilly (Dry)", qty: "5ml"}, {
+        ingredients: [{name: "Gin/Vodka", qty: "60ml"}, {name: "SCHOFIELD'S (Dry)", qty: "5ml"}, {
             name: "Gin/Vodka (Wet)",
             qty: "60ml"
-        }, {name: "Noilly (Wet)", qty: "15ml"}, {
+        }, {name: "SCHOFIELD'S (Wet)", qty: "15ml"}, {
             name: "Olive Brine (Dirty)",
             qty: "+10ml"
         }, {name: "muddled Olive (Filthy)", qty: "+"}],
@@ -795,12 +795,12 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Maker's Mark (Perfect)",
             qty: "50ml"
         }, {name: "Anitca (Perfect)", qty: "12.5ml"}, {
-            name: "Noilly (Perfect)",
+            name: "SCHOFIELD'S (Perfect)",
             qty: "12.5ml"
         }, {name: "Angostura (Perfect)", qty: "2dash"}, {
             name: "Maker's Mark (Dry)",
             qty: "50ml"
-        }, {name: "Noilly (Dry)", qty: "25ml"}, {name: "Angostura (Dry)", qty: "2dash"}],
+        }, {name: "SCHOFIELD'S (Dry)", qty: "25ml"}, {name: "Angostura (Dry)", qty: "2dash"}],
         allergens: "SULPHITES"
     }, {
         id: "mojito",
@@ -941,7 +941,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         ice: "No ice",
         garnish: "Lemon twist",
         ingredients: [{name: "Woodford Rye", qty: "30ml"}, {name: "Campari", qty: "30ml"}, {
-            name: "Noilly Prat",
+            name: "SCHOFIELD'S Prat",
             qty: "30ml"
         }],
         allergens: "SULPHITES"
@@ -1037,7 +1037,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Rocks",
         ice: "Block",
         garnish: "Lemon twist",
-        ingredients: [{name: "Chivas 12", qty: "50ml"}, {name: "Drambuie", qty: "25ml"}],
+        ingredients: [{name: "JW Black Label", qty: "50ml"}, {name: "Drambuie", qty: "25ml"}],
         allergens: null
     }, {
         id: "ramos-gin-fizz",
@@ -1076,7 +1076,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Rocks",
         ice: "Block",
         garnish: "Orange twist",
-        ingredients: [{name: "Chivas 12", qty: "50ml"}, {name: "Antica", qty: "25ml"}, {
+        ingredients: [{name: "JW Black Label", qty: "50ml"}, {name: "Antica", qty: "25ml"}, {
             name: "Orange Bitters",
             qty: "1dash"
         }],
@@ -1196,7 +1196,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Caprice coupe",
         ice: "No ice",
         garnish: "Lemon twist",
-        ingredients: [{name: "Tanqueray LD", qty: "45ml"}, {name: "Noilly Prat", qty: "15ml"}, {
+        ingredients: [{name: "Tanqueray LD", qty: "45ml"}, {name: "SCHOFIELD'S Prat", qty: "15ml"}, {
             name: "Maraschino",
             qty: "5ml"
         }, {name: "Orange", qty: "2dash"}, {name: "Absinthe", qty: "2dash"}],
