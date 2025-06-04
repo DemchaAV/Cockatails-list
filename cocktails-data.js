@@ -397,15 +397,27 @@ const allCocktails = [// Signature cocktails (from the previous list)
         method: "Build",
         glass: "Hiball",
         ice: "Cubed",
-        garnish: "Celery",
-        ingredients: [{name: "horseradish", qty: "2 bar spoon"}, {
-            name: "celery seeds",
+        garnish: "Lemon wedge",
+        ingredients: [{name: "Tomato Juice", qty: "90ml"},
+            {name: "Merry Mix", qty: "15ml(Low), 25ml(Medium), 35ml(Spicy)"},
+            {name: "Lemon Juice", qty: "10ml"}],
+        allergens: "MUSTARD, EGGS, FISH, CELERY, SULPHITES"
+    }, {
+        id: "bloody-mary-mix",
+        name: "Bloody Mary Mix",
+        category: "classic",
+        method: "Build",
+        glass: null,
+        ice: null,
+        garnish: null,
+        ingredients: [{name: "Horseradish", qty: "2 bar spoon"}, {
+            name: "Celery seeds",
             qty: "6 pinches"
-        }, {name: "green Tabasco", qty: "45ml"}, {name: "lemon juice", qty: "50ml"}, {
-            name: "lime juice",
+        }, {name: "Green Tabasco", qty: "45ml"}, {name: "lemon juice", qty: "50ml"}, {
+            name: "Lime Juice",
             qty: "50ml"
         }, {name: "Worcestershire sauce", qty: "150ml"}, {
-            name: "passata tomato",
+            name: "Passata Tomato",
             qty: "250ml"
         }, {name: "V8 tomato juice", qty: "1.5l"}],
         allergens: "MUSTARD, EGGS, FISH, CELERY, SULPHITES"
