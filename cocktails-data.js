@@ -193,7 +193,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Nick and nora",
         ice: "No ice",
         garnish: "Maraschino cherry (no stick)",
-        ingredients: [{name: "Beefeater", qty: "50ml"}, {name: "Lemon Juice", qty: "15ml"}, {
+        ingredients: [{name: "Tanqueray LD", qty: "50ml"}, {name: "Lemon Juice", qty: "15ml"}, {
             name: "Maraschino",
             qty: "7.5ml"
         }, {name: "Briottet Violette", qty: "7.5ml"}],
@@ -206,11 +206,10 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Rocks",
         ice: "Cubed",
         garnish: "Lemon wedge and 3dash of angostura",
-        ingredients: [{name: "Amaretto", qty: "35ml"},
-            {name: "Abricot de Roussillon", qty: "15ml"}, {
+        ingredients: [{name: "Amaretto", qty: "35ml"}, {
             name: "Lemon Juice",
             qty: "25ml"
-        },  {name: "Sugar Syrup", qty: "5ml"}, {
+        }, {name: "Abricot de Roussillon", qty: "15ml"}, {name: "Sugar Syrup", qty: "5ml"}, {
             name: "Miraculous Foamer",
             qty: "1/3 pipette"
         }],
@@ -259,11 +258,27 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Hiball",
         ice: "Cubed",
         garnish: "Lime wedge",
-        ingredients: [{name: "Havana 7yo", qty: "30ml"}, {name: "Lime Juice", qty: "15ml"}, {
+        ingredients: [{name: "Ron Santiago de Cuba Añejo 8yo", qty: "30ml"}, {name: "Lime Juice", qty: "15ml"}, {
             name: "Honey Water (1:1)",
             qty: "15ml"
         }, {name: "Champagne", qty: "Top"}],
         allergens: "SULPHITES"
+    }, {
+        id: "pisco-sour",
+        name: "Pisco Sour",
+        category: "classic",
+        method: "Hard dry shake / shake",
+        glass: "Nick and nora",
+        ice: "No Ice",
+        garnish: "Angostura Bitter  harts 3 drops",
+        ingredients: [{name: "Barsol Primero", qty: "50ml"}, {name: "Lemon Juice", qty: "12.5ml"}, {
+            name: "Lime Juice",
+            qty: "12.5ml"
+        }, {
+            name: "Sugar Syrup",
+            qty: "15ml"
+        }, {name: "Miraculous Foamer", qty: "1/3 pipette"}],
+        allergens: "N/A"
     }, {
         id: "brandy-alexander",
         name: "Brandy Alexander",
@@ -272,7 +287,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Nick and nora",
         ice: "No ice",
         garnish: "Grated nutmeg",
-        ingredients: [{name: "Courvoisier VSOP", qty: "30ml"}, {
+        ingredients: [{name: "Rémy Martin VSOP", qty: "30ml"}, {
             name: "Creme de Cacao Brown",
             qty: "30ml"
         }, {name: "Cream", qty: "30ml"}],
@@ -285,7 +300,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Rocks",
         ice: "Crushed",
         garnish: "Black berry and straw(s)",
-        ingredients: [{name: "Beefeater", qty: "40ml"}, {name: "Lemon Juice", qty: "25ml"}, {
+        ingredients: [{name: "Tanqueray LD", qty: "40ml"}, {name: "Lemon Juice", qty: "25ml"}, {
             name: "Sugar Syrup",
             qty: "15ml"
         }, {name: "Merlet Mure", qty: "10ml"}],
@@ -324,7 +339,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Rocks",
         ice: "Cubed",
         garnish: "No garnish",
-        ingredients: [{name: "Coffee Liqueur", qty: "35ml"}, {name: "Wyborowa", qty: "35ml"}],
+        ingredients: [{name: "Coffee Liqueur", qty: "35ml"}, {name: "Ketel One", qty: "35ml"}],
         allergens: "N/A"
     }, {
         id: "blood-and-sand",
@@ -347,7 +362,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Liqueurs glass",
         ice: "No ice",
         garnish: "Full sugar rim and lemon twist",
-        ingredients: [{name: "Courvoisier VSOP", qty: "60ml"}, {name: "Lemon Juice", qty: "5ml"}, {
+        ingredients: [{name: "Rémy Martin VSOP", qty: "60ml"}, {name: "Lemon Juice", qty: "5ml"}, {
             name: "Sugar Syrup",
             qty: "5ml"
         }, {name: "Cointreau", qty: "5ml"}, {name: "Orange Bitters", qty: "2dash"}],
@@ -431,7 +446,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         ingredients: [{name: "White Sugar Cube", qty: "1"}, {
             name: "Angostura",
             qty: "4dashes"
-        }, {name: "Courvoisier VSOP", qty: "25ml"}, {name: "Champagne", qty: "Top"}],
+        }, {name: "Rémy Martin VSOP", qty: "25ml"}, {name: "Champagne", qty: "Top"}],
         allergens: "SULPHITES"
     }, {
         id: "charlie-chaplin",
@@ -480,7 +495,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Standard coupe",
         ice: "No ice",
         garnish: "2 Raspberries on stick",
-        ingredients: [{name: "Beefeater", qty: "50ml"}, {name: "Lemon Juice", qty: "25ml"}, {
+        ingredients: [{name: "Tanqueray LD", qty: "50ml"}, {name: "Lemon Juice", qty: "25ml"}, {
             name: "Noilly Prat",
             qty: "25ml"
         }, {name: "Sugar Syrup", qty: "15ml"}, {name: "Miraculous Foamer", qty: "1/3 pipette"}, {
@@ -496,7 +511,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Nick and nora",
         ice: "No ice",
         garnish: "No garnish",
-        ingredients: [{name: "Beefeater", qty: "20ml"}, {name: "Noilly Prat", qty: "20ml"}, {
+        ingredients: [{name: "Tanqueray LD", qty: "20ml"}, {name: "Noilly Prat", qty: "20ml"}, {
             name: "Cointreau",
             qty: "20ml"
         }, {name: "Lemon Juice", qty: "20ml"}],
@@ -509,7 +524,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Hiball",
         ice: "Cubed",
         garnish: "Lime wedge and 3 dash angostura bitters",
-        ingredients: [{name: "Havana 7yo", qty: "50ml"}, {name: "Lime Juice", qty: "10ml"}, {
+        ingredients: [{name: "Ron Santiago de Cuba Añejo 8yo", qty: "50ml"}, {name: "Lime Juice", qty: "10ml"}, {
             name: "Ginger Beer",
             qty: "Top"
         }],
@@ -532,7 +547,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Hiball",
         ice: "Cubed",
         garnish: "Mint spring",
-        ingredients: [{name: "Beefeater", qty: "50ml"}, {
+        ingredients: [{name: "Tanqueray LD", qty: "50ml"}, {
             name: "Lemon Juice",
             qty: "25ml"
         }, {name: "Elderflower Cordial", qty: "20ml"}, {name: "Soda", qty: "Top"}],
@@ -546,9 +561,9 @@ const allCocktails = [// Signature cocktails (from the previous list)
         ice: "No ice",
         garnish: "No garnish (often 3 coffee beans)",
         ingredients: [{name: "Espresso", qty: "50ml"}, {
-            name: "Wyborowa (Vodka)",
+            name: "Ketel One (Vodka)",
             qty: "25ml"
-        }, {name: "Tosolini Coffee Liqueur", qty: "25ml"}, {name: "Giffard Vanille", qty: "15ml"}],
+        }, {name: "Kahlúa Coffee Liqueur", qty: "25ml"}, {name: "Giffard Vanille", qty: "15ml"}],
         allergens: "N/A"
     }, {
         id: "el-diablo",
@@ -558,7 +573,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Hiball",
         ice: "Cubed",
         garnish: "Lime wedge",
-        ingredients: [{name: "Olmeca Blanco", qty: "50ml"}, {name: "Lime Juice", qty: "25ml"}, {
+        ingredients: [{name: "Casamigos Blanco", qty: "50ml"}, {name: "Lime Juice", qty: "25ml"}, {
             name: "Creme de Cassis",
             qty: "15ml"
         }, {name: "Ginger Ale", qty: "Top"}],
@@ -571,7 +586,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Flute",
         ice: "No ice",
         garnish: "Lemon twist",
-        ingredients: [{name: "Beefeater", qty: "30ml"}, {name: "Lemon Juice", qty: "20ml"}, {
+        ingredients: [{name: "Tanqueray LD", qty: "30ml"}, {name: "Lemon Juice", qty: "20ml"}, {
             name: "Sugar Syrup",
             qty: "15ml"
         }, {name: "Henriot Champagne", qty: "Top"}],
@@ -584,7 +599,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Caprice coupe",
         ice: "No ice",
         garnish: "Lime twist",
-        ingredients: [{name: "Beefeater", qty: "50ml"}, {name: "Lime Cordial", qty: "25ml"}],
+        ingredients: [{name: "Tanqueray LD", qty: "50ml"}, {name: "Lime Cordial", qty: "25ml"}],
         allergens: "N/A"
     }, {
         id: "golden-dawn",
@@ -595,7 +610,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         ice: "No ice",
         garnish: "2.5ml grenadine (bottom of the glass)",
         ingredients: [{name: "Avallen Calvados", qty: "20ml"}, {
-            name: "Beefeater",
+            name: "Tanqueray LD",
             qty: "20ml"
         }, {name: "Apricot Liqueur", qty: "20ml"}, {name: "Orange Juice", qty: "20ml"}],
         allergens: "N/A"
@@ -633,7 +648,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Standard coupe",
         ice: "No ice",
         garnish: "Dehydrated lime wheel",
-        ingredients: [{name: "Havana 3yo", qty: "50ml"}, {name: "Grapefruit Juice", qty: "30ml"}, {
+        ingredients: [{name: "Ron Santiago de Cuba Blanco", qty: "50ml"}, {name: "Grapefruit Juice", qty: "30ml"}, {
             name: "Lime Juice",
             qty: "15ml"
         }, {name: "Maraschino", qty: "5ml"}, {name: "Sugar Syrup", qty: "5ml"}],
@@ -656,7 +671,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Liqueur coffee glass",
         ice: "No ice",
         garnish: "No garnish",
-        ingredients: [{name: "Jameson", qty: "30ml"}, {name: "Sugar Syrup", qty: "5ml"}, {
+        ingredients: [{name: "Roe & Co", qty: "30ml"}, {name: "Sugar Syrup", qty: "5ml"}, {
             name: "Americano Coffee",
             qty: "Top"
         }, {name: "Double Cream", qty: "Float"}],
@@ -669,7 +684,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Rocks",
         ice: "Block",
         garnish: "Lime wedge",
-        ingredients: [{name: "Havana 7yo", qty: "45ml"}, {name: "Pineapple Juice", qty: "45ml"}, {
+        ingredients: [{name: "Ron Santiago de Cuba Añejo 8yo", qty: "45ml"}, {name: "Pineapple Juice", qty: "45ml"}, {
             name: "Campari",
             qty: "20ml"
         }, {name: "Lime Juice", qty: "15ml"}, {name: "Sugar Syrup", qty: "10ml"}],
@@ -682,7 +697,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Rocks",
         ice: "Crushed",
         garnish: "Orange wedge and raspberries",
-        ingredients: [{name: "Havana 3yo", qty: "40ml"}, {name: "Lemon Juice", qty: "20ml"}, {
+        ingredients: [{name: "Ron Santiago de Cuba Blanco", qty: "40ml"}, {name: "Lemon Juice", qty: "20ml"}, {
             name: "Cointreau",
             qty: "10ml"
         }, {name: "Sugar Syrup", qty: "10ml"}, {name: "Raspberries", qty: "3"}],
@@ -705,10 +720,10 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Hiball",
         ice: "Cubed",
         garnish: "Lemon wedge",
-        ingredients: [{name: "Wyborowa", qty: "15ml"}, {name: "Beefeater", qty: "15ml"}, {
-            name: "Olmeca Plata",
+        ingredients: [{name: "Ketel One", qty: "15ml"}, {name: "Tanqueray LD", qty: "15ml"}, {
+            name: "Casamigos Blanco",
             qty: "15ml"
-        }, {name: "Havana 3yo", qty: "15ml"}, {name: "Cointreau", qty: "15ml"}, {
+        }, {name: "Ron Santiago de Cuba Blanco", qty: "15ml"}, {name: "Cointreau", qty: "15ml"}, {
             name: "Lemon Juice",
             qty: "15ml"
         }, {name: "Sugar Syrup", qty: "15ml"}, {name: "Coke", qty: "Top"}],
@@ -721,7 +736,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Caprice coupe",
         ice: "No ice",
         garnish: "Maraschino sherry",
-        ingredients: [{name: "Beefeater", qty: "20ml"}, {name: "Lime Juice", qty: "20ml"}, {
+        ingredients: [{name: "Tanqueray LD", qty: "20ml"}, {name: "Lime Juice", qty: "20ml"}, {
             name: "Maraschino",
             qty: "20ml"
         }, {name: "Green Chartreuse", qty: "20ml"}],
@@ -772,7 +787,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Hiball",
         ice: "Crushed",
         garnish: "Mint spring and straw",
-        ingredients: [{name: "Havana 3yo", qty: "50ml"}, {name: "Lime Juice", qty: "25ml"}, {
+        ingredients: [{name: "Ron Santiago de Cuba Blanco", qty: "50ml"}, {name: "Lime Juice", qty: "25ml"}, {
             name: "Sugar Syrup",
             qty: "15ml"
         }, {name: "Mint Leaves", qty: "8"}],
@@ -785,7 +800,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Nick and nora",
         ice: "No ice",
         garnish: "Lemon twist",
-        ingredients: [{name: "Antica", qty: "50ml"}, {name: "Beefeater", qty: "25ml"}, {
+        ingredients: [{name: "Antica", qty: "50ml"}, {name: "Tanqueray LD", qty: "25ml"}, {
             name: "Maraschino",
             qty: "5ml"
         }, {name: "Boker's Bitters", qty: "1dash"}],
@@ -798,7 +813,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Rocks",
         ice: "Crushed",
         garnish: "Mint spring, orange wedge and raspberries",
-        ingredients: [{name: "Havana 3yo", qty: "20ml"}, {name: "Havana 7yo", qty: "20ml"}, {
+        ingredients: [{name: "Ron Santiago de Cuba Blanco", qty: "20ml"}, {name: "Ron Santiago de Cuba Añejo 8yo", qty: "20ml"}, {
             name: "Lime Juice",
             qty: "20ml"
         }, {name: "Cointreau", qty: "10ml"}, {name: "Orgeat Syrup", qty: "10ml"}, {name: "Sugar Syrup", qty: "10ml"}],
@@ -823,7 +838,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         garnish: "Large mint spring",
         ingredients: [{name: "Maker's Mark", qty: "50ml"}, {name: "Sugar Syrup", qty: "5ml"}, {
             name: "Mint Leaves",
-            qty: null /* TODO: Specify quantity */
+            qty: " unspecified"
         }, {name: "Angostura Bitters", qty: "2dash"}],
         allergens: "N/A"
     }, {
@@ -834,7 +849,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Hiball",
         ice: "Cubed",
         garnish: "Lime wedge and 3 dash angostura on top",
-        ingredients: [{name: "Wyborowa", qty: "50ml"}, {name: "Lime Juice", qty: "10ml"}, {
+        ingredients: [{name: "Ketel One", qty: "50ml"}, {name: "Lime Juice", qty: "10ml"}, {
             name: "Ginger Beer",
             qty: "Top"
         }],
@@ -860,7 +875,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Rocks",
         ice: "Block",
         garnish: "Orange twist",
-        ingredients: [{name: "Beefeater", qty: "25ml"}, {name: "Antica", qty: "25ml"}, {name: "Campari", qty: "25ml"}],
+        ingredients: [{name: "Tanqueray LD", qty: "25ml"}, {name: "Antica", qty: "25ml"}, {name: "Campari", qty: "25ml"}],
         allergens: "SULPHITES"
     }, {
         id: "new-york-sour",
@@ -909,7 +924,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Standard coupe",
         ice: "No ice",
         garnish: "Mint leaf",
-        ingredients: [{name: "Havana 7yo", qty: "50ml"}, {name: "Lime Juice", qty: "25ml"}, {
+        ingredients: [{name: "Ron Santiago de Cuba Añejo 8yo", qty: "50ml"}, {name: "Lime Juice", qty: "25ml"}, {
             name: "Sugar Syrup",
             qty: "15ml"
         }, {name: "Mint Leaves", qty: " unspecified"}, {name: "Henriot Brut", qty: "Top up"}],
@@ -935,29 +950,13 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Coupe",
         ice: "No ice",
         garnish: "1/2 passion fruit",
-        ingredients: [{name: "Wyborowa", qty: "40ml"}, {
+        ingredients: [{name: "Ketel One", qty: "40ml"}, {
             name: "Pineapple Juice",
             qty: "40ml"
         }, {name: "Passionfruit liqueur", qty: "15ml"}, {name: "Vanilla Liqueur", qty: "10ml"}, {
             name: "Lime Juice",
             qty: "10ml"
         }, {name: "Sugar Syrup", qty: "10ml"}, {name: "Passionfruit", qty: "1/2"}],
-        allergens: "N/A"
-    }, {
-        id: "pisco-sour",
-        name: "Pisco Sour",
-        category: "classic",
-        method: "Hard dry shake / shake",
-        glass: "Nick and nora",
-        ice: "No Ice",
-        garnish: "Angostura Bitter  harts 3 drops",
-        ingredients: [{name: "Barsol Primero", qty: "50ml"}, {name: "Lemon Juice", qty: "12.5ml"}, {
-            name: "Lime Juice",
-            qty: "12.5ml"
-        }, {
-            name: "Sugar Syrup",
-            qty: "15ml"
-        }, {name: "Miraculous Foamer", qty: "1/3 pipette"}],
         allergens: "N/A"
     }, {
         id: "pina-colada",
@@ -967,7 +966,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Hiball",
         ice: "Cubed/crushed",
         garnish: "Maraschino sherry and mint spring",
-        ingredients: [{name: "Havana 3yo", qty: "50ml"}, {name: "Pineapple Juice", qty: "40ml"}, {
+        ingredients: [{name: "Ron Santiago de Cuba Blanco", qty: "50ml"}, {name: "Pineapple Juice", qty: "40ml"}, {
             name: "Coco Real",
             qty: "35ml"
         }, {name: "Lime Juice", qty: "15ml"}, {name: "Sugar Syrup", qty: "10ml"}, {name: "Angostura", qty: "1dash"}],
@@ -980,7 +979,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Hiball",
         ice: "Cubed",
         garnish: "Lime wedge",
-        ingredients: [{name: "Olmeca Plata", qty: "50ml"}, {name: "Grapefruit Juice", qty: "60ml"}, {
+        ingredients: [{name: "Casamigos Blanco", qty: "50ml"}, {name: "Grapefruit Juice", qty: "60ml"}, {
             name: "Lime Juice",
             qty: "15ml"
         }, {name: "Sugar Syrup", qty: "15ml"}, {name: "Salt", qty: "1pinch"}, {name: "Soda", qty: "Top"}],
@@ -1003,7 +1002,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Hiball",
         ice: "No ice",
         garnish: "No garnish",
-        ingredients: [{name: "Beefeater", qty: "50ml"}, {name: "Double Cream", qty: "30ml"}, {
+        ingredients: [{name: "Tanqueray LD", qty: "50ml"}, {name: "Double Cream", qty: "30ml"}, {
             name: "Lime Juice",
             qty: "15ml"
         }, {name: "Lemon Juice", qty: "15ml"}, {name: "Sugar Syrup", qty: "10ml"}, {
@@ -1045,7 +1044,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Hiball",
         ice: "Cubed",
         garnish: "Mint spring",
-        ingredients: [{name: "Beefeater", qty: "50ml"}, {name: "Lime Juice", qty: "25ml"}, {
+        ingredients: [{name: "Tanqueray LD", qty: "50ml"}, {name: "Lime Juice", qty: "25ml"}, {
             name: "Sugar Syrup",
             qty: "15ml"
         }, {name: "Mint Leaves", qty: "6"}, {name: "Soda", qty: "Top"}],
@@ -1087,7 +1086,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Hiball",
         ice: "Cubed",
         garnish: "Orange wedge and maraschino cherry",
-        ingredients: [{name: "Pineapple Juice", qty: "50ml"}, {name: "Beefeater", qty: "30ml"}, {
+        ingredients: [{name: "Pineapple Juice", qty: "50ml"}, {name: "Tanqueray LD", qty: "30ml"}, {
             name: "Lime Juice",
             qty: "15ml"
         }, {name: "Cherry Herring", qty: "15ml"}, {name: "Grenadine", qty: "10ml"}, {
@@ -1103,7 +1102,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Hiball",
         ice: "Cubed",
         garnish: "Lime wedge",
-        ingredients: [{name: "Wyborowa", qty: "50ml"}, {name: "Orange juice", qty: "Top"}],
+        ingredients: [{name: "Ketel One", qty: "50ml"}, {name: "Orange juice", qty: "Top"}],
         allergens: "N/A"
     }, {
         id: "twinkle",
@@ -1113,7 +1112,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Standard coupe",
         ice: "No ice",
         garnish: "Lemon twist",
-        ingredients: [{name: "Wyborowa", qty: "40ml"}, {
+        ingredients: [{name: "Ketel One", qty: "40ml"}, {
             name: "Elderflower Cordial",
             qty: "20ml"
         }, {name: "Henriot Brut", qty: "Top"}],
@@ -1126,7 +1125,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Hiball",
         ice: "Cubed",
         garnish: "Lemon wedge",
-        ingredients: [{name: "Beefeater", qty: "50ml"}, {name: "Lemon juice", qty: "25ml"}, {
+        ingredients: [{name: "Tanqueray LD", qty: "50ml"}, {name: "Lemon juice", qty: "25ml"}, {
             name: "Sugar Syrup",
             qty: "15ml"
         }, {name: "Soda", qty: "Top"}],
@@ -1139,7 +1138,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Rocks",
         ice: "Cubed",
         garnish: "Lime wedge",
-        ingredients: [{name: "Havana 7yo", qty: "50ml"}, {name: "Apple Juice", qty: "40ml"}, {
+        ingredients: [{name: "Ron Santiago de Cuba Añejo 8yo", qty: "50ml"}, {name: "Apple Juice", qty: "40ml"}, {
             name: "Lime Juice",
             qty: "10ml"
         }, {name: "Sugar Syrup", qty: "5ml"}, {name: "Angostura", qty: "1dash"}],
@@ -1152,7 +1151,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Caprice coupe",
         ice: "No ice",
         garnish: "Lemon twist",
-        ingredients: [{name: "Beefeater", qty: "45ml"}, {name: "Noilly Prat", qty: "15ml"}, {
+        ingredients: [{name: "Tanqueray LD", qty: "45ml"}, {name: "Noilly Prat", qty: "15ml"}, {
             name: "Maraschino",
             qty: "5ml"
         }, {name: "Orange", qty: "2dash"}, {name: "Absinthe", qty: "2dash"}],
@@ -1165,7 +1164,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Rocks",
         ice: "Cubed",
         garnish: "Lime wedge",
-        ingredients: [{name: "Olmeca Plata", qty: "50ml"}, {name: "Lime Juice", qty: "25ml"}, {
+        ingredients: [{name: "Casamigos Blanco", qty: "50ml"}, {name: "Lime Juice", qty: "25ml"}, {
             name: "Agave Syrup",
             qty: "20ml"
         }],
@@ -1179,7 +1178,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         ice: "Block",
         garnish: "Lemon twist",
         ingredients: [{name: "Woodford Rye", qty: "30ml"}, {
-            name: "Courvoisier VSOP",
+            name: "Rémy Martin VSOP",
             qty: "30ml"
         }, {name: "Antica Formula", qty: "30ml"}, {name: "Benedictine", qty: "5ml"}, {
             name: "Angostura",
@@ -1207,7 +1206,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Standard coupe",
         ice: "No ice",
         garnish: "No garnish",
-        ingredients: [{name: "Beefeater", qty: "40ml"}, {name: "Cointreau", qty: "20ml"}, {
+        ingredients: [{name: "Tanqueray LD", qty: "40ml"}, {name: "Cointreau", qty: "20ml"}, {
             name: "Lemon Juice",
             qty: "20ml"
         }, {name: "Miraculous Foamer", qty: "1/3pipette"}],
@@ -1220,7 +1219,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         glass: "Rocks",
         ice: "Cubed",
         garnish: "No garnish",
-        ingredients: [{name: "Wyborowa", qty: "35ml"}, {name: "Coffee Liqueur", qty: "35ml"}, {
+        ingredients: [{name: "Ketel One", qty: "35ml"}, {name: "Coffee Liqueur", qty: "35ml"}, {
             name: "Double Cream",
             qty: "Float"
         }],
@@ -1228,6 +1227,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
     },
 
 
+    // ... add more classic cocktails from the PDF here ...
 
     //Category Bobbay
     {
