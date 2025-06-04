@@ -264,22 +264,6 @@ const allCocktails = [// Signature cocktails (from the previous list)
         }, {name: "Champagne", qty: "Top"}],
         allergens: "SULPHITES"
     }, {
-        id: "pisco-sour",
-        name: "Pisco Sour",
-        category: "classic",
-        method: "Hard dry shake / shake",
-        glass: "Nick and nora",
-        ice: "No Ice",
-        garnish: "Angostura Bitter  harts 3 drops",
-        ingredients: [{name: "Barsol Primero", qty: "50ml"}, {name: "Lemon Juice", qty: "12.5ml"}, {
-            name: "Lime Juice",
-            qty: "12.5ml"
-        }, {
-            name: "Sugar Syrup",
-            qty: "15ml"
-        }, {name: "Miraculous Foamer", qty: "1/3 pipette"}],
-        allergens: "N/A"
-    }, {
         id: "brandy-alexander",
         name: "Brandy Alexander",
         category: "classic",
@@ -957,6 +941,22 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Lime Juice",
             qty: "10ml"
         }, {name: "Sugar Syrup", qty: "10ml"}, {name: "Passionfruit", qty: "1/2"}],
+        allergens: "N/A"
+    }, {
+        id: "pisco-sour",
+        name: "Pisco Sour",
+        category: "classic",
+        method: "Hard dry shake / shake",
+        glass: "Nick and nora",
+        ice: "No Ice",
+        garnish: "Angostura Bitter  harts 3 drops",
+        ingredients: [{name: "Barsol Primero", qty: "50ml"}, {name: "Lemon Juice", qty: "12.5ml"}, {
+            name: "Lime Juice",
+            qty: "12.5ml"
+        }, {
+            name: "Sugar Syrup",
+            qty: "15ml"
+        }, {name: "Miraculous Foamer", qty: "1/3 pipette"}],
         allergens: "N/A"
     }, {
         id: "pina-colada",
