@@ -83,6 +83,19 @@ const allCocktails = [// Signature cocktails (from the previous list)
             name: "Lost Exp Espadin", qty: "5ml"
         }, {name: "DJ 1942", qty: "5ml"}, {name: "Muyu Chinotto", qty: "2.5ml"}, {name: "Lime Juice", qty: "20ml"}]
     }, {
+        id: "sc-champagne-cocktail",
+        name: "SC-Champagne Cocktail",
+        category: "classic",
+        method: "Stir",
+        glass: "Champagne coupe",
+        ice: "No ice",
+        garnish: "Golden shygar cube",
+        ingredients: [{name: "White Sugar Cube", qty: "1"}, {
+            name: "Angostura",
+            qty: "4 dashes"
+        }, {name: "Rémy Martin VSOP", qty: "15ml"}, {name: "Peach Liqueur", qty: "5ml"},{name: "Sugar Syrup", qty: "5ml"}, {name: "Champagne", qty: "Top"}],
+        allergens: "SULPHITES"
+    },{
         id: "sc-paloma",
         name: "SC Paloma",
         category: "signature",
@@ -429,7 +442,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         garnish: "No garnish",
         ingredients: [{name: "White Sugar Cube", qty: "1"}, {
             name: "Angostura",
-            qty: "4dashes"
+            qty: "4 dashes"
         }, {name: "Rémy Martin VSOP", qty: "25ml"}, {name: "Champagne", qty: "Top"}],
         allergens: "SULPHITES"
     }, {
