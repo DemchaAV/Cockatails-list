@@ -89,8 +89,8 @@ const allCocktails = [// Signature cocktails (from the previous list)
         method: "Stir",
         glass: "Champagne coupe",
         ice: "No ice",
-        garnish: "Golden shygar cube",
-        ingredients: [{name: "White Sugar Cube", qty: "1"}, {
+        garnish: "Golden Sugar cube",
+        ingredients: [{
             name: "Angostura",
             qty: "4 dashes"
         }, {name: "Rémy Martin VSOP", qty: "15ml"}, {name: "Peach Liqueur", qty: "5ml"},{name: "Sugar Syrup", qty: "5ml"}, {name: "Champagne", qty: "Top"}],
@@ -439,8 +439,8 @@ const allCocktails = [// Signature cocktails (from the previous list)
         method: "Build",
         glass: "Tall flute",
         ice: "No ice",
-        garnish: "No garnish",
-        ingredients: [{name: "White Sugar Cube", qty: "1"}, {
+        garnish: "White Sugar Cube",
+        ingredients: [{
             name: "Angostura",
             qty: "4 dashes"
         }, {name: "Rémy Martin VSOP", qty: "25ml"}, {name: "Champagne", qty: "Top"}],
