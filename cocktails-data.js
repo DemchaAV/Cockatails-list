@@ -85,7 +85,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
     }, {
         id: "sc-champagne-cocktail",
         name: "SC-Champagne Cocktail",
-        category: "classic",
+        category: "signature",
         method: "Stir",
         glass: "Champagne coupe",
         ice: "No ice",
