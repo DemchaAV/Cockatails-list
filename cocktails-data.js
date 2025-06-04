@@ -419,7 +419,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         }, {name: "Worcestershire sauce", qty: "150ml"}, {
             name: "Passata Tomato",
             qty: "250ml"
-        }, {name: "V8 tomato juice", qty: "1.5l"}],
+        }, {name: "V8 Tomato Juice", qty: "1.5l"}],
         allergens: "MUSTARD, EGGS, FISH, CELERY, SULPHITES"
     }, {
         id: "boulevardier",
