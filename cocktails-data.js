@@ -556,8 +556,8 @@ const allCocktails = [// Signature cocktails (from the previous list)
         garnish: "No garnish (often 3 coffee beans)",
         ingredients: [{name: "Espresso", qty: "50ml"}, {
             name: "Ketel One (Vodka)",
-            qty: "25ml"
-        }, {name: "Kahlúa Coffee Liqueur", qty: "25ml"}, {name: "Giffard Vanille", qty: "15ml"}]
+            qty: "20ml"
+        }, {name: "Kahlúa Coffee Liqueur", qty: "20ml"}, {name: "Giffard Vanille", qty: "10ml"}]
     }, {
         id: "el-diablo",
         name: "El Diablo",
