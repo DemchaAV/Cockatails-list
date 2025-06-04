@@ -12,7 +12,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         }]
     }, {
         id: "twinkle-signature",
-        name: "Twinkle (Signature)",
+        name: "Twinkle",
         category: "signature",
         method: "Shake, top",
         glass: "Caprice Coupette",
@@ -23,7 +23,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         }]
     }, {
         id: "white-negroni-signature",
-        name: "White Negroni (Signature)",
+        name: "White Negroni",
         category: "signature",
         method: "Stir",
         glass: "Rocks",
@@ -34,7 +34,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         }, {name: "Luxardo Bitter", qty: "25ml"}]
     }, {
         id: "singapore-sling-signature",
-        name: "Singapore Sling (Signature)",
+        name: "Singapore Sling",
         category: "signature",
         method: "Shake",
         glass: "Highball",
@@ -48,7 +48,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         }, {name: "Grenadine", qty: "10ml"}]
     }, {
         id: "mai-tai-signature",
-        name: "Mai Tai (Signature)",
+        name: "Mai Tai",
         category: "signature",
         method: "Shake",
         glass: "Rona Thumbler",
@@ -59,7 +59,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         }, {name: "Lime", qty: "20ml"}, {name: "Monin Orgeat", qty: "10ml"}]
     }, {
         id: "clover-club-signature",
-        name: "Clover Club (Signature)",
+        name: "Clover Club",
         category: "signature",
         method: "Shake",
         glass: "Caprice Coupette",
@@ -109,7 +109,7 @@ const allCocktails = [// Signature cocktails (from the previous list)
         }, {name: "Chili Shrub/Tabasco", qty: "3 dashes"}, {name: "Coriander Bitters", qty: "2 dashes"}]
     }, {
         id: "old-fashioned-signature",
-        name: "Old Fashioned (Signature)",
+        name: "Old Fashioned",
         category: "signature",
         method: "Stir",
         glass: "Rocks",
