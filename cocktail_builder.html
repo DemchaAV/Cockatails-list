@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocktail Recipe Builder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .ingredient-item {
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .cocktail-card {
+            transition: all 0.2s ease-in-out;
+        }
+
+        .cocktail-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .dark .form-section {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            transform: translateY(-1px);
+        }
+
+        .delete-btn {
+            transition: all 0.2s ease-in-out;
+        }
+
+        .delete-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .add-ingredient-btn {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            transition: all 0.2s ease-in-out;
+        }
+
+        .add-ingredient-btn:hover {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            transform: translateY(-2px);
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            transition: all 0.2s ease-in-out;
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen">
+    <div class="container mx-auto max-w-6xl p-4">
+        <!-- Header -->
+        <header class="text-center mb-8 py-6">
+            <h1 class="text-4xl md:text-5xl font-bold text-sky-600 dark:text-sky-400 mb-2">🍹 Cocktail Builder</h1>
+            <p class="text-gray-600 dark:text-gray-400">Create and manage your cocktail recipes</p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Form Section -->
+            <div class="form-section p-6 rounded-2xl shadow-lg">
+                <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-6">✨ Add New Cocktail</h2>
+                
+                <form id="cocktailForm" class="space-y-6">
+                    <!-- Basic Info -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Name *</label>
+                            <input type="text" id="cocktailName" required
+                                class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white"
+                                placeholder="e.g., Time for Tea">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Category *</label>
+                            <select id="cocktailCategory" required
+                                class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white">
+                                <option value="">Select category</option>
+                                <option value="signature">Signature</option>
+                                <option value="bombay">Bombay</option>
+                                <option value="classic">Classic</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Method, Glass, Ice, Garnish -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Method</label>
+                            <input type="text" id="cocktailMethod"
+                                class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white"
+                                placeholder="e.g., Wet/dry Shake">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Glass</label>
+                            <input type="text" id="cocktailGlass"
+                                class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white"
+                                placeholder="e.g., Savage Pony">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Ice</label>
+                            <input type="text" id="cocktailIce"
+                                class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white"
+                                placeholder="e.g., no ice">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Garnish</label>
+                            <input type="text" id="cocktailGarnish"
+                                class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white"
+                                placeholder="e.g., Peychauds bitters hearts">
+                        </div>
+                    </div>
+
+                    <!-- Allergens -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Allergens</label>
+                        <input type="text" id="cocktailAllergens"
+                            class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white"
+                            placeholder="Leave empty for null, or list allergens">
+                    </div>
+
+                    <!-- Ingredients Section -->
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <label class="text-sm font-semibold text-gray-700 dark:text-gray-300">Ingredients *</label>
+                            <button type="button" id="addIngredientBtn"
+                                class="add-ingredient-btn text-white px-4 py-2 rounded-lg font-medium shadow-md">
+                                + Add Ingredient
+                            </button>
+                        </div>
+                        <div id="ingredientsList" class="space-y-3">
+                            <!-- Ingredients will be added here -->
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit"
+                        class="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 rounded-lg transition-all transform hover:scale-105 shadow-lg">
+                        🎯 Add Cocktail
+                    </button>
+                </form>
+            </div>
+
+            <!-- Cocktails List -->
+            <div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200">📋 Your Cocktails</h2>
+                        <div class="flex gap-2">
+                            <button id="clearAllBtn"
+                                class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-medium transition-all">
+                                🗑️ Clear All
+                            </button>
+                            <button id="downloadBtn"
+                                class="download-btn text-white px-4 py-2 rounded-lg font-medium shadow-md">
+                                📥 Download JSON
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="cocktailsList" class="space-y-4">
+                        <div class="text-center text-gray-500 dark:text-gray-400 py-8">
+                            <div class="text-4xl mb-2">🍸</div>
+                            <p>No cocktails yet. Add your first recipe!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Apply dark theme
+        document.documentElement.classList.add('dark');
+
+        // State
+        let cocktails = JSON.parse(localStorage.getItem('cocktails') || '[]');
+        let ingredientCounter = 0;
+
+        // DOM Elements
+        const form = document.getElementById('cocktailForm');
+        const ingredientsList = document.getElementById('ingredientsList');
+        const addIngredientBtn = document.getElementById('addIngredientBtn');
+        const cocktailsList = document.getElementById('cocktailsList');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const clearAllBtn = document.getElementById('clearAllBtn');
+
+        // Utility Functions
+        function generateId(name) {
+            return name.toLowerCase()
+                .replace(/[^a-z0-9\s]/g, '')
+                .replace(/\s+/g, '-')
+                .substring(0, 50);
+        }
+
+        function addIngredientRow(name = '', qty = '') {
+            const div = document.createElement('div');
+            div.className = 'ingredient-item flex gap-3 items-center bg-white dark:bg-gray-700 p-3 rounded-lg border border-gray-200 dark:border-gray-600';
+            div.innerHTML = `
+                <div class="flex-1">
+                    <input type="text" placeholder="Ingredient name" value="${name}"
+                        class="ingredient-name w-full p-2 border border-gray-300 dark:border-gray-600 rounded focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-600 dark:text-white text-sm"
+                        required>
+                </div>
+                <div class="w-24">
+                    <input type="text" placeholder="Qty" value="${qty}"
+                        class="ingredient-qty w-full p-2 border border-gray-300 dark:border-gray-600 rounded focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-600 dark:text-white text-sm"
+                        required>
+                </div>
+                <button type="button" class="delete-btn text-red-500 hover:text-red-700 p-2 rounded-full hover:bg-red-50 dark:hover:bg-red-900/30">
+                    🗑️
+                </button>
+            `;
+
+            div.querySelector('.delete-btn').addEventListener('click', () => {
+                div.style.animation = 'slideIn 0.3s ease-out reverse';
+                setTimeout(() => div.remove(), 300);
+            });
+
+            ingredientsList.appendChild(div);
+            ingredientCounter++;
+        }
+
+        function renderCocktails() {
+            if (cocktails.length === 0) {
+                cocktailsList.innerHTML = `
+                    <div class="text-center text-gray-500 dark:text-gray-400 py-8">
+                        <div class="text-4xl mb-2">🍸</div>
+                        <p>No cocktails yet. Add your first recipe!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            cocktailsList.innerHTML = cocktails.map((cocktail, index) => `
+                <div class="cocktail-card bg-gradient-to-r from-sky-50 to-blue-50 dark:from-gray-700 dark:to-gray-600 p-4 rounded-xl border border-sky-200 dark:border-gray-600">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h3 class="font-bold text-lg text-sky-700 dark:text-sky-300">${cocktail.name}</h3>
+                            <span class="inline-block bg-sky-600 text-white text-xs px-2 py-1 rounded-full">${cocktail.category}</span>
+                        </div>
+                        <button onclick="deleteCocktail(${index})" class="text-red-500 hover:text-red-700 p-1 rounded">
+                            🗑️
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 text-sm text-gray-600 dark:text-gray-300 mb-3">
+                        <div><strong>Method:</strong> ${cocktail.method || 'N/A'}</div>
+                        <div><strong>Glass:</strong> ${cocktail.glass || 'N/A'}</div>
+                        <div><strong>Ice:</strong> ${cocktail.ice || 'N/A'}</div>
+                        <div><strong>Garnish:</strong> ${cocktail.garnish || 'N/A'}</div>
+                    </div>
+                    <div class="text-sm">
+                        <strong class="text-sky-600 dark:text-sky-400">Ingredients:</strong>
+                        <ul class="mt-1 space-y-1">
+                            ${cocktail.ingredients.map(ing => `
+                                <li class="flex justify-between">
+                                    <span>${ing.name}</span>
+                                    <span class="font-semibold text-sky-600 dark:text-sky-400">${ing.qty}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                    ${cocktail.allergens ? `<div class="mt-2 text-xs text-orange-600 dark:text-orange-400"><strong>Allergens:</strong> ${cocktail.allergens}</div>` : ''}
+                </div>
+            `).join('');
+        }
+
+        function saveCocktails() {
+            localStorage.setItem('cocktails', JSON.stringify(cocktails));
+        }
+
+        function deleteCocktail(index) {
+            if (confirm('Delete this cocktail?')) {
+                cocktails.splice(index, 1);
+                saveCocktails();
+                renderCocktails();
+            }
+        }
+
+        function downloadJSON() {
+            const dataStr = JSON.stringify(cocktails, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'cocktails-data.js';
+            link.textContent = `const allCocktails = ${dataStr};`;
+            
+            // Create proper JS file content
+            const jsContent = `const allCocktails = ${dataStr};`;
+            const jsBlob = new Blob([jsContent], { type: 'application/javascript' });
+            const jsUrl = URL.createObjectURL(jsBlob);
+            link.href = jsUrl;
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(jsUrl);
+        }
+
+        // Event Listeners
+        addIngredientBtn.addEventListener('click', () => addIngredientRow());
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('cocktailName').value.trim();
+            const category = document.getElementById('cocktailCategory').value;
+            const method = document.getElementById('cocktailMethod').value.trim();
+            const glass = document.getElementById('cocktailGlass').value.trim();
+            const ice = document.getElementById('cocktailIce').value.trim();
+            const garnish = document.getElementById('cocktailGarnish').value.trim();
+            const allergens = document.getElementById('cocktailAllergens').value.trim();
+
+            // Get ingredients
+            const ingredientRows = document.querySelectorAll('.ingredient-item');
+            const ingredients = Array.from(ingredientRows).map(row => ({
+                name: row.querySelector('.ingredient-name').value.trim(),
+                qty: row.querySelector('.ingredient-qty').value.trim()
+            })).filter(ing => ing.name && ing.qty);
+
+            if (ingredients.length === 0) {
+                alert('Please add at least one ingredient');
+                return;
+            }
+
+            const cocktail = {
+                id: generateId(name),
+                name,
+                category,
+                method: method || null,
+                glass: glass || null,
+                ice: ice || null,
+                garnish: garnish || null,
+                ingredients,
+                allergens: allergens || null
+            };
+
+            cocktails.push(cocktail);
+            saveCocktails();
+            renderCocktails();
+            form.reset();
+            ingredientsList.innerHTML = '';
+            addIngredientRow(); // Add one empty row
+            
+            // Show success message
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = '✅ Added!';
+            btn.classList.add('bg-green-600');
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.classList.remove('bg-green-600');
+            }, 2000);
+        });
+
+        downloadBtn.addEventListener('click', downloadJSON);
+
+        clearAllBtn.addEventListener('click', () => {
+            if (confirm('Delete all cocktails? This cannot be undone.')) {
+                cocktails = [];
+                saveCocktails();
+                renderCocktails();
+            }
+        });
+
+        // Initialize
+        addIngredientRow(); // Add initial ingredient row
+        renderCocktails();
+    </script>
+</body>
+
+</html>
