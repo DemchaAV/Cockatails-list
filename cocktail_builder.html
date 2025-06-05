@@ -177,12 +177,12 @@
                     <div class="flex justify-between items-center mb-6">
                         <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200">📋 Your Cocktails</h2>
                         <div class="flex gap-2">
-                            <button id="clearAllBtn"
+                            <button id="clearAllBtn" type="button"
                                 class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-medium transition-all flex flex-col items-center justify-center">
                                 <span>🗑️</span>
                                 <span>Clear All</span>
                             </button>
-                            <button id="downloadBtn"
+                            <button id="downloadBtn" type="button"
                                 class="download-btn text-white px-4 py-2 rounded-lg font-medium shadow-md flex flex-col items-center justify-center">
                                 <span>📥</span>
                                 <span>Download JS file</span>
@@ -217,7 +217,7 @@
                         <div class="flex gap-2">
                             <input type="text" id="newCategoryName" placeholder="New category name..."
                                    class="flex-1 p-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white text-sm">
-                            <button id="addCategoryBtn" 
+                            <button id="addCategoryBtn" type="button"
                                     class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-sm">Add Category</button>
                         </div>
 
@@ -432,20 +432,23 @@
             const garnish = document.getElementById('cocktailGarnish').value.trim();
             const allergens = document.getElementById('cocktailAllergens').value.trim();
 
-            // Get ingredients
             const ingredientRows = document.querySelectorAll('.ingredient-item');
             const ingredients = Array.from(ingredientRows).map(row => ({
                 name: row.querySelector('.ingredient-name').value.trim(),
                 qty: row.querySelector('.ingredient-qty').value.trim()
             })).filter(ing => ing.name && ing.qty);
 
+            if (!name || !category) {
+                alert('Name and Category are required fields.');
+                return;
+            }
             if (ingredients.length === 0) {
-                alert('Please add at least one ingredient');
+                alert('Please add at least one ingredient.');
                 return;
             }
 
             const cocktail = {
-                id: generateId(name),
+                id: generateId(name + Date.now()), // Ensure unique ID even if name is the same during edit
                 name,
                 category,
                 method: method || null,
@@ -459,6 +462,8 @@
             if (editIndex !== null) {
                 cocktails[editIndex] = cocktail;
                 editIndex = null;
+                const submitBtn = form.querySelector('button[type="submit"]');
+                submitBtn.textContent = '🎯 Add Cocktail'; // Reset button text
             } else {
                 cocktails.push(cocktail);
             }
@@ -466,15 +471,15 @@
             renderCocktails();
             form.reset();
             ingredientsList.innerHTML = '';
-            addIngredientRow(); // Add one empty row
+            addIngredientRow(); 
             
-            // Show success message
             const btn = form.querySelector('button[type="submit"]');
-            const originalText = btn.textContent;
+            const originalText = (editIndex === null || typeof originalAddBtnText === 'undefined') ? '🎯 Add Cocktail' : originalAddBtnText; // Fallback for safety
+            
             btn.textContent = '✅ Saved!';
             btn.classList.add('bg-green-600');
             setTimeout(() => {
-                btn.textContent = originalText;
+                btn.textContent = originalText; 
                 btn.classList.remove('bg-green-600');
             }, 2000);
         });
@@ -511,6 +516,7 @@
 
             // Add 'All' button
             const allBtn = document.createElement('button');
+            allBtn.type = 'button'; // Explicitly set type
             allBtn.dataset.category = 'all';
             allBtn.textContent = 'All';
             allBtn.className = `category-filter-btn px-4 py-2 rounded-lg`;
@@ -528,6 +534,7 @@
                 btnWrapper.className = 'relative flex items-center'; // For positioning delete icon
 
                 const btn = document.createElement('button');
+                btn.type = 'button'; // Explicitly set type
                 btn.dataset.category = category;
                 btn.textContent = category.charAt(0).toUpperCase() + category.slice(1);
                 // Add more padding to the right if we plan to add a delete icon inside or next to it.
@@ -728,6 +735,83 @@
             addCategoryBtn.addEventListener('click', addNewCategory);
         } else {
             console.warn('Add Category button (addCategoryBtn) not found!');
+        }
+
+        // Ensure the file upload functionality is correctly wired
+        // 1. Event listener for the actual hidden file input
+        if (uploadFile) {
+            uploadFile.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = function(ev) {
+                    let text = ev.target.result;
+                    let match = text.match(/const\s+allCocktails\s*=\s*(\[.*\]);?/s);
+                    if (!match) {
+                        alert('File must contain: const allCocktails = [...]');
+                        e.target.value = ''; // Reset input
+                        return;
+                    }
+                    let imported;
+                    try {
+                        imported = (new Function('return ' + match[1]))();
+                    } catch (err) {
+                        alert('Failed to parse cocktails array: ' + err.message);
+                        e.target.value = ''; // Reset input
+                        return;
+                    }
+                    if (!Array.isArray(imported)) {
+                        alert('Imported data is not an array!');
+                        e.target.value = ''; // Reset input
+                        return;
+                    }
+
+                    // Discover and add new categories from the imported file
+                    let newCategoriesAdded = false;
+                    const discoveredCategories = new Set(appCategories); // Use a Set for efficient lookup and addition
+
+                    imported.forEach(cocktail => {
+                        if (cocktail.category) {
+                            const categoryFromFile = cocktail.category.trim().toLowerCase();
+                            if (categoryFromFile && categoryFromFile !== 'all' && !discoveredCategories.has(categoryFromFile)) {
+                                discoveredCategories.add(categoryFromFile);
+                                appCategories.push(categoryFromFile); // Keep appCategories as an array
+                                newCategoriesAdded = true;
+                            }
+                        }
+                    });
+
+                    if (newCategoriesAdded) {
+                        saveAppCategories();
+                        renderCategoryOptionsForForm(); // Update select in form with new categories
+                        renderCategoryFilters();      // Update filter buttons with new categories
+                        alert('New categories from the file have been automatically added.');
+                    }
+
+                    if (confirm('Replace all current recipes with imported ones? (OK — replace, Cancel — add to existing)')) {
+                        cocktails = imported;
+                    } else {
+                        cocktails = cocktails.concat(imported);
+                    }
+                    saveCocktails();
+                    renderCocktails();
+                    alert('Import complete!');
+                };
+                reader.readAsText(file);
+                e.target.value = ''; // Reset input to allow uploading the same file again
+            });
+        } else {
+            console.warn('File input (uploadFile) not found!');
+        }
+
+        // 2. Event listener for the visible GUI button to trigger the hidden file input
+        if (uploadJsFileGuiBtn && uploadFile) {
+            uploadJsFileGuiBtn.addEventListener('click', () => {
+                uploadFile.click(); 
+            });
+        } else {
+            if (!uploadJsFileGuiBtn) console.warn('Upload JS File GUI button (uploadJsFileGuiBtn) not found!');
+            // Warning for uploadFile already handled above
         }
 
         // Initialize
