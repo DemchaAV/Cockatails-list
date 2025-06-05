@@ -179,13 +179,34 @@
                         <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200">📋 Your Cocktails</h2>
                         <div class="flex gap-2">
                             <button id="clearAllBtn"
-                                class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-medium transition-all">
-                                🗑️ Clear All
+                                class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-medium transition-all flex flex-col items-center justify-center">
+                                <span>🗑️</span>
+                                <span>Clear All</span>
                             </button>
                             <button id="downloadBtn"
-                                class="download-btn text-white px-4 py-2 rounded-lg font-medium shadow-md">
-                                📥 Download JSON
+                                class="download-btn text-white px-4 py-2 rounded-lg font-medium shadow-md flex flex-col items-center justify-center">
+                                <span>📥</span>
+                                <span>Download JS file</span>
                             </button>
+                            <button id="uploadJsFileGuiBtn" type="button"
+                                class="download-btn text-white px-4 py-2 rounded-lg font-medium shadow-md cursor-pointer flex flex-col items-center justify-center">
+                                <span>⬆️</span>
+                                <span>Upload JS file</span>
+                            </button>
+                            <input type="file" id="uploadFile" accept=".js" style="display:none">
+                        </div>
+                    </div>
+                    
+                    <!-- Search and Filter Controls -->
+                    <div class="mb-6 flex flex-col md:flex-row gap-4">
+                        <input type="text" id="searchInput" placeholder="Search by name..." 
+                               class="w-full md:flex-1 p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white">
+                        <div id="categoryFilters" class="flex gap-2 flex-wrap">
+                            <button data-category="all" class="category-filter-btn active bg-sky-600 text-white px-4 py-2 rounded-lg">All</button>
+                            <button data-category="signature" class="category-filter-btn bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-sky-500 hover:text-white px-4 py-2 rounded-lg">Signature</button>
+                            <button data-category="bombay" class="category-filter-btn bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-sky-500 hover:text-white px-4 py-2 rounded-lg">Bombay</button>
+                            <button data-category="classic" class="category-filter-btn bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-sky-500 hover:text-white px-4 py-2 rounded-lg">Classic</button>
+                            <!-- Add more categories if needed -->
                         </div>
                     </div>
                     
@@ -207,6 +228,8 @@
         // State
         let cocktails = JSON.parse(localStorage.getItem('cocktails') || '[]');
         let ingredientCounter = 0;
+        let activeCategory = 'all'; // For category filtering
+        let searchTerm = ''; // For search input
 
         // DOM Elements
         const form = document.getElementById('cocktailForm');
@@ -215,6 +238,13 @@
         const cocktailsList = document.getElementById('cocktailsList');
         const downloadBtn = document.getElementById('downloadBtn');
         const clearAllBtn = document.getElementById('clearAllBtn');
+        const uploadFile = document.getElementById('uploadFile');
+        const uploadJsFileGuiBtn = document.getElementById('uploadJsFileGuiBtn');
+        const searchInput = document.getElementById('searchInput');
+        const categoryFilterBtns = document.querySelectorAll('.category-filter-btn');
+
+        // Для редактирования
+        let editIndex = null;
 
         // Utility Functions
         function generateId(name) {
@@ -253,26 +283,54 @@
         }
 
         function renderCocktails() {
-            if (cocktails.length === 0) {
+            let filteredCocktails = [...cocktails];
+
+            // Filter by active category
+            if (activeCategory !== 'all') {
+                filteredCocktails = filteredCocktails.filter(c => c.category === activeCategory);
+            }
+
+            // Filter by search term (name)
+            if (searchTerm) {
+                filteredCocktails = filteredCocktails.filter(c => 
+                    c.name.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+            }
+
+            if (filteredCocktails.length === 0) {
                 cocktailsList.innerHTML = `
                     <div class="text-center text-gray-500 dark:text-gray-400 py-8">
                         <div class="text-4xl mb-2">🍸</div>
-                        <p>No cocktails yet. Add your first recipe!</p>
+                        <p>No cocktails found.</p>
                     </div>
                 `;
                 return;
             }
 
-            cocktailsList.innerHTML = cocktails.map((cocktail, index) => `
+            cocktailsList.innerHTML = filteredCocktails.map((cocktail, index) => {
+                // Important: The index here is for the filteredCocktails array.
+                // To get the original index in the `cocktails` array for deletion/editing, 
+                // we need to find it. We can use the cocktail's id if it's unique and stable,
+                // or find its actual index in the original `cocktails` array.
+                // For simplicity, we'll find it by reference or a unique ID if available.
+                // Let's assume cocktail.id is unique and was generated previously.
+                const originalIndex = cocktails.findIndex(c => c.id === cocktail.id);
+
+                return `
                 <div class="cocktail-card bg-gradient-to-r from-sky-50 to-blue-50 dark:from-gray-700 dark:to-gray-600 p-4 rounded-xl border border-sky-200 dark:border-gray-600">
                     <div class="flex justify-between items-start mb-3">
                         <div>
                             <h3 class="font-bold text-lg text-sky-700 dark:text-sky-300">${cocktail.name}</h3>
                             <span class="inline-block bg-sky-600 text-white text-xs px-2 py-1 rounded-full">${cocktail.category}</span>
                         </div>
-                        <button onclick="deleteCocktail(${index})" class="text-red-500 hover:text-red-700 p-1 rounded">
-                            🗑️
-                        </button>
+                        <div class="flex gap-2">
+                            <button onclick="deleteCocktail(${originalIndex})" class="text-red-500 hover:text-red-700 p-1 rounded">
+                                🗑️
+                            </button>
+                            <button onclick="editCocktail(${originalIndex})" class="text-sky-500 hover:text-sky-700 p-1 rounded">
+                                ✏️
+                            </button>
+                        </div>
                     </div>
                     <div class="grid grid-cols-2 gap-2 text-sm text-gray-600 dark:text-gray-300 mb-3">
                         <div><strong>Method:</strong> ${cocktail.method || 'N/A'}</div>
@@ -293,7 +351,8 @@
                     </div>
                     ${cocktail.allergens ? `<div class="mt-2 text-xs text-orange-600 dark:text-orange-400"><strong>Allergens:</strong> ${cocktail.allergens}</div>` : ''}
                 </div>
-            `).join('');
+            `;
+            }).join('');
         }
 
         function saveCocktails() {
@@ -308,25 +367,38 @@
             }
         }
 
-        function downloadJSON() {
+        function downloadJS() {
             const dataStr = JSON.stringify(cocktails, null, 2);
-            const dataBlob = new Blob([dataStr], { type: 'application/json' });
-            const url = URL.createObjectURL(dataBlob);
+            const jsContent = `const allCocktails = ${dataStr};\n`;
+            const jsBlob = new Blob([jsContent], { type: 'application/javascript' });
+            const url = URL.createObjectURL(jsBlob);
             const link = document.createElement('a');
             link.href = url;
-            link.download = 'cocktails-data.js';
-            link.textContent = `const allCocktails = ${dataStr};`;
-            
-            // Create proper JS file content
-            const jsContent = `const allCocktails = ${dataStr};`;
-            const jsBlob = new Blob([jsContent], { type: 'application/javascript' });
-            const jsUrl = URL.createObjectURL(jsBlob);
-            link.href = jsUrl;
-            
+            link.download = 'cocktails.js';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-            URL.revokeObjectURL(jsUrl);
+            URL.revokeObjectURL(url);
+        }
+
+        // Глобально доступная функция для кнопки редактирования
+        window.editCocktail = function(index) {
+            const cocktail = cocktails[index]; // Use original index
+            if (!cocktail) {
+                console.error('Cocktail not found for editing at index:', index);
+                return;
+            }
+            document.getElementById('cocktailName').value = cocktail.name;
+            document.getElementById('cocktailCategory').value = cocktail.category;
+            document.getElementById('cocktailMethod').value = cocktail.method || '';
+            document.getElementById('cocktailGlass').value = cocktail.glass || '';
+            document.getElementById('cocktailIce').value = cocktail.ice || '';
+            document.getElementById('cocktailGarnish').value = cocktail.garnish || '';
+            document.getElementById('cocktailAllergens').value = cocktail.allergens || '';
+            ingredientsList.innerHTML = '';
+            (cocktail.ingredients || []).forEach(ing => addIngredientRow(ing.name, ing.qty));
+            editIndex = index;
+            form.scrollIntoView({behavior: 'smooth'});
         }
 
         // Event Listeners
@@ -367,7 +439,12 @@
                 allergens: allergens || null
             };
 
-            cocktails.push(cocktail);
+            if (editIndex !== null) {
+                cocktails[editIndex] = cocktail;
+                editIndex = null;
+            } else {
+                cocktails.push(cocktail);
+            }
             saveCocktails();
             renderCocktails();
             form.reset();
@@ -377,7 +454,7 @@
             // Show success message
             const btn = form.querySelector('button[type="submit"]');
             const originalText = btn.textContent;
-            btn.textContent = '✅ Added!';
+            btn.textContent = '✅ Saved!';
             btn.classList.add('bg-green-600');
             setTimeout(() => {
                 btn.textContent = originalText;
@@ -385,19 +462,106 @@
             }, 2000);
         });
 
-        downloadBtn.addEventListener('click', downloadJSON);
+        // Handle search input
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                searchTerm = e.target.value;
+                renderCocktails();
+            });
+        }
 
-        clearAllBtn.addEventListener('click', () => {
-            if (confirm('Delete all cocktails? This cannot be undone.')) {
-                cocktails = [];
+        // Handle category filter clicks
+        categoryFilterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                categoryFilterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-sky-600', 'text-white');
+                    b.classList.add('bg-gray-200', 'dark:bg-gray-600', 'text-gray-700', 'dark:text-gray-300');
+                });
+                // Add active class to the clicked button
+                btn.classList.add('active', 'bg-sky-600', 'text-white');
+                btn.classList.remove('bg-gray-200', 'dark:bg-gray-600', 'text-gray-700', 'dark:text-gray-300');
+                
+                activeCategory = btn.dataset.category;
+                renderCocktails();
+            });
+        });
+
+        // Импорт JS-файла с рецептами
+        uploadFile.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(ev) {
+                let text = ev.target.result;
+                // Try to extract array from JS file: const allCocktails = [...];
+                let match = text.match(/const\s+allCocktails\s*=\s*(\[.*\]);?/s);
+                if (!match) {
+                    alert('File must contain: const allCocktails = [...]');
+                    return;
+                }
+                let imported;
+                try {
+                    // Use Function constructor for safe eval
+                    imported = (new Function('return ' + match[1]))();
+                } catch (err) {
+                    alert('Failed to parse cocktails array: ' + err.message);
+                    return;
+                }
+                if (!Array.isArray(imported)) {
+                    alert('Imported data is not an array!');
+                    return;
+                }
+                // Ask user: replace or add
+                if (confirm('Replace all current recipes with imported ones? (OK — replace, Cancel — add to existing)')) {
+                    cocktails = imported;
+                } else {
+                    cocktails = cocktails.concat(imported);
+                }
                 saveCocktails();
                 renderCocktails();
-            }
+                alert('Import complete!');
+            };
+            reader.readAsText(file);
+            // Reset input so the same file can be uploaded again
+            e.target.value = '';
         });
 
         // Initialize
         addIngredientRow(); // Add initial ingredient row
         renderCocktails();
+
+        // Ensure download button works
+        if (downloadBtn) {
+            downloadBtn.addEventListener('click', function() {
+                downloadJS();
+            });
+        } else {
+            console.warn('Download button not found!');
+        }
+
+        // Ensure clear all button works
+        if (clearAllBtn) {
+            clearAllBtn.addEventListener('click', () => {
+                if (confirm('Delete all cocktails? This cannot be undone.')) {
+                    cocktails = [];
+                    saveCocktails();
+                    renderCocktails();
+                }
+            });
+        } else {
+            console.warn('Clear All button not found!');
+        }
+
+        // Handle click for the new GUI button for uploading JS file
+        if (uploadJsFileGuiBtn && uploadFile) {
+            uploadJsFileGuiBtn.addEventListener('click', () => {
+                uploadFile.click(); 
+            });
+        } else {
+            if (!uploadJsFileGuiBtn) console.warn('Upload JS File GUI button (uploadJsFileGuiBtn) not found!');
+            if (!uploadFile) console.warn('Actual file upload input (uploadFile) not found!');
+        }
     </script>
 </body>
 
