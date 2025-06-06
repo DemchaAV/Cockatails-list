@@ -192,6 +192,11 @@
                                 <span>⬆️</span>
                                 <span>Upload JS file</span>
                             </button>
+                            <button id="loadFromUrlBtn" type="button"
+                                class="download-btn text-white px-4 py-2 rounded-lg font-medium shadow-md cursor-pointer flex flex-col items-center justify-center">
+                                <span>🔗</span>
+                                <span>Load from URL</span>
+                            </button>
                             <input type="file" id="uploadFile" accept=".js" style="display:none">
                         </div>
                     </div>
@@ -254,6 +259,7 @@
         const clearAllBtn = document.getElementById('clearAllBtn');
         const uploadFile = document.getElementById('uploadFile');
         const uploadJsFileGuiBtn = document.getElementById('uploadJsFileGuiBtn');
+        const loadFromUrlBtn = document.getElementById('loadFromUrlBtn');
         const searchInput = document.getElementById('searchInput');
         const categoryFilterBtnsContainer = document.getElementById('categoryFilters');
         const cocktailCategorySelect = document.getElementById('cocktailCategory');
@@ -737,6 +743,56 @@
             console.warn('Add Category button (addCategoryBtn) not found!');
         }
 
+        function processImportedData(text) {
+            let match = text.match(/const\s+allCocktails\s*=\s*(\[.*\]);?/s);
+            if (!match) {
+                alert('File content must contain: const allCocktails = [...]');
+                return;
+            }
+            let imported;
+            try {
+                imported = (new Function('return ' + match[1]))();
+            } catch (err) {
+                alert('Failed to parse cocktails array: ' + err.message);
+                return;
+            }
+            if (!Array.isArray(imported)) {
+                alert('Imported data is not an array!');
+                return;
+            }
+
+            // Discover and add new categories from the imported file
+            let newCategoriesAdded = false;
+            const discoveredCategories = new Set(appCategories); // Use a Set for efficient lookup and addition
+
+            imported.forEach(cocktail => {
+                if (cocktail.category) {
+                    const categoryFromFile = cocktail.category.trim().toLowerCase();
+                    if (categoryFromFile && categoryFromFile !== 'all' && !discoveredCategories.has(categoryFromFile)) {
+                        discoveredCategories.add(categoryFromFile);
+                        appCategories.push(categoryFromFile); // Keep appCategories as an array
+                        newCategoriesAdded = true;
+                    }
+                }
+            });
+
+            if (newCategoriesAdded) {
+                saveAppCategories();
+                renderCategoryOptionsForForm(); // Update select in form with new categories
+                renderCategoryFilters();      // Update filter buttons with new categories
+                alert('New categories from the file have been automatically added.');
+            }
+
+            if (confirm('Replace all current recipes with imported ones? (OK — replace, Cancel — add to existing)')) {
+                cocktails = imported;
+            } else {
+                cocktails = cocktails.concat(imported);
+            }
+            saveCocktails();
+            renderCocktails();
+            alert('Import complete!');
+        }
+
         // Ensure the file upload functionality is correctly wired
         // 1. Event listener for the actual hidden file input
         if (uploadFile) {
@@ -745,63 +801,35 @@
                 if (!file) return;
                 const reader = new FileReader();
                 reader.onload = function(ev) {
-                    let text = ev.target.result;
-                    let match = text.match(/const\s+allCocktails\s*=\s*(\[.*\]);?/s);
-                    if (!match) {
-                        alert('File must contain: const allCocktails = [...]');
-                        e.target.value = ''; // Reset input
-                        return;
-                    }
-                    let imported;
-                    try {
-                        imported = (new Function('return ' + match[1]))();
-                    } catch (err) {
-                        alert('Failed to parse cocktails array: ' + err.message);
-                        e.target.value = ''; // Reset input
-                        return;
-                    }
-                    if (!Array.isArray(imported)) {
-                        alert('Imported data is not an array!');
-                        e.target.value = ''; // Reset input
-                        return;
-                    }
-
-                    // Discover and add new categories from the imported file
-                    let newCategoriesAdded = false;
-                    const discoveredCategories = new Set(appCategories); // Use a Set for efficient lookup and addition
-
-                    imported.forEach(cocktail => {
-                        if (cocktail.category) {
-                            const categoryFromFile = cocktail.category.trim().toLowerCase();
-                            if (categoryFromFile && categoryFromFile !== 'all' && !discoveredCategories.has(categoryFromFile)) {
-                                discoveredCategories.add(categoryFromFile);
-                                appCategories.push(categoryFromFile); // Keep appCategories as an array
-                                newCategoriesAdded = true;
-                            }
-                        }
-                    });
-
-                    if (newCategoriesAdded) {
-                        saveAppCategories();
-                        renderCategoryOptionsForForm(); // Update select in form with new categories
-                        renderCategoryFilters();      // Update filter buttons with new categories
-                        alert('New categories from the file have been automatically added.');
-                    }
-
-                    if (confirm('Replace all current recipes with imported ones? (OK — replace, Cancel — add to existing)')) {
-                        cocktails = imported;
-                    } else {
-                        cocktails = cocktails.concat(imported);
-                    }
-                    saveCocktails();
-                    renderCocktails();
-                    alert('Import complete!');
+                    processImportedData(ev.target.result);
                 };
                 reader.readAsText(file);
                 e.target.value = ''; // Reset input to allow uploading the same file again
             });
         } else {
             console.warn('File input (uploadFile) not found!');
+        }
+
+        // Handle Load from URL button click
+        if (loadFromUrlBtn) {
+            loadFromUrlBtn.addEventListener('click', async () => {
+                const url = 'https://demchaav.github.io/Cockatails-list/cocktails-data.js';
+                if (!confirm(`Load recipes from the default URL?\n${url}`)) {
+                    return;
+                }
+
+                try {
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const data = await response.text();
+                    processImportedData(data);
+                } catch (error) {
+                    console.error('Failed to load from URL:', error);
+                    alert('Failed to load recipes from URL. Check console for details.');
+                }
+            });
         }
 
         // 2. Event listener for the visible GUI button to trigger the hidden file input
