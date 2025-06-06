@@ -250,7 +250,7 @@ const allCocktails = [
         "qty": "4 dashes"
       },
       {
-        "name": "Rémy Martin VSOP",
+        "name": "RÃ©my Martin VSOP",
         "qty": "15ml"
       },
       {
@@ -651,7 +651,7 @@ const allCocktails = [
     "garnish": "Lime wedge",
     "ingredients": [
       {
-        "name": "Ron Santiago de Cuba Añejo 8yo",
+        "name": "Ron Santiago de Cuba AÃ±ejo 8yo",
         "qty": "30ml"
       },
       {
@@ -679,7 +679,7 @@ const allCocktails = [
     "garnish": "Grated nutmeg",
     "ingredients": [
       {
-        "name": "Rémy Martin VSOP",
+        "name": "RÃ©my Martin VSOP",
         "qty": "30ml"
       },
       {
@@ -828,7 +828,7 @@ const allCocktails = [
     "garnish": "Full sugar rim and lemon twist",
     "ingredients": [
       {
-        "name": "Rémy Martin VSOP",
+        "name": "RÃ©my Martin VSOP",
         "qty": "60ml"
       },
       {
@@ -1024,7 +1024,7 @@ const allCocktails = [
         "qty": "4 dashes"
       },
       {
-        "name": "Rémy Martin VSOP",
+        "name": "RÃ©my Martin VSOP",
         "qty": "25ml"
       },
       {
@@ -1185,7 +1185,7 @@ const allCocktails = [
     "garnish": "Lime wedge and 3 dash angostura bitters",
     "ingredients": [
       {
-        "name": "Ron Santiago de Cuba Añejo 8yo",
+        "name": "Ron Santiago de Cuba AÃ±ejo 8yo",
         "qty": "50ml"
       },
       {
@@ -1263,7 +1263,7 @@ const allCocktails = [
         "qty": "20ml"
       },
       {
-        "name": "Kahlúa Coffee Liqueur",
+        "name": "KahlÃºa Coffee Liqueur",
         "qty": "20ml"
       },
       {
@@ -1536,7 +1536,7 @@ const allCocktails = [
     "garnish": "Lime wedge",
     "ingredients": [
       {
-        "name": "Ron Santiago de Cuba Añejo 8yo",
+        "name": "Ron Santiago de Cuba AÃ±ejo 8yo",
         "qty": "45ml"
       },
       {
@@ -1837,7 +1837,7 @@ const allCocktails = [
         "qty": "20ml"
       },
       {
-        "name": "Ron Santiago de Cuba Añejo 8yo",
+        "name": "Ron Santiago de Cuba AÃ±ejo 8yo",
         "qty": "20ml"
       },
       {
@@ -2061,7 +2061,7 @@ const allCocktails = [
     "garnish": "Mint leaf",
     "ingredients": [
       {
-        "name": "Ron Santiago de Cuba Añejo 8yo",
+        "name": "Ron Santiago de Cuba AÃ±ejo 8yo",
         "qty": "50ml"
       },
       {
@@ -2573,7 +2573,7 @@ const allCocktails = [
     "garnish": "Lime wedge",
     "ingredients": [
       {
-        "name": "Ron Santiago de Cuba Añejo 8yo",
+        "name": "Ron Santiago de Cuba AÃ±ejo 8yo",
         "qty": "50ml"
       },
       {
@@ -2663,7 +2663,7 @@ const allCocktails = [
         "qty": "30ml"
       },
       {
-        "name": "Rémy Martin VSOP",
+        "name": "RÃ©my Martin VSOP",
         "qty": "30ml"
       },
       {
@@ -2915,7 +2915,7 @@ const allCocktails = [
     ]
   },
   {
-    "id": "grapefruit-americano1749215585298",
+    "id": "grapefruit-americano1749227062485",
     "name": "Grapefruit Americano",
     "category": "non-alcoholic",
     "method": "Build",
@@ -2930,6 +2930,94 @@ const allCocktails = [
       {
         "name": "Cranberry Juice",
         "qty": "35ml"
+      },
+      {
+        "name": "Two Keys Grapefruit soda",
+        "qty": "80ml (Top)"
+      }
+    ],
+    "allergens": null
+  },
+  {
+    "id": "cucumber-cooler1749226912604",
+    "name": "Cucumber Cooler",
+    "category": "non-alcoholic",
+    "method": "Build",
+    "glass": "Highball",
+    "ice": "Cubes",
+    "garnish": "Peel of Cucumber, Rosemary Stick",
+    "ingredients": [
+      {
+        "name": "Seedlip Garden 108",
+        "qty": "35ml"
+      },
+      {
+        "name": "Elderflower cordial",
+        "qty": "15ml"
+      },
+      {
+        "name": "Lemon Juice",
+        "qty": "15ml"
+      },
+      {
+        "name": "Sugar Syrup",
+        "qty": "10ml"
+      },
+      {
+        "name": "Basil",
+        "qty": "2pcs"
+      },
+      {
+        "name": "FT Tonic",
+        "qty": "Top"
+      }
+    ],
+    "allergens": null
+  },
+  {
+    "id": "fruit-cup1749227293259",
+    "name": "Fruit Cup",
+    "category": "non-alcoholic",
+    "method": "Build",
+    "glass": "Wine",
+    "ice": "Cubes",
+    "garnish": "Dehydrated Apple slice",
+    "ingredients": [
+      {
+        "name": "Dried Mix",
+        "qty": "50ml"
+      },
+      {
+        "name": "FT Apricot Soda",
+        "qty": "100ml"
+      }
+    ],
+    "allergens": null
+  },
+  {
+    "id": "mojito-na1749227689406",
+    "name": "Mojito (N/A)",
+    "category": "non-alcoholic",
+    "method": "Build",
+    "glass": "Highball",
+    "ice": "Cubes/Crushed",
+    "garnish": "Mint Spring, Straw",
+    "ingredients": [
+      {
+        "name": "Apple Juice",
+        "qty": "50ml"
+      },
+      {
+        "name": "Lime Juice",
+        "qty": "25ml"
+      },
+      {
+        "name": "Sugar Syrup",
+        "qty": "15ml"
+      },
+      {
+        "name": "Mint Leaves",
+        "qty": "6pcs"
       }
     ],
     "allergens": null
