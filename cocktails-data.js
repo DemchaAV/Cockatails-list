@@ -335,13 +335,13 @@ const allCocktails = [
     ]
   },
   {
-    "id": "old-fashioned-signature",
+    "id": "old-fashioned1749300066583",
     "name": "Old Fashioned",
     "category": "signature",
     "method": "Stir",
     "glass": "Rocks",
     "ice": "Ice Block",
-    "garnish": "Peppermint Bitters (3 dashes), Rhubarb Meringue (lemon zest discarded) (1)",
+    "garnish": "Rhubarb Meringue (lemon zest discarded) (1)",
     "ingredients": [
       {
         "name": "JW Black",
@@ -366,8 +366,13 @@ const allCocktails = [
       {
         "name": "Demerara Syrup",
         "qty": "5ml"
+      },
+      {
+        "name": "Peppermint Bitters",
+        "qty": "3 dashes"
       }
-    ]
+    ],
+    "allergens": null
   },
   {
     "id": "vesper",
@@ -618,7 +623,7 @@ const allCocktails = [
     "allergens": "SULPHITES"
   },
   {
-    "id": "aperol-campari-spritz",
+    "id": "aperolcampari-spritz1749299784416",
     "name": "Aperol/Campari Spritz",
     "category": "classic",
     "method": "Build",
@@ -635,7 +640,7 @@ const allCocktails = [
         "qty": "25ml"
       },
       {
-        "name": "Vouvray Brut",
+        "name": "Henriont Brut",
         "qty": "Top"
       }
     ],
