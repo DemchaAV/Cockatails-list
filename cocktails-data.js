@@ -250,7 +250,7 @@ const allCocktails = [
         "qty": "4 dashes"
       },
       {
-        "name": "RÃƒÂ©my Martin VSOP",
+        "name": "RÃƒÆ’Ã‚Â©my Martin VSOP",
         "qty": "15ml"
       },
       {
@@ -651,7 +651,7 @@ const allCocktails = [
     "garnish": "Lime wedge",
     "ingredients": [
       {
-        "name": "Ron Santiago de Cuba AÃƒÂ±ejo 8yo",
+        "name": "Ron Santiago de Cuba AÃƒÆ’Ã‚Â±ejo 8yo",
         "qty": "30ml"
       },
       {
@@ -679,7 +679,7 @@ const allCocktails = [
     "garnish": "Grated nutmeg",
     "ingredients": [
       {
-        "name": "RÃƒÂ©my Martin VSOP",
+        "name": "RÃƒÆ’Ã‚Â©my Martin VSOP",
         "qty": "30ml"
       },
       {
@@ -828,7 +828,7 @@ const allCocktails = [
     "garnish": "Full sugar rim and lemon twist",
     "ingredients": [
       {
-        "name": "RÃƒÂ©my Martin VSOP",
+        "name": "RÃƒÆ’Ã‚Â©my Martin VSOP",
         "qty": "60ml"
       },
       {
@@ -1024,7 +1024,7 @@ const allCocktails = [
         "qty": "4 dashes"
       },
       {
-        "name": "RÃƒÂ©my Martin VSOP",
+        "name": "RÃƒÆ’Ã‚Â©my Martin VSOP",
         "qty": "25ml"
       },
       {
@@ -1186,7 +1186,7 @@ const allCocktails = [
     "garnish": "Lime wedge and 3 dash angostura bitters",
     "ingredients": [
       {
-        "name": "Ron Santiago de Cuba AÃƒÂ±ejo 8yo",
+        "name": "Ron Santiago de Cuba AÃƒÆ’Ã‚Â±ejo 8yo",
         "qty": "50ml"
       },
       {
@@ -1264,7 +1264,7 @@ const allCocktails = [
         "qty": "20ml"
       },
       {
-        "name": "KahlÃƒÂºa Coffee Liqueur",
+        "name": "KahlÃƒÆ’Ã‚Âºa Coffee Liqueur",
         "qty": "20ml"
       },
       {
@@ -1537,7 +1537,7 @@ const allCocktails = [
     "garnish": "Lime wedge",
     "ingredients": [
       {
-        "name": "Ron Santiago de Cuba AÃƒÂ±ejo 8yo",
+        "name": "Ron Santiago de Cuba AÃƒÆ’Ã‚Â±ejo 8yo",
         "qty": "45ml"
       },
       {
@@ -1838,7 +1838,7 @@ const allCocktails = [
         "qty": "20ml"
       },
       {
-        "name": "Ron Santiago de Cuba AÃƒÂ±ejo 8yo",
+        "name": "Ron Santiago de Cuba AÃƒÆ’Ã‚Â±ejo 8yo",
         "qty": "20ml"
       },
       {
@@ -2062,7 +2062,7 @@ const allCocktails = [
     "garnish": "Mint leaf",
     "ingredients": [
       {
-        "name": "Ron Santiago de Cuba AÃƒÂ±ejo 8yo",
+        "name": "Ron Santiago de Cuba AÃƒÆ’Ã‚Â±ejo 8yo",
         "qty": "50ml"
       },
       {
@@ -2574,7 +2574,7 @@ const allCocktails = [
     "garnish": "Lime wedge",
     "ingredients": [
       {
-        "name": "Ron Santiago de Cuba AÃƒÂ±ejo 8yo",
+        "name": "Ron Santiago de Cuba AÃƒÆ’Ã‚Â±ejo 8yo",
         "qty": "50ml"
       },
       {
@@ -2664,7 +2664,7 @@ const allCocktails = [
         "qty": "30ml"
       },
       {
-        "name": "RÃƒÂ©my Martin VSOP",
+        "name": "RÃƒÆ’Ã‚Â©my Martin VSOP",
         "qty": "30ml"
       },
       {
@@ -2996,12 +2996,12 @@ const allCocktails = [
     "allergens": null
   },
   {
-    "id": "mojito-na1749227689406",
+    "id": "mojito-na1749294096317",
     "name": "Mojito (N/A)",
     "category": "non-alcoholic",
     "method": "Build",
     "glass": "Highball",
-    "ice": "Cubes/Crushed",
+    "ice": "Crushed",
     "garnish": "Mint Spring, Straw",
     "ingredients": [
       {
