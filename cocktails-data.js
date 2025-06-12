@@ -1269,7 +1269,7 @@ const allCocktails = [
         "qty": "20ml"
       },
       {
-        "name": "KahlÃƒÆ’Ã‚Âºa Coffee Liqueur",
+        "name": "Kahlua Coffee Liqueur",
         "qty": "20ml"
       },
       {
