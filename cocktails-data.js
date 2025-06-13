@@ -684,7 +684,7 @@ const allCocktails = [
     "garnish": "Grated nutmeg",
     "ingredients": [
       {
-        "name": "RÃƒÆ’Ã‚Â©my Martin VSOP",
+        "name": "Martin VSOP",
         "qty": "30ml"
       },
       {
