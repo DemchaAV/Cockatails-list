@@ -1953,7 +1953,7 @@ const allCocktails = [
         "qty": "30ml"
       },
       {
-        "name": "Ruggeri",
+        "name": "Prosecco",
         "qty": "Top up"
       }
     ],
