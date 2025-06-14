@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍸</text></svg>">
+    <title>Cocktail Trainer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .question-card { box-shadow: 0 2px 16px rgba(0,0,0,0.07); border-radius: 1.5rem; }
+        .answer-reveal { transition: max-height 0.3s; overflow: hidden; }
+        .stat-badge { min-width: 2.5rem; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300 transition-colors duration-300 flex flex-col min-h-screen">
+    <div class="container mx-auto max-w-md flex-1 flex flex-col justify-center p-4">
+        <header class="mb-6 text-center">
+            <h1 class="text-3xl font-bold text-sky-700 dark:text-sky-400">🍸 Cocktail Trainer</h1>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Test your cocktail knowledge!</p>
+        </header>
+        <div class="flex justify-center gap-2 mb-4">
+            <button id="type-ingredients" class="filter-button bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 py-2 px-3 rounded-xl font-medium">Ingredients</button>
+            <button id="type-has-spirit" class="filter-button bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 py-2 px-3 rounded-xl font-medium">Has Spirit?</button>
+            <button id="type-qty" class="filter-button bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 py-2 px-3 rounded-xl font-medium">How Much?</button>
+        </div>
+        <div id="trainerCard" class="question-card bg-white dark:bg-gray-800 p-6 mb-6">
+            <div id="questionBlock" class="mb-4 text-lg font-semibold text-center"></div>
+            <div id="spiritInputBlock" class="mb-4 hidden">
+                <input id="spiritInput" type="text" placeholder="Type spirit (e.g. vodka)" class="w-full p-2 rounded border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-base">
+            </div>
+            <div id="ingredientInputBlock" class="mb-4 hidden">
+                <input id="ingredientInput" type="text" placeholder="Type ingredient (e.g. sugar syrup)" class="w-full p-2 rounded border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-base">
+            </div>
+            <button id="showAnswerBtn" class="w-full bg-sky-600 text-white py-2 rounded-xl font-semibold mb-2 transition-colors">Show Answer</button>
+            <div id="answerBlock" class="answer-reveal max-h-0 mb-2 text-center"></div>
+            <div id="selfCheckBlock" class="flex justify-center gap-2 hidden">
+                <button id="correctBtn" class="bg-green-500 text-white px-4 py-2 rounded-xl font-semibold">Correct</button>
+                <button id="wrongBtn" class="bg-red-500 text-white px-4 py-2 rounded-xl font-semibold">Wrong</button>
+            </div>
+        </div>
+        <div class="flex justify-center gap-4 mb-2">
+            <div class="bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300 px-3 py-1 rounded-full stat-badge text-center">✔ <span id="statCorrect">0</span></div>
+            <div class="bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300 px-3 py-1 rounded-full stat-badge text-center">✘ <span id="statWrong">0</span></div>
+        </div>
+        <div class="text-center text-xs text-gray-400 mt-4">Data: cocktails-data.js</div>
+    </div>
+    <script>
+        // --- State ---
+        let allCocktails = [];
+        let currentQuestion = null;
+        let currentType = 'ingredients';
+        let statCorrect = 0, statWrong = 0;
+
+        // --- DOM ---
+        const questionBlock = document.getElementById('questionBlock');
+        const answerBlock = document.getElementById('answerBlock');
+        const showAnswerBtn = document.getElementById('showAnswerBtn');
+        const selfCheckBlock = document.getElementById('selfCheckBlock');
+        const correctBtn = document.getElementById('correctBtn');
+        const wrongBtn = document.getElementById('wrongBtn');
+        const statCorrectEl = document.getElementById('statCorrect');
+        const statWrongEl = document.getElementById('statWrong');
+        const spiritInputBlock = document.getElementById('spiritInputBlock');
+        const spiritInput = document.getElementById('spiritInput');
+        const ingredientInputBlock = document.getElementById('ingredientInputBlock');
+        const ingredientInput = document.getElementById('ingredientInput');
+
+        // --- Question Types ---
+        const questionTypes = ['ingredients', 'has-spirit', 'qty'];
+        document.getElementById('type-ingredients').onclick = () => { setType('ingredients'); };
+        document.getElementById('type-has-spirit').onclick = () => { setType('has-spirit'); };
+        document.getElementById('type-qty').onclick = () => { setType('qty'); };
+
+        function setType(type) {
+            currentType = type;
+            document.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('bg-sky-600', 'text-white', 'shadow-md'));
+            document.getElementById('type-' + type).classList.add('bg-sky-600', 'text-white', 'shadow-md');
+            nextQuestion();
+        }
+
+        // --- Question Generation ---
+        function nextQuestion() {
+            answerBlock.innerHTML = '';
+            answerBlock.style.maxHeight = '0';
+            selfCheckBlock.classList.add('hidden');
+            showAnswerBtn.disabled = false;
+            spiritInputBlock.classList.add('hidden');
+            ingredientInputBlock.classList.add('hidden');
+            spiritInput.value = '';
+            ingredientInput.value = '';
+
+            if (!allCocktails.length) {
+                questionBlock.textContent = 'Loading...';
+                showAnswerBtn.disabled = true;
+                return;
+            }
+            const cocktail = allCocktails[Math.floor(Math.random() * allCocktails.length)];
+            currentQuestion = { cocktail };
+            if (currentType === 'ingredients') {
+                questionBlock.innerHTML = `What are the ingredients in <span class="text-sky-600 dark:text-sky-400 font-bold">${cocktail.name}</span>?`;
+            } else if (currentType === 'has-spirit') {
+                spiritInputBlock.classList.remove('hidden');
+                questionBlock.innerHTML = `Does <span class="text-sky-600 dark:text-sky-400 font-bold">${cocktail.name}</span> contain this spirit?`;
+            } else if (currentType === 'qty') {
+                // Pick a random ingredient from the cocktail
+                if (!cocktail.ingredients || !cocktail.ingredients.length) {
+                    nextQuestion(); return;
+                }
+                const ing = cocktail.ingredients[Math.floor(Math.random() * cocktail.ingredients.length)];
+                currentQuestion.ingredient = ing;
+                ingredientInputBlock.classList.remove('hidden');
+                ingredientInput.value = ing.name;
+                questionBlock.innerHTML = `How much <span class="text-sky-600 dark:text-sky-400 font-bold">${ing.name}</span> in <span class="text-sky-600 dark:text-sky-400 font-bold">${cocktail.name}</span>?`;
+            }
+        }
+
+        showAnswerBtn.onclick = () => {
+            if (!currentQuestion) return;
+            let answerHtml = '';
+            if (currentType === 'ingredients') {
+                answerHtml = '<ul class="text-left mx-auto max-w-xs">' +
+                    currentQuestion.cocktail.ingredients.map(ing => `<li>• <span class='font-semibold'>${ing.name}</span> <span class='text-xs text-gray-400'>(${ing.qty})</span></li>`).join('') + '</ul>';
+            } else if (currentType === 'has-spirit') {
+                const spirit = spiritInput.value.trim().toLowerCase();
+                const found = currentQuestion.cocktail.ingredients.some(ing => ing.name.toLowerCase().includes(spirit) && spirit);
+                answerHtml = found
+                    ? `<span class="text-green-600 dark:text-green-400 font-bold">YES</span> — contains <span class="font-semibold">${spiritInput.value}</span>`
+                    : `<span class="text-red-600 dark:text-red-400 font-bold">NO</span> — does not contain <span class="font-semibold">${spiritInput.value}</span>`;
+                answerHtml += '<div class="mt-2 text-xs text-gray-400">Ingredients: ' + currentQuestion.cocktail.ingredients.map(ing => ing.name).join(', ') + '</div>';
+            } else if (currentType === 'qty') {
+                answerHtml = `<span class="font-semibold">${currentQuestion.ingredient.qty}</span> of <span class="font-semibold">${currentQuestion.ingredient.name}</span>`;
+            }
+            answerBlock.innerHTML = answerHtml;
+            answerBlock.style.maxHeight = '300px';
+            selfCheckBlock.classList.remove('hidden');
+            showAnswerBtn.disabled = true;
+        };
+        correctBtn.onclick = () => { statCorrect++; updateStats(); nextQuestion(); };
+        wrongBtn.onclick = () => { statWrong++; updateStats(); nextQuestion(); };
+        function updateStats() {
+            statCorrectEl.textContent = statCorrect;
+            statWrongEl.textContent = statWrong;
+        }
+
+        // --- Data Loading ---
+        async function loadData() {
+            try {
+                const response = await fetch('cocktails-data.js');
+                if (!response.ok) throw new Error('Data file not found');
+                const scriptContent = await response.text();
+                const match = scriptContent.match(/const\s+allCocktails\s*=\s*(\[[\s\S]*\]);?/);
+                if (!match || !match[1]) throw new Error('Data parse error');
+                allCocktails = new Function(`return ${match[1]}`)();
+                nextQuestion();
+            } catch (e) {
+                questionBlock.textContent = 'Failed to load data.';
+                showAnswerBtn.disabled = true;
+            }
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            document.documentElement.classList.add('dark');
+            loadData();
+            setType('ingredients');
+        });
+    </script>
+</body>
+</html> 
