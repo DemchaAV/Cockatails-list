@@ -11,6 +11,10 @@
         .question-card { box-shadow: 0 2px 16px rgba(0,0,0,0.07); border-radius: 1.5rem; }
         .answer-reveal { transition: max-height 0.3s; overflow: hidden; }
         .stat-badge { min-width: 2.5rem; }
+        /* Для анимации свайпа */
+        .swipe-left { transform: translateX(-120%) rotate(-8deg); transition: transform 0.3s; }
+        .swipe-right { transform: translateX(120%) rotate(8deg); transition: transform 0.3s; }
+        .swipe-reset { transform: none; transition: transform 0.2s; }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300 transition-colors duration-300 flex flex-col min-h-screen">
@@ -96,6 +100,7 @@
         const cocktailInfoModal = document.getElementById('cocktailInfoModal');
         const closeInfoBtn = document.getElementById('closeInfoBtn');
         const cocktailInfoContent = document.getElementById('cocktailInfoContent');
+        const trainerCard = document.getElementById('trainerCard');
 
         // --- Menu toggles ---
         questionsMenuBtn.onclick = () => {
@@ -322,6 +327,61 @@
                 document.body.style.overflow = '';
             }
         };
+
+        // --- Swipe support ---
+        let swipeStartX = null;
+        let swipeActive = false;
+
+        trainerCard.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 1) {
+                swipeStartX = e.touches[0].clientX;
+                swipeActive = true;
+            }
+        });
+        trainerCard.addEventListener('touchmove', (e) => {
+            if (!swipeActive || swipeStartX === null) return;
+            const deltaX = e.touches[0].clientX - swipeStartX;
+            trainerCard.style.transform = `translateX(${deltaX}px)`;
+        });
+        trainerCard.addEventListener('touchend', (e) => {
+            if (!swipeActive || swipeStartX === null) return;
+            const endX = e.changedTouches[0].clientX;
+            const deltaX = endX - swipeStartX;
+            swipeActive = false;
+            trainerCard.style.transition = 'transform 0.3s';
+            if (deltaX < -80) {
+                // Свайп влево — правильно
+                trainerCard.classList.add('swipe-left');
+                setTimeout(() => {
+                    trainerCard.classList.remove('swipe-left');
+                    trainerCard.style.transition = '';
+                    trainerCard.style.transform = '';
+                    statCorrect++;
+                    updateStats();
+                    nextQuestion();
+                }, 250);
+            } else if (deltaX > 80) {
+                // Свайп вправо — неправильно
+                trainerCard.classList.add('swipe-right');
+                setTimeout(() => {
+                    trainerCard.classList.remove('swipe-right');
+                    trainerCard.style.transition = '';
+                    trainerCard.style.transform = '';
+                    statWrong++;
+                    updateStats();
+                    nextQuestion();
+                }, 250);
+            } else {
+                // Недостаточно — возвращаем
+                trainerCard.classList.add('swipe-reset');
+                setTimeout(() => {
+                    trainerCard.classList.remove('swipe-reset');
+                    trainerCard.style.transition = '';
+                    trainerCard.style.transform = '';
+                }, 200);
+            }
+            swipeStartX = null;
+        });
     </script>
 </body>
 </html> 
