@@ -250,7 +250,7 @@ const allCocktails = [
         "qty": "4 dashes"
       },
       {
-        "name": "RÃƒÆ’Ã‚Â©my Martin VSOP",
+        "name": "Remy Martin VSOP",
         "qty": "15ml"
       },
       {
@@ -684,7 +684,7 @@ const allCocktails = [
     "garnish": "Grated nutmeg",
     "ingredients": [
       {
-        "name": "Martin VSOP",
+        "name": "Remy Martin VSOP",
         "qty": "30ml"
       },
       {
@@ -833,7 +833,7 @@ const allCocktails = [
     "garnish": "Full sugar rim and lemon twist",
     "ingredients": [
       {
-        "name": "RÃƒÆ’Ã‚Â©my Martin VSOP",
+        "name": "Remy Martin VSOP",
         "qty": "60ml"
       },
       {
@@ -1029,7 +1029,7 @@ const allCocktails = [
         "qty": "4 dashes"
       },
       {
-        "name": "RÃƒÆ’Ã‚Â©my Martin VSOP",
+        "name": "Remy Martin VSOP",
         "qty": "25ml"
       },
       {
@@ -2669,7 +2669,7 @@ const allCocktails = [
         "qty": "30ml"
       },
       {
-        "name": "RÃƒÆ’Ã‚Â©my Martin VSOP",
+        "name": "Remy Martin VSOP",
         "qty": "30ml"
       },
       {
