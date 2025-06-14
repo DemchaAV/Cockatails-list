@@ -35,7 +35,10 @@
         </div>
         <div id="categoryFilterContainer" class="flex justify-center gap-2 mb-4 flex-wrap hidden"></div>
         <div id="trainerCard" class="question-card bg-white dark:bg-gray-800 p-6 mb-6">
-            <div id="questionBlock" class="mb-4 text-lg font-semibold text-center"></div>
+            <div class="flex items-center justify-between mb-4">
+                <div id="questionBlock" class="text-lg font-semibold text-center flex-1"></div>
+                <button id="showInfoBtn" class="ml-2 text-sky-600 dark:text-sky-400 text-2xl p-1 rounded-full hover:bg-sky-100 dark:hover:bg-sky-800 transition-colors" title="Show cocktail info">ℹ️</button>
+            </div>
             <div id="spiritInputBlock" class="mb-4 hidden">
                 <input id="spiritInput" type="text" placeholder="Type spirit (e.g. vodka)" class="w-full p-2 rounded border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-base">
             </div>
@@ -54,6 +57,13 @@
             <div class="bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300 px-3 py-1 rounded-full stat-badge text-center">✘ <span id="statWrong">0</span></div>
         </div>
         <div class="text-center text-xs text-gray-400 mt-4">Data: cocktails-data.js</div>
+    </div>
+    <!-- Модальное окно с полной инфой о коктейле -->
+    <div id="cocktailInfoModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 hidden">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl max-w-md w-full p-6 relative">
+            <button id="closeInfoBtn" class="absolute top-2 right-2 text-gray-400 hover:text-red-500 text-2xl p-1 rounded-full">✕</button>
+            <div id="cocktailInfoContent"></div>
+        </div>
     </div>
     <script>
         // --- State ---
@@ -82,6 +92,10 @@
         const questionsMenuBtn = document.getElementById('questionsMenuBtn');
         const categoriesMenuBtn = document.getElementById('categoriesMenuBtn');
         const questionsMenu = document.getElementById('questionsMenu');
+        const showInfoBtn = document.getElementById('showInfoBtn');
+        const cocktailInfoModal = document.getElementById('cocktailInfoModal');
+        const closeInfoBtn = document.getElementById('closeInfoBtn');
+        const cocktailInfoContent = document.getElementById('cocktailInfoContent');
 
         // --- Menu toggles ---
         questionsMenuBtn.onclick = () => {
@@ -278,6 +292,36 @@
             document.documentElement.classList.add('dark');
             loadData();
         });
+
+        showInfoBtn.onclick = () => {
+            if (!currentQuestion || !currentQuestion.cocktail) return;
+            const c = currentQuestion.cocktail;
+            cocktailInfoContent.innerHTML = `
+                <h2 class="text-2xl font-bold text-sky-700 dark:text-sky-400 mb-2">${c.name}</h2>
+                <div class="mb-2"><span class="font-semibold text-sky-600 dark:text-sky-400">Category:</span> ${c.category || 'N/A'}</div>
+                <div class="mb-2"><span class="font-semibold text-sky-600 dark:text-sky-400">Glass:</span> ${c.glass || 'N/A'}</div>
+                <div class="mb-2"><span class="font-semibold text-sky-600 dark:text-sky-400">Ice:</span> ${c.ice || 'N/A'}</div>
+                <div class="mb-2"><span class="font-semibold text-sky-600 dark:text-sky-400">Garnish:</span> ${c.garnish || 'N/A'}</div>
+                <div class="mb-2"><span class="font-semibold text-sky-600 dark:text-sky-400">Method:</span> ${c.method || 'N/A'}</div>
+                <div class="mb-2"><span class="font-semibold text-sky-600 dark:text-sky-400">Ingredients:</span>
+                    <ul class="list-disc pl-5 mt-1">
+                        ${(c.ingredients||[]).map(ing => `<li><span class='font-semibold'>${ing.name}</span> <span class='text-xs text-gray-400'>(${ing.qty})</span></li>`).join('')}
+                    </ul>
+                </div>
+            `;
+            cocktailInfoModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        };
+        closeInfoBtn.onclick = () => {
+            cocktailInfoModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        };
+        cocktailInfoModal.onclick = (e) => {
+            if (e.target === cocktailInfoModal) {
+                cocktailInfoModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        };
     </script>
 </body>
 </html> 
