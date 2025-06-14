@@ -24,6 +24,10 @@
             <button id="type-ingredients" class="filter-button bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 py-2 px-3 rounded-xl font-medium">Ingredients</button>
             <button id="type-has-spirit" class="filter-button bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 py-2 px-3 rounded-xl font-medium">Has Spirit?</button>
             <button id="type-qty" class="filter-button bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 py-2 px-3 rounded-xl font-medium">How Much?</button>
+            <button id="type-glass" class="filter-button bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 py-2 px-3 rounded-xl font-medium">Glass</button>
+            <button id="type-garnish" class="filter-button bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 py-2 px-3 rounded-xl font-medium">Garnish</button>
+            <button id="type-ice" class="filter-button bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 py-2 px-3 rounded-xl font-medium">Ice</button>
+            <button id="type-method" class="filter-button bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 py-2 px-3 rounded-xl font-medium">Method</button>
         </div>
         <div id="trainerCard" class="question-card bg-white dark:bg-gray-800 p-6 mb-6">
             <div id="questionBlock" class="mb-4 text-lg font-semibold text-center"></div>
@@ -71,10 +75,14 @@
         const categoryFilterContainer = document.getElementById('categoryFilterContainer');
 
         // --- Question Types ---
-        const questionTypes = ['ingredients', 'has-spirit', 'qty'];
+        const questionTypes = ['ingredients', 'has-spirit', 'qty', 'glass', 'garnish', 'ice', 'method'];
         document.getElementById('type-ingredients').onclick = () => { setType('ingredients'); };
         document.getElementById('type-has-spirit').onclick = () => { setType('has-spirit'); };
         document.getElementById('type-qty').onclick = () => { setType('qty'); };
+        document.getElementById('type-glass').onclick = () => { setType('glass'); };
+        document.getElementById('type-garnish').onclick = () => { setType('garnish'); };
+        document.getElementById('type-ice').onclick = () => { setType('ice'); };
+        document.getElementById('type-method').onclick = () => { setType('method'); };
 
         function setType(type) {
             currentType = type;
@@ -156,6 +164,14 @@
                 ingredientInputBlock.classList.remove('hidden');
                 ingredientInput.value = ing.name;
                 questionBlock.innerHTML = `How much <span class="text-sky-600 dark:text-sky-400 font-bold">${ing.name}</span> in <span class="text-sky-600 dark:text-sky-400 font-bold">${cocktail.name}</span>?`;
+            } else if (currentType === 'glass') {
+                questionBlock.innerHTML = `What glass is used for <span class="text-sky-600 dark:text-sky-400 font-bold">${cocktail.name}</span>?`;
+            } else if (currentType === 'garnish') {
+                questionBlock.innerHTML = `What garnish is used for <span class="text-sky-600 dark:text-sky-400 font-bold">${cocktail.name}</span>?`;
+            } else if (currentType === 'ice') {
+                questionBlock.innerHTML = `What ice is used for <span class="text-sky-600 dark:text-sky-400 font-bold">${cocktail.name}</span>?`;
+            } else if (currentType === 'method') {
+                questionBlock.innerHTML = `What is the method for <span class="text-sky-600 dark:text-sky-400 font-bold">${cocktail.name}</span>?`;
             }
         }
 
@@ -174,6 +190,14 @@
                 answerHtml += '<div class="mt-2 text-xs text-gray-400">Ingredients: ' + currentQuestion.cocktail.ingredients.map(ing => ing.name).join(', ') + '</div>';
             } else if (currentType === 'qty') {
                 answerHtml = `<span class="font-semibold">${currentQuestion.ingredient.qty}</span> of <span class="font-semibold">${currentQuestion.ingredient.name}</span>`;
+            } else if (currentType === 'glass') {
+                answerHtml = `<span class="font-semibold">${currentQuestion.cocktail.glass || 'N/A'}</span>`;
+            } else if (currentType === 'garnish') {
+                answerHtml = `<span class="font-semibold">${currentQuestion.cocktail.garnish || 'N/A'}</span>`;
+            } else if (currentType === 'ice') {
+                answerHtml = `<span class="font-semibold">${currentQuestion.cocktail.ice || 'N/A'}</span>`;
+            } else if (currentType === 'method') {
+                answerHtml = `<span class="font-semibold">${currentQuestion.cocktail.method || 'N/A'}</span>`;
             }
             answerBlock.innerHTML = answerHtml;
             answerBlock.style.maxHeight = '300px';
