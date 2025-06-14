@@ -458,7 +458,7 @@ const allCocktails = [
     "method": "Shake, top",
     "glass": "Savage Highball",
     "ice": "Cube & Crushed",
-    "garnish": "Peychauds bitters (2 dashes), Dry Apple slice, straw (1)",
+    "garnish": "Dry Apple slice, Straw (1)",
     "ingredients": [
       {
         "name": "Macallan 12yo",
@@ -475,6 +475,10 @@ const allCocktails = [
       {
         "name": "Elderflower Cordial",
         "qty": "20ml"
+      },
+         {
+        "name": "Peychauds Bitter",
+        "qty": "2 dashes"
       },
       {
         "name": "FT Soda",
