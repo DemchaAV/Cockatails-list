@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍹</text></svg>">
+    <title>Cocktail List - Home</title>
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#0ea5e9">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Cocktails">
+
+    <!-- SEO -->
+    <meta name="description" content="Cocktail catalog with recipes, builder and training quiz">
+    <meta name="keywords" content="cocktails, recipes, bartender, trainer, quiz">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            touch-action: manipulation;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 50%, #0c4a6e 100%);
+        }
+
+        .card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            min-height: 140px;
+        }
+
+        .card:active {
+            transform: scale(0.97);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        /* Stats */
+        .stat-item {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out 0.4s forwards;
+        }
+    </style>
+
+
+
+
+
+
+    <script src="data/loader.js"></script>
+</head>
+
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
+    <!-- Hero Section -->
+    <div class="hero-gradient text-white py-12 px-4 relative overflow-hidden">
+        <!-- Decorative elements -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full -mr-32 -mt-32"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-white opacity-5 rounded-full -ml-24 -mb-24"></div>
+
+        <div class="container mx-auto max-w-md relative z-10">
+            <div class="text-center mb-8">
+                <div class="text-6xl mb-4">🍹</div>
+                <h1 class="text-4xl font-bold mb-2">Cocktail List</h1>
+                <p class="text-sky-100 text-sm">Your personal guide to cocktails</p>
+            </div>
+
+            <!-- Stats -->
+            <div class="stat-item flex justify-center gap-6 text-center mt-8">
+                <div class="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
+                    <div class="text-2xl font-bold" id="totalCocktails">-</div>
+                    <div class="text-xs text-sky-100">cocktails</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
+                    <div class="text-2xl font-bold" id="totalCategories">-</div>
+                    <div class="text-xs text-sky-100">categories</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
+                    <div class="text-2xl font-bold">✨</div>
+                    <div class="text-xs text-sky-100">free</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 container mx-auto max-w-md px-4 py-8">
+        <h2 class="text-xl font-semibold text-gray-100 mb-4 text-center">Choose Mode</h2>
+
+        <div class="space-y-4">
+            <!-- Catalog Card -->
+            <a href="mobile_cocktails.html"
+                class="card block bg-gradient-to-br from-sky-500 to-blue-600 rounded-2xl p-6 shadow-xl opacity-0 animate-fade-in-up">
+                <div class="flex items-center gap-4">
+                    <div class="text-5xl">📋</div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-white mb-1">Catalog</h3>
+                        <p class="text-sky-100 text-sm">Browse all recipes with search and filters</p>
+                    </div>
+                    <div class="text-white opacity-50">→</div>
+                </div>
+            </a>
+
+            <!-- Builder Card -->
+            <a href="cocktail_builder.html"
+                class="card block bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl p-6 shadow-xl opacity-0 animate-fade-in-up">
+                <div class="flex items-center gap-4">
+                    <div class="text-5xl">🛠️</div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-white mb-1">Builder</h3>
+                        <p class="text-emerald-100 text-sm">Create and edit cocktail recipes</p>
+                    </div>
+                    <div class="text-white opacity-50">→</div>
+                </div>
+            </a>
+
+            <!-- Trainer Card -->
+            <a href="cocktail_trainer.html"
+                class="card block bg-gradient-to-br from-violet-500 to-purple-600 rounded-2xl p-6 shadow-xl opacity-0 animate-fade-in-up">
+                <div class="flex items-center gap-4">
+                    <div class="text-5xl">🎓</div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-white mb-1">Trainer</h3>
+                        <p class="text-violet-100 text-sm">Test your knowledge with quiz</p>
+                    </div>
+                    <div class="text-white opacity-50">→</div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Footer Info -->
+        <div class="mt-8 text-center text-gray-400 text-sm space-y-2">
+            <p>💾 All data stored locally</p>
+            <p>📱 Works offline</p>
+            <p class="text-xs mt-4 text-gray-500">v1.0.0 • Made with ❤️</p>
+        </div>
+    </div>
+
+    <script>
+        function updateStats() {
+            const cocktails = window.allCocktails || [];
+            if (cocktails.length > 0) {
+                document.getElementById('totalCocktails').textContent = cocktails.length;
+            }
+
+            // Calculate unique categories
+            const categories = new Set(cocktails.map(c => c.category).filter(Boolean));
+            if (categories.size > 0) {
+                document.getElementById('totalCategories').textContent = categories.size;
+            }
+        }
+
+        // Update stats when cocktails are loaded
+        if (window.cocktailsDataReady) {
+            updateStats();
+        } else {
+            window.addEventListener('cocktailsLoaded', updateStats);
+        }
+
+        // Initialize empty stats (or maybe fallback to localStorage if needed, but file is source of truth now)
+        document.addEventListener('DOMContentLoaded', () => {
+            // Optional: fallback visual state while loading
+        });
+
+        // Haptic feedback for mobile
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', () => {
+                if ('vibrate' in navigator) {
+                    navigator.vibrate(10);
+                }
+            });
+        });
+
+        // Service Worker registration (for PWA)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('SW registered'))
+                    .catch(err => console.log('SW error:', err));
+            });
+        }
+    </script>
+</body>
+
+</html>
