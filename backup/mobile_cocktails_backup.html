@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍸</text></svg>">
+    <title>Cocktail Trainer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .question-card {
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border-radius: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        }
+
+        .dark .question-card {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+        }
+
+        .answer-reveal {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .stat-badge {
+            min-width: 3.5rem;
+            transition: transform 0.2s;
+        }
+
+        .stat-badge:hover {
+            transform: scale(1.05);
+        }
+
+        /* Info button with pulse animation */
+        @keyframes pulse-ring {
+            0% {
+                box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 8px rgba(14, 165, 233, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(14, 165, 233, 0);
+            }
+        }
+
+        .info-button {
+            position: relative;
+            animation: pulse-ring 2s ease-out infinite;
+        }
+
+        .info-button:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Swipe animations */
+        .swipe-left {
+            transform: translateX(-120%) rotate(-8deg);
+            opacity: 0.3;
+            transition: all 0.3s ease-out;
+        }
+
+        .swipe-right {
+            transform: translateX(120%) rotate(8deg);
+            opacity: 0.3;
+            transition: all 0.3s ease-out;
+        }
+
+        .swipe-reset {
+            transform: none;
+            opacity: 1;
+            transition: all 0.2s;
+        }
+
+        /* Button hover effects */
+        .btn-primary {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(14, 165, 233, 0.3);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            transition: all 0.3s;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            transition: all 0.3s;
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
+        }
+
+        /* Progress bar */
+        .progress-container {
+            background: rgba(14, 165, 233, 0.1);
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, #0ea5e9 0%, #06b6d4 100%);
+            transition: width 0.5s ease-out;
+            height: 100%;
+        }
+
+        /* Filter button active state */
+        .filter-button-active {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            color: white !important;
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+        }
+    </style>
+    <!-- Load cocktail data from modular category files -->
+    <script src="data/config.js" defer></script>
+    <script src="data/categories/signature.js" defer></script>
+    <script src="data/categories/classic.js" defer></script>
+    <script src="data/categories/non-alcoholic.js" defer></script>
+    <script src="data/combiner.js" defer></script>
+</head>
+
+<body
+    class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300 transition-colors duration-300 flex flex-col min-h-screen">
+    <div class="container mx-auto max-w-md flex-1 flex flex-col justify-center p-4">
+        <header class="mb-6 text-center">
+            <a href="index.html"
+                class="inline-flex items-center gap-2 text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 mb-3 transition-colors">
+                <span class="text-xl">←</span>
+                <span class="text-sm font-medium">Home</span>
+            </a>
+            <h1 class="text-3xl font-bold text-sky-700 dark:text-sky-400">🍸 Cocktail Trainer</h1>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">Test your cocktail knowledge!</p>
+        </header>
+        <div class="flex justify-center gap-2 mb-4">
+            <button id="questionsMenuBtn"
+                class="bg-sky-100 dark:bg-sky-800 text-sky-700 dark:text-sky-300 py-2 px-4 rounded-xl font-medium">Questions
+                menu</button>
+            <button id="categoriesMenuBtn"
+                class="bg-sky-100 dark:bg-sky-800 text-sky-700 dark:text-sky-300 py-2 px-4 rounded-xl font-medium">Categories
+                menu</button>
+        </div>
+        <div id="questionsMenu" class="flex justify-center gap-2 mb-4 flex-wrap hidden">
+            <button id="type-mix"
+                class="filter-button bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 py-2 px-3 rounded-xl font-medium">Mix</button>
+            <button id="type-ingredients"
+                class="filter-button bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 py-2 px-3 rounded-xl font-medium">Ingredients</button>
+            <button id="type-has-spirit"
+                class="filter-button bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 py-2 px-3 rounded-xl font-medium">Has
+                Spirit?</button>
+            <button id="type-qty"
+                class="filter-button bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 py-2 px-3 rounded-xl font-medium">How
+                Much?</button>
+            <button id="type-glass"
+                class="filter-button bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 py-2 px-3 rounded-xl font-medium">Glass</button>
+            <button id="type-garnish"
+                class="filter-button bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 py-2 px-3 rounded-xl font-medium">Garnish</button>
+            <button id="type-ice"
+                class="filter-button bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 py-2 px-3 rounded-xl font-medium">Ice</button>
+            <button id="type-method"
+                class="filter-button bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 py-2 px-3 rounded-xl font-medium">Method</button>
+        </div>
+        <div id="categoryFilterContainer" class="flex justify-center gap-2 mb-4 flex-wrap hidden"></div>
+        <div id="trainerCard" class="question-card bg-white dark:bg-gray-800 p-6 mb-6">
+            <div class="flex items-center justify-between mb-4 gap-3">
+                <div id="questionBlock" class="text-lg font-semibold text-center flex-1"></div>
+                <button id="showInfoBtn"
+                    class="info-button flex-shrink-0 bg-gradient-to-br from-sky-500 to-sky-600 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300"
+                    title="Show cocktail info">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                        stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                    </svg>
+                </button>
+            </div>
+            <div id="spiritInputBlock" class="mb-4 hidden">
+                <input id="spiritInput" type="text" placeholder="Type spirit (e.g. vodka)"
+                    class="w-full p-2 rounded border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-base">
+            </div>
+            <div id="ingredientInputBlock" class="mb-4 hidden">
+                <input id="ingredientInput" type="text" placeholder="Type ingredient (e.g. sugar syrup)"
+                    class="w-full p-2 rounded border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-base">
+            </div>
+            <button id="showAnswerBtn"
+                class="btn-primary w-full text-white py-3 rounded-xl font-semibold mb-3 shadow-lg">Show
+                Answer</button>
+            <div id="answerBlock" class="answer-reveal max-h-0 mb-3 text-center font-medium text-lg"></div>
+            <div id="selfCheckBlock" class="flex justify-center gap-3 hidden">
+                <button id="correctBtn"
+                    class="btn-success text-white px-6 py-3 rounded-xl font-semibold shadow-lg flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                    Correct
+                </button>
+                <button id="wrongBtn"
+                    class="btn-danger text-white px-6 py-3 rounded-xl font-semibold shadow-lg flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    Wrong
+                </button>
+            </div>
+        </div>
+
+        <!-- Progress bar -->
+        <div class="progress-container h-2 mb-4">
+            <div id="progressBar" class="progress-bar" style="width: 0%"></div>
+        </div>
+
+        <div class="flex justify-center gap-4 mb-2">
+            <div
+                class="bg-gradient-to-br from-green-100 to-green-200 text-green-700 dark:from-green-900 dark:to-green-800 dark:text-green-300 px-4 py-2 rounded-full stat-badge text-center font-semibold shadow-md">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" class="w-4 h-4 inline-block mr-1">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <span id="statCorrect">0</span>
+            </div>
+            <div
+                class="bg-gradient-to-br from-red-100 to-red-200 text-red-700 dark:from-red-900 dark:to-red-800 dark:text-red-300 px-4 py-2 rounded-full stat-badge text-center font-semibold shadow-md">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" class="w-4 h-4 inline-block mr-1">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                <span id="statWrong">0</span>
+            </div>
+        </div>
+        <div class="text-center text-xs text-gray-400 mt-4">Data: cocktails-data.js</div>
+    </div>
+    <!-- Модальное окно с полной инфой о коктейле -->
+    <div id="cocktailInfoModal"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 hidden">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl max-w-md w-full p-6 relative">
+            <button id="closeInfoBtn"
+                class="absolute top-2 right-2 text-gray-400 hover:text-red-500 text-2xl p-1 rounded-full">✕</button>
+            <div id="cocktailInfoContent"></div>
+        </div>
+    </div>
+    <script>
+        // --- State ---
+        let allCocktails = [];
+        let filteredCocktails = [];
+        let allSpirits = [];
+        let currentQuestion = null;
+        let currentType = 'mix';
+        let currentCategory = 'all';
+        let statCorrect = 0, statWrong = 0;
+
+        // --- DOM ---
+        const questionBlock = document.getElementById('questionBlock');
+        const answerBlock = document.getElementById('answerBlock');
+        const showAnswerBtn = document.getElementById('showAnswerBtn');
+        const selfCheckBlock = document.getElementById('selfCheckBlock');
+        const correctBtn = document.getElementById('correctBtn');
+        const wrongBtn = document.getElementById('wrongBtn');
+        const statCorrectEl = document.getElementById('statCorrect');
+        const statWrongEl = document.getElementById('statWrong');
+        const spiritInputBlock = document.getElementById('spiritInputBlock');
+        const spiritInput = document.getElementById('spiritInput');
+        const ingredientInputBlock = document.getElementById('ingredientInputBlock');
+        const ingredientInput = document.getElementById('ingredientInput');
+        const categoryFilterContainer = document.getElementById('categoryFilterContainer');
+        const questionsMenuBtn = document.getElementById('questionsMenuBtn');
+        const categoriesMenuBtn = document.getElementById('categoriesMenuBtn');
+        const questionsMenu = document.getElementById('questionsMenu');
+        const showInfoBtn = document.getElementById('showInfoBtn');
+        const cocktailInfoModal = document.getElementById('cocktailInfoModal');
+        const closeInfoBtn = document.getElementById('closeInfoBtn');
+        const cocktailInfoContent = document.getElementById('cocktailInfoContent');
+        const trainerCard = document.getElementById('trainerCard');
+
+        // --- Menu toggles ---
+        questionsMenuBtn.onclick = () => {
+            questionsMenu.classList.toggle('hidden');
+            categoryFilterContainer.classList.add('hidden');
+        };
+        categoriesMenuBtn.onclick = () => {
+            categoryFilterContainer.classList.toggle('hidden');
+            questionsMenu.classList.add('hidden');
+        };
+
+        // --- Question Types ---
+        const questionTypes = ['ingredients', 'has-spirit', 'qty', 'glass', 'garnish', 'ice', 'method'];
+        document.getElementById('type-mix').onclick = () => { setType('mix'); questionsMenu.classList.add('hidden'); };
+        document.getElementById('type-ingredients').onclick = () => { setType('ingredients'); questionsMenu.classList.add('hidden'); };
+        document.getElementById('type-has-spirit').onclick = () => { setType('has-spirit'); questionsMenu.classList.add('hidden'); };
+        document.getElementById('type-qty').onclick = () => { setType('qty'); questionsMenu.classList.add('hidden'); };
+        document.getElementById('type-glass').onclick = () => { setType('glass'); questionsMenu.classList.add('hidden'); };
+        document.getElementById('type-garnish').onclick = () => { setType('garnish'); questionsMenu.classList.add('hidden'); };
+        document.getElementById('type-ice').onclick = () => { setType('ice'); questionsMenu.classList.add('hidden'); };
+        document.getElementById('type-method').onclick = () => { setType('method'); questionsMenu.classList.add('hidden'); };
+
+        function setType(type) {
+            currentType = type;
+            document.querySelectorAll('#questionsMenu .filter-button').forEach(btn => btn.classList.remove('bg-sky-600', 'text-white', 'shadow-md'));
+            document.getElementById('type-' + type).classList.add('bg-sky-600', 'text-white', 'shadow-md');
+            nextQuestion();
+        }
+
+        // --- Category Filter ---
+        function renderCategoryFilters() {
+            if (!allCocktails.length) return;
+            const categories = ['all', ...Array.from(new Set(allCocktails.map(c => c.category).filter(Boolean))).sort()];
+            categoryFilterContainer.innerHTML = '';
+            categories.forEach(category => {
+                const btn = document.createElement('button');
+                btn.className = 'filter-button bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 py-2 px-3 rounded-xl font-medium';
+                btn.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+                btn.dataset.category = category;
+                if (category === currentCategory) {
+                    btn.classList.add('bg-sky-600', 'text-white', 'shadow-md');
+                }
+                btn.onclick = () => {
+                    currentCategory = category;
+                    setActiveCategoryButton();
+                    filterCocktailsByCategory();
+                    nextQuestion();
+                    categoryFilterContainer.classList.add('hidden');
+                };
+                categoryFilterContainer.appendChild(btn);
+            });
+        }
+        function setActiveCategoryButton() {
+            categoryFilterContainer.querySelectorAll('.filter-button').forEach(btn => {
+                btn.classList.remove('bg-sky-600', 'text-white', 'shadow-md');
+                btn.classList.add('bg-gray-200', 'text-gray-700', 'dark:bg-gray-700', 'dark:text-gray-300');
+                if (btn.dataset.category === currentCategory) {
+                    btn.classList.add('bg-sky-600', 'text-white', 'shadow-md');
+                    btn.classList.remove('bg-gray-200', 'text-gray-700', 'dark:bg-gray-700', 'dark:text-gray-300');
+                }
+            });
+        }
+        function filterCocktailsByCategory() {
+            if (currentCategory === 'all') {
+                filteredCocktails = allCocktails;
+            } else {
+                filteredCocktails = allCocktails.filter(c => c.category === currentCategory);
+            }
+        }
+
+        // --- Spirits Extraction ---
+        function extractAllSpirits() {
+            const spiritsSet = new Set();
+            allCocktails.forEach(cocktail => {
+                (cocktail.ingredients || []).forEach(ing => {
+                    // Считаем спиритом любой ингредиент, который содержит латинские буквы и не содержит "juice", "syrup", "soda", "water", "bitters", "sugar", "lemon", "lime", "mint", "egg", "cream", "milk", "honey", "salt", "pepper", "ice", "garnish", "fruit", "puree", "tea", "coffee", "cola", "tonic", "ginger", "grenadine", "vermouth", "liqueur", "wine", "champagne", "prosecco" (но prosecco и vermouth включаем!)
+                    const name = ing.name.trim();
+                    if (/prosecco|vermouth/i.test(name) || (/^[a-zA-Z\s]+$/.test(name) && !/juice|syrup|soda|water|bitters|sugar|lemon|lime|mint|egg|cream|milk|honey|salt|pepper|ice|garnish|fruit|puree|tea|coffee|cola|tonic|ginger|grenadine|liqueur|wine|champagne/i.test(name))) {
+                        spiritsSet.add(name);
+                    }
+                });
+            });
+            allSpirits = Array.from(spiritsSet).sort();
+        }
+
+        // --- Question Generation ---
+        function nextQuestion() {
+            answerBlock.innerHTML = '';
+            answerBlock.style.maxHeight = '0';
+            selfCheckBlock.classList.add('hidden');
+            showAnswerBtn.disabled = false;
+            spiritInputBlock.classList.add('hidden');
+            ingredientInputBlock.classList.add('hidden');
+            spiritInput.value = '';
+            ingredientInput.value = '';
+
+            if (!filteredCocktails.length) {
+                questionBlock.textContent = 'No cocktails in this category.';
+                showAnswerBtn.disabled = true;
+                return;
+            }
+            let type = currentType;
+            if (type === 'mix') {
+                // Выбираем случайный тип вопроса кроме mix
+                const typesForMix = ['ingredients', 'has-spirit', 'qty', 'glass', 'garnish', 'ice', 'method'];
+                type = typesForMix[Math.floor(Math.random() * typesForMix.length)];
+            }
+            const cocktail = filteredCocktails[Math.floor(Math.random() * filteredCocktails.length)];
+            currentQuestion = { cocktail, type };
+            if (type === 'ingredients') {
+                questionBlock.innerHTML = `What are the ingredients in <span class="text-sky-600 dark:text-sky-400 font-bold">${cocktail.name}</span>?`;
+            } else if (type === 'has-spirit') {
+                // Выбираем случайный спирит из allSpirits
+                const spirit = allSpirits[Math.floor(Math.random() * allSpirits.length)];
+                currentQuestion.spirit = spirit;
+                questionBlock.innerHTML = `Does <span class="text-sky-600 dark:text-sky-400 font-bold">${cocktail.name}</span> contain <span class="font-bold">${spirit}</span>?`;
+            } else if (type === 'qty') {
+                if (!cocktail.ingredients || !cocktail.ingredients.length) {
+                    nextQuestion(); return;
+                }
+                const ing = cocktail.ingredients[Math.floor(Math.random() * cocktail.ingredients.length)];
+                currentQuestion.ingredient = ing;
+                ingredientInputBlock.classList.remove('hidden');
+                ingredientInput.value = ing.name;
+                questionBlock.innerHTML = `How much <span class="text-sky-600 dark:text-sky-400 font-bold">${ing.name}</span> in <span class="text-sky-600 dark:text-sky-400 font-bold">${cocktail.name}</span>?`;
+            } else if (type === 'glass') {
+                questionBlock.innerHTML = `What glass is used for <span class="text-sky-600 dark:text-sky-400 font-bold">${cocktail.name}</span>?`;
+            } else if (type === 'garnish') {
+                questionBlock.innerHTML = `What garnish is used for <span class="text-sky-600 dark:text-sky-400 font-bold">${cocktail.name}</span>?`;
+            } else if (type === 'ice') {
+                questionBlock.innerHTML = `What ice is used for <span class="text-sky-600 dark:text-sky-400 font-bold">${cocktail.name}</span>?`;
+            } else if (type === 'method') {
+                questionBlock.innerHTML = `What is the method for <span class="text-sky-600 dark:text-sky-400 font-bold">${cocktail.name}</span>?`;
+            }
+        }
+
+        showAnswerBtn.onclick = () => {
+            if (!currentQuestion) return;
+            let answerHtml = '';
+            const type = currentQuestion.type || currentType;
+            if (type === 'ingredients') {
+                answerHtml = '<ul class="text-left mx-auto max-w-xs">' +
+                    currentQuestion.cocktail.ingredients.map(ing => `<li>• <span class='font-semibold'>${ing.name}</span> <span class='text-xs text-gray-400'>(${ing.qty})</span></li>`).join('') + '</ul>';
+            } else if (type === 'has-spirit') {
+                const spirit = currentQuestion.spirit;
+                const found = currentQuestion.cocktail.ingredients.some(ing => ing.name.toLowerCase() === spirit.toLowerCase());
+                answerHtml = found
+                    ? `<span class="text-green-600 dark:text-green-400 font-bold">YES</span> — contains <span class="font-semibold">${spirit}</span>`
+                    : `<span class="text-red-600 dark:text-red-400 font-bold">NO</span> — does not contain <span class="font-semibold">${spirit}</span>`;
+                answerHtml += '<div class="mt-2 text-xs text-gray-400">Ingredients: ' + currentQuestion.cocktail.ingredients.map(ing => ing.name).join(', ') + '</div>';
+            } else if (type === 'qty') {
+                answerHtml = `<span class="font-semibold">${currentQuestion.ingredient.qty}</span> of <span class="font-semibold">${currentQuestion.ingredient.name}</span>`;
+            } else if (type === 'glass') {
+                answerHtml = `<span class="font-semibold">${currentQuestion.cocktail.glass || 'N/A'}</span>`;
+            } else if (type === 'garnish') {
+                answerHtml = `<span class="font-semibold">${currentQuestion.cocktail.garnish || 'N/A'}</span>`;
+            } else if (type === 'ice') {
+                answerHtml = `<span class="font-semibold">${currentQuestion.cocktail.ice || 'N/A'}</span>`;
+            } else if (type === 'method') {
+                answerHtml = `<span class="font-semibold">${currentQuestion.cocktail.method || 'N/A'}</span>`;
+            }
+            answerBlock.innerHTML = answerHtml;
+            answerBlock.style.maxHeight = '300px';
+            selfCheckBlock.classList.remove('hidden');
+            showAnswerBtn.disabled = true;
+        };
+        correctBtn.onclick = () => { statCorrect++; updateStats(); nextQuestion(); };
+        wrongBtn.onclick = () => { statWrong++; updateStats(); nextQuestion(); };
+        function updateStats() {
+            statCorrectEl.textContent = statCorrect;
+            statWrongEl.textContent = statWrong;
+        }
+
+        // --- Data Loading ---
+        async function loadData() {
+            try {
+                const response = await fetch('cocktails-data.js');
+                if (!response.ok) throw new Error('Data file not found');
+                const scriptContent = await response.text();
+                const match = scriptContent.match(/const\s+allCocktails\s*=\s*(\[[\s\S]*\]);?/);
+                if (!match || !match[1]) throw new Error('Data parse error');
+                allCocktails = new Function(`return ${match[1]}`)();
+                currentCategory = 'all';
+                filterCocktailsByCategory();
+                renderCategoryFilters();
+                extractAllSpirits();
+                setType('mix');
+            } catch (e) {
+                questionBlock.textContent = 'Failed to load data.';
+                showAnswerBtn.disabled = true;
+            }
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            document.documentElement.classList.add('dark');
+            loadData();
+        });
+
+        showInfoBtn.onclick = () => {
+            if (!currentQuestion || !currentQuestion.cocktail) return;
+            const c = currentQuestion.cocktail;
+            cocktailInfoContent.innerHTML = `
+                <h2 class="text-2xl font-bold text-sky-700 dark:text-sky-400 mb-2">${c.name}</h2>
+                <div class="mb-2"><span class="font-semibold text-sky-600 dark:text-sky-400">Category:</span> ${c.category || 'N/A'}</div>
+                <div class="mb-2"><span class="font-semibold text-sky-600 dark:text-sky-400">Glass:</span> ${c.glass || 'N/A'}</div>
+                <div class="mb-2"><span class="font-semibold text-sky-600 dark:text-sky-400">Ice:</span> ${c.ice || 'N/A'}</div>
+                <div class="mb-2"><span class="font-semibold text-sky-600 dark:text-sky-400">Garnish:</span> ${c.garnish || 'N/A'}</div>
+                <div class="mb-2"><span class="font-semibold text-sky-600 dark:text-sky-400">Method:</span> ${c.method || 'N/A'}</div>
+                <div class="mb-2"><span class="font-semibold text-sky-600 dark:text-sky-400">Ingredients:</span>
+                    <ul class="list-disc pl-5 mt-1">
+                        ${(c.ingredients || []).map(ing => `<li><span class='font-semibold'>${ing.name}</span> <span class='text-xs text-gray-400'>(${ing.qty})</span></li>`).join('')}
+                    </ul>
+                </div>
+            `;
+            cocktailInfoModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        };
+        closeInfoBtn.onclick = () => {
+            cocktailInfoModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        };
+        cocktailInfoModal.onclick = (e) => {
+            if (e.target === cocktailInfoModal) {
+                cocktailInfoModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        };
+
+        // --- Swipe support ---
+        let swipeStartX = null;
+        let swipeActive = false;
+
+        trainerCard.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 1) {
+                swipeStartX = e.touches[0].clientX;
+                swipeActive = true;
+            }
+        });
+        trainerCard.addEventListener('touchmove', (e) => {
+            if (!swipeActive || swipeStartX === null) return;
+            const deltaX = e.touches[0].clientX - swipeStartX;
+            trainerCard.style.transform = `translateX(${deltaX}px)`;
+        });
+        trainerCard.addEventListener('touchend', (e) => {
+            if (!swipeActive || swipeStartX === null) return;
+            const endX = e.changedTouches[0].clientX;
+            const deltaX = endX - swipeStartX;
+            swipeActive = false;
+            trainerCard.style.transition = 'transform 0.3s';
+            if (deltaX < -80) {
+                // Свайп влево — правильно
+                trainerCard.classList.add('swipe-left');
+                setTimeout(() => {
+                    trainerCard.classList.remove('swipe-left');
+                    trainerCard.style.transition = '';
+                    trainerCard.style.transform = '';
+                    statCorrect++;
+                    updateStats();
+                    nextQuestion();
+                }, 250);
+            } else if (deltaX > 80) {
+                // Свайп вправо — неправильно
+                trainerCard.classList.add('swipe-right');
+                setTimeout(() => {
+                    trainerCard.classList.remove('swipe-right');
+                    trainerCard.style.transition = '';
+                    trainerCard.style.transform = '';
+                    statWrong++;
+                    updateStats();
+                    nextQuestion();
+                }, 250);
+            } else {
+                // Недостаточно — возвращаем
+                trainerCard.classList.add('swipe-reset');
+                setTimeout(() => {
+                    trainerCard.classList.remove('swipe-reset');
+                    trainerCard.style.transition = '';
+                    trainerCard.style.transform = '';
+                }, 200);
+            }
+            swipeStartX = null;
+        });
+    </script>
+</body>
+
+</html>

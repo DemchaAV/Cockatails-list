@@ -11,17 +11,24 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            touch-action: manipulation; /* Улучшает отклик на касания */
+            touch-action: manipulation;
+            /* Улучшает отклик на касания */
         }
 
         .cocktail-item {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.3s ease-out forwards;
-            /* Увеличиваем зону касания для мобильных */
+            /* opacity: 0; REMOVED FOR DEBUGGING */
+            /* transform: translateY(20px); REMOVED */
+            /* animation: fadeIn 0.4s ease-out forwards; REMOVED */
             min-height: 44px;
             display: flex;
             align-items: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cocktail-item:hover {
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 8px 20px rgba(14, 165, 233, 0.15);
         }
 
         @keyframes fadeIn {
@@ -32,38 +39,39 @@
         }
 
         .selected-cocktail-li {
-            background-color: #e0f2fe;
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
             font-weight: 600;
             color: #0369a1;
-            border-left: 4px solid #0369a1; /* Визуальный индикатор выбора */
+            border-left: 4px solid #0369a1;
+            box-shadow: 0 4px 12px rgba(3, 105, 161, 0.2);
         }
 
         .dark .selected-cocktail-li {
-            background-color: #0c4a6e;
+            background: linear-gradient(135deg, #0c4a6e 0%, #075985 100%);
             color: #bae6fd;
             font-weight: 600;
             border-left: 4px solid #bae6fd;
+            box-shadow: 0 4px 12px rgba(186, 230, 253, 0.1);
         }
 
         #cocktailDetailView {
-            transition: transform 0.3s ease-in-out; /* Более конкретное свойство для анимации */
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             transform: translateY(100%);
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            /* ... остальные стили ... */
             z-index: 50;
-            background: white;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
             border-radius: 20px 20px 0 0;
-            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.15);
             max-height: 80vh;
             overflow-y: auto;
         }
 
         .dark #cocktailDetailView {
-            background: #1f2937;
-            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.4);
         }
 
         #cocktailDetailView.active {
@@ -71,11 +79,20 @@
         }
 
         .filter-button {
-            /* Tailwind обрабатывает переходы для bg, color, shadow. Добавляем transform для :active */
-            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
-            min-height: 44px; /* Минимальная зона касания для мобильных */
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            min-height: 44px;
             white-space: nowrap;
-            -webkit-tap-highlight-color: rgba(0,0,0,0.05); /* Легкая подсветка при нажатии для iOS */
+            -webkit-tap-highlight-color: rgba(14, 165, 233, 0.1);
+        }
+
+        .filter-button:active {
+            transform: scale(0.95);
+        }
+
+        .filter-button-active {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%) !important;
+            color: white !important;
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
         }
 
         .ingredient-qty {
@@ -87,6 +104,51 @@
             color: #38bdf8;
         }
 
+        /* Category badge colors - solid, simple */
+        .category-badge {
+            font-weight: 600;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            text-transform: capitalize;
+        }
+
+        .category-signature {
+            background-color: #a855f7;
+            color: white;
+        }
+
+        .dark .category-signature {
+            background-color: #9333ea;
+        }
+
+        .category-bombay {
+            background-color: #f97316;
+            color: white;
+        }
+
+        .dark .category-bombay {
+            background-color: #ea580c;
+        }
+
+        .category-classic {
+            background-color: #0ea5e9;
+            color: white;
+        }
+
+        .dark .category-classic {
+            background-color: #0284c7;
+        }
+
+        .category-other {
+            background-color: #64748b;
+            color: white;
+        }
+
+        .dark .category-other {
+            background-color: #475569;
+        }
+
         /* Улучшенная прокрутка для мобильных */
         #cocktailListContainer {
             -webkit-overflow-scrolling: touch;
@@ -94,7 +156,8 @@
 
         /* Анимация для кнопок */
         .filter-button:active {
-            transform: scale(0.95); /* Убедимся, что transition покрывает transform */
+            transform: scale(0.95);
+            /* Убедимся, что transition покрывает transform */
         }
 
         .cocktail-item:active {
@@ -104,13 +167,15 @@
 
         /* Улучшенный поиск для мобильных */
         #searchBox {
-            font-size: 16px; /* Предотвращает зум на iOS */
-        }
-        .cocktail-item {
-            /* ... существующие стили ... */
-            -webkit-tap-highlight-color: rgba(0,0,0,0.03); /* Легкая подсветка для элементов списка */
+            font-size: 16px;
+            /* Предотвращает зум на iOS */
         }
 
+        .cocktail-item {
+            /* ... существующие стили ... */
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0.03);
+            /* Легкая подсветка для элементов списка */
+        }
 
         /* Backdrop для модального окна */
         .modal-backdrop {
@@ -158,36 +223,37 @@
             border-bottom: 1px solid #374151;
         }
     </style>
+
+
+
+
+
+
+    <script src="data/loader.js"></script>
 </head>
 
 <body class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300 transition-colors duration-300">
     <!-- Backdrop для модального окна -->
     <div id="modalBackdrop" class="modal-backdrop"></div>
-
-    <div class="container mx-auto max-w-3xl bg-white dark:bg-gray-800 min-h-screen relative">
-        <!-- Sticky Header -->
-        <header class="sticky top-0 bg-white dark:bg-gray-800 z-30 p-4 md:p-6 border-b border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto max-w-3xl bg-white dark:bg-gray-800 min-h-screen relative"> <!-- Sticky Header -->
+        <header
+            class="sticky top-0 bg-white dark:bg-gray-800 z-30 p-4 md:p-6 border-b border-gray-200 dark:border-gray-700">
+            <!-- Home Button --> <a href="index.html"
+                class="inline-flex items-center gap-2 text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 mb-3 transition-colors">
+                <span class="text-xl">←</span> <span class="text-sm font-medium">Home</span> </a>
             <div class="text-center mb-4">
                 <h1 class="text-3xl md:text-4xl font-bold text-sky-700 dark:text-sky-400">🍹 Cocktails</h1>
                 <p class="text-gray-600 dark:text-gray-400 text-sm md:text-base">Find your perfect drink</p>
-            </div>
-
-            <!-- Поиск -->
-            <div class="mb-4">
-                <input type="text" id="searchBox" placeholder="Search cocktails..."
+            </div> <!-- Поиск -->
+            <div class="mb-4"> <input type="text" id="searchBox" placeholder="Search cocktails..."
                     class="w-full p-3 md:p-4 border border-gray-300 dark:border-gray-600 rounded-xl shadow-sm focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all text-base dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
-                    aria-label="Search for a cocktail">
-            </div>
-
-            <!-- Фильтры с горизонтальной прокруткой -->
+                    aria-label="Search for a cocktail"> </div> <!-- Фильтры с горизонтальной прокруткой -->
             <div class="overflow-x-auto pb-2">
                 <div id="filterContainer" class="flex gap-2 min-w-max">
                     <!-- Category buttons will be generated by JavaScript -->
                 </div>
             </div>
-        </header>
-
-        <!-- Список коктейлей -->
+        </header> <!-- Список коктейлей -->
         <div id="cocktailListContainer" class="p-4 pb-20">
             <ul id="cocktailList" class="space-y-2">
                 <li id="noResults" class="p-4 text-center text-gray-500 dark:text-gray-400 hidden">
@@ -197,9 +263,7 @@
                 </li>
             </ul>
         </div>
-    </div>
-
-    <!-- Модальное окно с деталями (снизу) -->
+    </div> <!-- Модальное окно с деталями (снизу) -->
     <div id="cocktailDetailView">
         <div class="swipe-indicator"></div>
         <div class="p-4 md:p-6">
@@ -210,11 +274,8 @@
                         class="text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400 text-2xl p-2 -m-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                         aria-label="Close details">✕</button>
                 </div>
-            </div>
-
-            <!-- Детали коктейля -->
-            <div class="space-y-4">
-                <!-- Основная информация в карточках -->
+            </div> <!-- Детали коктейля -->
+            <div class="space-y-4"> <!-- Основная информация в карточках -->
                 <div class="grid grid-cols-2 gap-3">
                     <div class="bg-gray-50 dark:bg-gray-700/50 p-3 rounded-lg">
                         <div class="text-sky-600 dark:text-sky-400 font-semibold text-sm">Method</div>
@@ -232,257 +293,253 @@
                         <div class="text-sky-600 dark:text-sky-400 font-semibold text-sm">Garnish</div>
                         <div id="detailGarnish" class="text-gray-800 dark:text-gray-200 text-sm"></div>
                     </div>
-                </div>
-
-                <!-- Ингредиенты -->
+                </div> <!-- Ингредиенты -->
                 <div class="bg-sky-50 dark:bg-sky-900/30 p-4 rounded-lg">
                     <h3 class="text-lg font-semibold text-sky-700 dark:text-sky-400 mb-3">📝 Ingredients</h3>
-                    <ul id="detailIngredients" class="space-y-2">
-                    </ul>
+                    <ul id="detailIngredients" class="space-y-2"> </ul>
                 </div>
             </div>
         </div>
     </div>
-
     <script>
-        // Данные коктейлей будут загружены динамически.
-        // Переменная allCocktails будет определена после загрузки данных.
-        
-        // DOM Elements
-        const searchBoxEl = document.getElementById('searchBox');
-        const cocktailListUl = document.getElementById('cocktailList');
-        const noResultsLi = document.getElementById('noResults');
-        const cocktailDetailViewDiv = document.getElementById('cocktailDetailView');
-        const modalBackdrop = document.getElementById('modalBackdrop');
-        const detailNameH2 = document.getElementById('detailName');
-        const detailMethodSpan = document.getElementById('detailMethod');
-        const detailGlassSpan = document.getElementById('detailGlass');
-        const detailIceSpan = document.getElementById('detailIce');
-        const detailGarnishSpan = document.getElementById('detailGarnish');
-        const detailIngredientsUl = document.getElementById('detailIngredients');
-        const closeDetailsButton = document.getElementById('closeDetails');
-        const filterContainer = document.getElementById('filterContainer');
-
+        // Global variables accessible to all functions
         let currentlySelectedLi = null;
         let currentCategory = 'all';
-
-        // Touch handling для свайпа вниз
         let touchStartY = 0;
         let touchEndY = 0;
 
-        cocktailDetailViewDiv.addEventListener('touchstart', (e) => {
-            touchStartY = e.changedTouches[0].screenY;
-        });
-
-        cocktailDetailViewDiv.addEventListener('touchend', (e) => {
-            touchEndY = e.changedTouches[0].screenY;
-            if (touchEndY - touchStartY > 50) { // Свайп вниз на 50px+
-                closeCocktailsDetails();
-            }
-        });
-
-        // Применяем темную тему
+        // Apply dark theme
         document.documentElement.classList.add('dark');
 
+        // --- Wait for cocktails to load, THEN initialize ---
+        function initializeApp() {
+            if (window.allCocktails && window.allCocktails.length > 0) {
+                console.log('🎉 Initializing app with ' + window.allCocktails.length + ' cocktails');
+                renderCategoryFilters();
+                filterAndDisplayCocktails();
+            } else {
+                console.error('❌ initializeApp called but window.allCocktails is empty');
+            }
+        }
+
+        // Updated functions to use window.domElements
         function renderCategoryFilters() {
+            const { filterContainer } = window.domElements || {};
             if (!window.allCocktails) {
                 console.error("Cocktail data is not available for generating filters.");
-                filterContainer.innerHTML = '<p>Could not load categories.</p>';
+                if (filterContainer) filterContainer.innerHTML = '<p>Could not load categories.</p>';
                 return;
             }
-
-            // Get unique categories, filter out any falsy values, sort them, and add 'all' at the beginning.
-            const categories = ['all', ...new Set(allCocktails.map(c => c.category).filter(Boolean).sort())];
-            
-            filterContainer.innerHTML = ''; // Clear any existing hardcoded buttons
-
+            if (!filterContainer) {
+                console.error("filterContainer not available");
+                return;
+            }
+            const categories = ['all', ...new Set(window.allCocktails.map(c => c.category).filter(Boolean).sort())];
+            filterContainer.innerHTML = '';
             categories.forEach(category => {
                 const button = document.createElement('button');
                 button.dataset.category = category;
                 button.textContent = category.charAt(0).toUpperCase() + category.slice(1);
-                // Base classes from the original hardcoded buttons
                 button.className = 'filter-button bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 py-2 px-4 rounded-xl font-medium';
-                
                 filterContainer.appendChild(button);
             });
-            
-            // Set the active button after they are all created
             const initialActiveButton = filterContainer.querySelector(`[data-category="${currentCategory}"]`);
             if (initialActiveButton) {
                 setActiveFilterButton(initialActiveButton);
             }
         }
 
-        function setActiveFilterButton(selectedButton) {
-            document.querySelectorAll('#filterContainer .filter-button').forEach(btn => {
-                btn.classList.remove('active-filter', 'bg-sky-600', 'text-white', 'dark:bg-sky-500', 'dark:text-white', 'shadow-md');
-                btn.classList.add('bg-gray-200', 'text-gray-700', 'dark:bg-gray-700', 'dark:text-gray-300');
-            });
-            selectedButton.classList.add('active-filter', 'bg-sky-600', 'text-white', 'dark:bg-sky-500', 'dark:text-white', 'shadow-md');
-            selectedButton.classList.remove('bg-gray-200', 'text-gray-700', 'dark:bg-gray-700', 'dark:text-gray-300');
-        }
-
-        function setActiveCocktailListItem(listItem) {
-            if (currentlySelectedLi && currentlySelectedLi !== listItem) {
-                currentlySelectedLi.classList.remove('selected-cocktail-li');
-            }
-            currentlySelectedLi = listItem;
-            if (currentlySelectedLi) {
-                currentlySelectedLi.classList.add('selected-cocktail-li');
-            }
-        }
-
         function filterAndDisplayCocktails() {
-            const searchTerm = searchBoxEl.value.toLowerCase().trim();
-            let filteredByCategory = allCocktails;
-
+            const { searchBoxEl } = window.domElements || {};
+            const searchTerm = searchBoxEl ? searchBoxEl.value.toLowerCase().trim() : '';
+            let filteredByCategory = window.allCocktails || [];
             if (currentCategory !== 'all') {
-                filteredByCategory = allCocktails.filter(cocktail => cocktail.category === currentCategory);
+                filteredByCategory = filteredByCategory.filter(cocktail => cocktail.category === currentCategory);
             }
-
             const fullyFiltered = filteredByCategory.filter(cocktail =>
                 cocktail.name.toLowerCase().includes(searchTerm) ||
                 cocktail.ingredients.some(ing => ing.name.toLowerCase().includes(searchTerm))
             );
-
             displayCocktails(fullyFiltered);
         }
 
-        function displayCocktails(cocktailsToDisplay) {
-            cocktailListUl.innerHTML = '';
-            noResultsLi.classList.add('hidden');
-
-            if (cocktailsToDisplay.length === 0) {
-                noResultsLi.classList.remove('hidden');
-                return;
-            }
-
-            // Используем DocumentFragment для более эффективного добавления элементов
-            const fragment = document.createDocumentFragment();
-            cocktailsToDisplay.forEach((cocktail, index) => {
-                const li = document.createElement('li');
-                li.className = 'cocktail-item p-4 bg-white dark:bg-gray-700/50 hover:bg-sky-50 dark:hover:bg-sky-800/30 text-gray-800 dark:text-gray-200 cursor-pointer rounded-xl shadow-sm border border-gray-200 dark:border-gray-600 transition-all duration-200'; // transition-all здесь обрабатывает hover и active состояния
-                li.style.animationDelay = `${index * 0.05}s`;
-                
-                li.innerHTML = `
-                    <div class="flex justify-between items-center">
-                        <span class="font-medium">${cocktail.name}</span>
-                        <span class="text-xs bg-sky-100 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 px-2 py-1 rounded-full">${cocktail.category}</span>
-                    </div>
-                `;
-                li.dataset.id = cocktail.id;
-                fragment.appendChild(li);
-            });
-            cocktailListUl.appendChild(fragment);
-        }
         function showCocktailDetails(cocktailId) {
-            const cocktail = allCocktails.find(c => c.id === cocktailId);
+            const { detailNameH2, detailMethodSpan, detailGlassSpan, detailIceSpan,
+                detailGarnishSpan, detailIngredientsUl, modalBackdrop, cocktailDetailViewDiv } = window.domElements || {};
+            const cocktail = (window.allCocktails || []).find(c => c.id === cocktailId);
             if (!cocktail) {
                 console.error("Cocktail not found:", cocktailId);
                 return;
             }
+            if (detailNameH2) detailNameH2.textContent = cocktail.name;
+            if (detailMethodSpan) detailMethodSpan.textContent = cocktail.method || 'N/A';
+            if (detailGlassSpan) detailGlassSpan.textContent = cocktail.glass || 'N/A';
+            if (detailIceSpan) detailIceSpan.textContent = cocktail.ice || 'N/A';
+            if (detailGarnishSpan) detailGarnishSpan.textContent = cocktail.garnish || 'N/A';
+            if (detailIngredientsUl) {
+                detailIngredientsUl.innerHTML = '';
+                if (cocktail.ingredients && cocktail.ingredients.length > 0) {
+                    cocktail.ingredients.forEach(ing => {
+                        const li = document.createElement('li');
+                        li.className = 'flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-600 last:border-b-0';
+                        li.innerHTML = `
+                            <span class="text-gray-800 dark:text-gray-200">${ing.name}</span>
+                            <span class="ingredient-qty font-semibold">${ing.qty}</span>
+                        `;
+                        detailIngredientsUl.appendChild(li);
+                    });
+                }
+            }
+            if (modalBackdrop) modalBackdrop.classList.add('active');
+            if (cocktailDetailViewDiv) cocktailDetailViewDiv.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
 
-            detailNameH2.textContent = cocktail.name;
-            detailMethodSpan.textContent = cocktail.method || 'N/A';
-            detailGlassSpan.textContent = cocktail.glass || 'N/A';
-            detailIceSpan.textContent = cocktail.ice || 'N/A';
-            detailGarnishSpan.textContent = cocktail.garnish || 'N/A';
+        function displayCocktails(cocktails) {
+            const { cocktailListUl, noResultsLi } = window.domElements || {};
+            if (!cocktailListUl) {
+                console.error("cocktailListUl not available");
+                return;
+            }
+            // Remove all items except noResultsLi
+            const items = cocktailListUl.querySelectorAll('li:not(#noResults)');
+            items.forEach(item => item.remove());
 
-            detailIngredientsUl.innerHTML = '';
-            if (cocktail.ingredients && cocktail.ingredients.length > 0) {
-                cocktail.ingredients.forEach(ing => {
-                    const li = document.createElement('li');
-                    li.className = 'flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-600 last:border-b-0';
-                    li.innerHTML = `
-                        <span class="text-gray-800 dark:text-gray-200">${ing.name}</span>
-                        <span class="ingredient-qty font-semibold">${ing.qty}</span>
-                    `;
-                    detailIngredientsUl.appendChild(li);
+            if (!cocktails || cocktails.length === 0) {
+                if (noResultsLi) noResultsLi.classList.remove('hidden');
+                return;
+            }
+            if (noResultsLi) noResultsLi.classList.add('hidden');
+
+            cocktails.forEach((cocktail, index) => {
+                const li = document.createElement('li');
+                li.className = 'cocktail-item bg-gray-50 dark:bg-gray-700 p-4 rounded-xl border border-gray-200 dark:border-gray-600';
+                li.dataset.id = cocktail.id;
+                li.style.animationDelay = `${index * 0.03}s`;
+
+                const categoryClass = `category-${cocktail.category || 'other'}`;
+                li.innerHTML = `
+                    <div class="flex justify-between items-center w-full gap-3">
+                        <span class="font-medium text-gray-800 dark:text-gray-100 flex-1">${cocktail.name}</span>
+                        <span class="category-badge ${categoryClass}">${cocktail.category || 'other'}</span>
+                    </div>
+                `;
+                li.addEventListener('click', () => {
+                    if (currentlySelectedLi) {
+                        currentlySelectedLi.classList.remove('selected-cocktail-li');
+                    }
+                    li.classList.add('selected-cocktail-li');
+                    currentlySelectedLi = li;
+                    showCocktailDetails(cocktail.id);
+                });
+                cocktailListUl.appendChild(li);
+            });
+        }
+
+        function setActiveFilterButton(activeButton) {
+            const { filterContainer } = window.domElements || {};
+            if (filterContainer) {
+                filterContainer.querySelectorAll('.filter-button').forEach(btn => {
+                    btn.classList.remove('filter-button-active');
                 });
             }
-
-            modalBackdrop.classList.add('active');
-            cocktailDetailViewDiv.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Предотвращаем прокрутку фона
+            if (activeButton) {
+                activeButton.classList.add('filter-button-active');
+            }
         }
 
         function closeCocktailsDetails() {
-            modalBackdrop.classList.remove('active');
-            cocktailDetailViewDiv.classList.remove('active');
-            document.body.style.overflow = ''; // Восстанавливаем прокрутку
-            setActiveCocktailListItem(null);
+            const { cocktailDetailViewDiv, modalBackdrop } = window.domElements || {};
+            if (cocktailDetailViewDiv) cocktailDetailViewDiv.classList.remove('active');
+            if (modalBackdrop) modalBackdrop.classList.remove('active');
+            document.body.style.overflow = '';
         }
 
-        // Event Listeners
-        // Делегирование событий для списка коктейлей
-        cocktailListUl.addEventListener('click', (e) => {
-            const li = e.target.closest('.cocktail-item');
-            if (li && li.dataset.id) {
-                showCocktailDetails(li.dataset.id);
-                setActiveCocktailListItem(li);
+        // Event Listeners - wrap in DOMContentLoaded to ensure elements exist
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get DOM elements after DOM is ready
+            const searchBoxEl = document.getElementById('searchBox');
+            const cocktailListUl = document.getElementById('cocktailList');
+            const noResultsLi = document.getElementById('noResults');
+            const cocktailDetailViewDiv = document.getElementById('cocktailDetailView');
+            const modalBackdrop = document.getElementById('modalBackdrop');
+            const detailNameH2 = document.getElementById('detailName');
+            const detailMethodSpan = document.getElementById('detailMethod');
+            const detailGlassSpan = document.getElementById('detailGlass');
+            const detailIceSpan = document.getElementById('detailIce');
+            const detailGarnishSpan = document.getElementById('detailGarnish');
+            const detailIngredientsUl = document.getElementById('detailIngredients');
+            const closeDetailsButton = document.getElementById('closeDetails');
+            const filterContainer = document.getElementById('filterContainer');
+
+            // Make DOM elements globally accessible for functions
+            window.domElements = {
+                searchBoxEl, cocktailListUl, noResultsLi, cocktailDetailViewDiv,
+                modalBackdrop, detailNameH2, detailMethodSpan, detailGlassSpan,
+                detailIceSpan, detailGarnishSpan, detailIngredientsUl,
+                closeDetailsButton, filterContainer
+            };
+
+            // Touch handling for swipe down
+            if (cocktailDetailViewDiv) {
+                cocktailDetailViewDiv.addEventListener('touchstart', (e) => {
+                    touchStartY = e.changedTouches[0].screenY;
+                });
+                cocktailDetailViewDiv.addEventListener('touchend', (e) => {
+                    touchEndY = e.changedTouches[0].screenY;
+                    if (touchEndY - touchStartY > 50) {
+                        closeCocktailsDetails();
+                    }
+                });
             }
+
+            if (searchBoxEl) {
+                searchBoxEl.addEventListener('input', filterAndDisplayCocktails);
+            }
+
+            if (filterContainer) {
+                filterContainer.addEventListener('click', (e) => {
+                    const button = e.target.closest('.filter-button');
+                    if (button) {
+                        currentCategory = button.dataset.category;
+                        setActiveFilterButton(button);
+                        filterAndDisplayCocktails();
+                    }
+                });
+            }
+
+            if (closeDetailsButton) {
+                closeDetailsButton.addEventListener('click', closeCocktailsDetails);
+            }
+            if (modalBackdrop) {
+                modalBackdrop.addEventListener('click', closeCocktailsDetails);
+            }
+
+            // Check if data ready
+            if (window.cocktailsDataReady) {
+                console.log('⚡ Data already ready, initializing...');
+                initializeApp();
+            } else {
+                window.addEventListener('cocktailsLoaded', initializeApp);
+            }
+
+            // Fallback check
+            setTimeout(() => {
+                if (window.cocktailsDataReady) {
+                    if (cocktailListUl && cocktailListUl.children.length <= 1) {
+                        console.log('⚠️ Data ready but list empty, re-initializing...');
+                        initializeApp();
+                    }
+                }
+            }, 500);
         });
 
-        filterContainer.addEventListener('click', (e) => {
-            if (e.target.tagName === 'BUTTON') {
-                const button = e.target.closest('.filter-button');
-                if (button) {
-                    currentCategory = button.dataset.category;
-                    setActiveFilterButton(button);
-                    filterAndDisplayCocktails();
-                    closeCocktailsDetails();
-                }
+        // Also listen for cocktailsLoaded outside DOMContentLoaded for race conditions
+        window.addEventListener('cocktailsLoaded', () => {
+            if (document.readyState === 'complete' || document.readyState === 'interactive') {
+                initializeApp();
             }
         });
-
-        searchBoxEl.addEventListener('input', filterAndDisplayCocktails);
-        closeDetailsButton.addEventListener('click', closeCocktailsDetails);
-        modalBackdrop.addEventListener('click', closeCocktailsDetails);
-
-        // ESC key для закрытия
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeCocktailsDetails();
-            }
-        });
-
-        // --- New robust data loading and initialization ---
-        async function loadAndInitializeApp() {
-            try {
-                // Fetch the content of the JavaScript data file
-                const response = await fetch('cocktails-data.js');
-                if (!response.ok) {
-                    throw new Error(`Network response was not ok: ${response.statusText}`);
-                }
-                const scriptContent = await response.text();
-                
-                // Safely extract the array data from the script text using regex
-                const match = scriptContent.match(/const\s+allCocktails\s*=\s*(\[[\s\S]*\]);?/);
-                if (!match || !match[1]) {
-                    throw new Error("Could not find and parse 'allCocktails' array in cocktails-data.js.");
-                }
-                
-                // Use the Function constructor as a safe alternative to eval() to parse the array string
-                window.allCocktails = new Function(`return ${match[1]}`)();
-
-                // Now that the data is loaded and parsed, render the application components
-                renderCategoryFilters();
-                filterAndDisplayCocktails();
-
-            } catch (error) {
-                console.error('Failed to load or initialize cocktail app:', error);
-                document.getElementById('filterContainer').innerHTML = '<p class="text-red-500 p-2">❌ Data Error</p>';
-                noResultsLi.innerHTML = `
-                    <div class="text-4xl mb-2">😭</div>
-                    <div>Failed to load recipes.</div>
-                    <div class="text-sm mt-1">Please check if <strong>cocktails-data.js</strong> is in the same folder and is not corrupted.</div>
-                `;
-                noResultsLi.classList.remove('hidden');
-            }
-        }
-
-        // Initial Load: Wait for the DOM to be ready, then load data and start the app.
-        document.addEventListener('DOMContentLoaded', loadAndInitializeApp);
     </script>
 </body>
 

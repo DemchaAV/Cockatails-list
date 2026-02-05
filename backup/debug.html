@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Script Loading</title>
+    <!-- Load cocktail data -->
+    <script src="data/config.js"></script>
+    <script src="data/categories/signature.js"></script>
+    <script src="data/categories/classic.js"></script>
+    <script src="data/categories/non-alcoholic.js"></script>
+    <script src="data/combiner.js"></script>
+</head>
+<body>
+    <h1>Script Loading Debug</h1>
+    <div id="output"></div>
+    
+    <script>
+        const output = document.getElementById('output');
+        
+        // Check what's loaded
+        setTimeout(() => {
+            let html = '<h2>Checking loaded variables:</h2>';
+            
+            html += '<p><strong>COCKTAIL_CATEGORIES:</strong> ' + (typeof COCKTAIL_CATEGORIES !== 'undefined' ? COCKTAIL_CATEGORIES.join(', ') : 'NOT DEFINED') + '</p>';
+            
+            html += '<p><strong>signatureCocktails:</strong> ' + (typeof signatureCocktails !== 'undefined' ? signatureCocktails.length + ' items' : 'NOT DEFINED') + '</p>';
+            
+            html += '<p><strong>classicCocktails:</strong> ' + (typeof classicCocktails !== 'undefined' ? classicCocktails.length + ' items' : 'NOT DEFINED') + '</p>';
+            
+            html += '<p><strong>nonalcoholicCocktails:</strong> ' + (typeof nonalcoholicCocktails !== 'undefined' ? nonalcoholicCocktails.length + ' items' : 'NOT DEFINED') + '</p>';
+            
+            html += '<p><strong>allCocktails:</strong> ' + (typeof allCocktails !== 'undefined' ? allCocktails.length + ' items' : 'NOT DEFINED') + '</p>';
+            
+            output.innerHTML = html;
+        }, 1000);
+    </script>
+</body>
+</html>

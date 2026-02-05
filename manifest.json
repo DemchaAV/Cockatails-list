@@ -1,0 +1,57 @@
+{
+  "name": "Cocktail List",
+  "short_name": "Cocktails",
+  "description": "Cocktail catalog with recipes, builder and training quiz",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0ea5e9",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍹</text></svg>",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["food", "lifestyle"],
+  "shortcuts": [
+    {
+      "name": "Catalog",
+      "short_name": "Catalog",
+      "description": "Browse cocktail recipes",
+      "url": "/mobile_cocktails.html",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>",
+          "sizes": "any"
+        }
+      ]
+    },
+    {
+      "name": "Builder",
+      "short_name": "Builder",
+      "description": "Create new recipes",
+      "url": "/cocktail_builder.html",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠️</text></svg>",
+          "sizes": "any"
+        }
+      ]
+    },
+    {
+      "name": "Trainer",
+      "short_name": "Trainer",
+      "description": "Test your knowledge",
+      "url": "/cocktail_trainer.html",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>",
+          "sizes": "any"
+        }
+      ]
+    }
+  ]
+}

@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cocktail Recipe Builder</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧊</text></svg>">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧊</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
@@ -21,6 +22,7 @@
                 opacity: 0;
                 transform: translateX(-20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -44,7 +46,9 @@
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
         }
 
-        input:focus, select:focus, textarea:focus {
+        input:focus,
+        select:focus,
+        textarea:focus {
             transform: translateY(-1px);
         }
 
@@ -58,30 +62,70 @@
 
         .add-ingredient-btn {
             background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
-            transition: all 0.2s ease-in-out;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
         }
 
         .add-ingredient-btn:hover {
             background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
             transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(14, 165, 233, 0.3);
+        }
+
+        .add-ingredient-btn:active {
+            transform: translateY(0);
         }
 
         .download-btn {
             background: linear-gradient(135deg, #059669 0%, #047857 100%);
-            transition: all 0.2s ease-in-out;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.2);
         }
 
         .download-btn:hover {
             background: linear-gradient(135deg, #047857 0%, #065f46 100%);
             transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(5, 150, 105, 0.3);
+        }
+
+        .download-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
         }
     </style>
+
+
+
+
+
+
+    <script src="data/loader.js"></script>
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen">
     <div class="container mx-auto max-w-6xl p-4">
         <!-- Header -->
         <header class="text-center mb-8 py-6">
+            <a href="index.html"
+                class="inline-flex items-center gap-2 text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 mb-4 transition-colors">
+                <span class="text-xl">←</span>
+                <span class="text-sm font-medium">Home</span>
+            </a>
             <h1 class="text-4xl md:text-5xl font-bold text-sky-600 dark:text-sky-400 mb-2">🍹 Cocktail Builder</h1>
             <p class="text-gray-600 dark:text-gray-400">Create and manage your cocktail recipes</p>
         </header>
@@ -90,18 +134,20 @@
             <!-- Form Section -->
             <div class="form-section p-6 rounded-2xl shadow-lg">
                 <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-6">✨ Add New Cocktail</h2>
-                
+
                 <form id="cocktailForm" class="space-y-6">
                     <!-- Basic Info -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Name *</label>
+                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Name
+                                *</label>
                             <input type="text" id="cocktailName" required
                                 class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white"
                                 placeholder="e.g., Time for Tea">
                         </div>
                         <div>
-                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Category *</label>
+                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Category
+                                *</label>
                             <select id="cocktailCategory" required
                                 class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white">
                                 <option value="">Select category</option>
@@ -113,13 +159,15 @@
                     <!-- Method, Glass, Ice, Garnish -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Method</label>
+                            <label
+                                class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Method</label>
                             <input type="text" id="cocktailMethod"
                                 class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white"
                                 placeholder="e.g., Wet/dry Shake">
                         </div>
                         <div>
-                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Glass</label>
+                            <label
+                                class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Glass</label>
                             <input type="text" id="cocktailGlass"
                                 class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white"
                                 placeholder="e.g., Savage Pony">
@@ -134,7 +182,8 @@
                                 placeholder="e.g., no ice">
                         </div>
                         <div>
-                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Garnish</label>
+                            <label
+                                class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Garnish</label>
                             <input type="text" id="cocktailGarnish"
                                 class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white"
                                 placeholder="e.g., Peychauds bitters hearts">
@@ -143,7 +192,8 @@
 
                     <!-- Allergens -->
                     <div>
-                        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Allergens</label>
+                        <label
+                            class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Allergens</label>
                         <input type="text" id="cocktailAllergens"
                             class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white"
                             placeholder="Leave empty for null, or list allergens">
@@ -175,7 +225,8 @@
             <div>
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg">
                     <div class="mb-6">
-                        <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200 text-center mb-4">📋 Your Cocktails</h2>
+                        <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200 text-center mb-4">📋 Your
+                            Cocktails</h2>
                         <div class="flex flex-wrap gap-2 justify-center">
                             <button id="clearAllBtn" type="button"
                                 class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-medium transition-all flex flex-col items-center justify-center">
@@ -200,34 +251,39 @@
                             <input type="file" id="uploadFile" accept=".js" style="display:none">
                         </div>
                     </div>
-                    
+
                     <!-- Search and Filter Controls (Mobile-First Vertical Layout) -->
                     <div class="mb-4 flex flex-col gap-4">
 
                         <!-- Блок 1: Поиск -->
                         <div>
-                            <input type="text" id="searchInput" placeholder="Search by name..." 
-                                   class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white">
+                            <input type="text" id="searchInput" placeholder="Search by name..."
+                                class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white">
                         </div>
 
                         <!-- Блок 2: Фильтры категорий -->
                         <div id="categoryFilters" class="flex gap-2 flex-wrap items-center">
-                            <button data-category="all" class="category-filter-btn active bg-sky-600 text-white px-4 py-2 rounded-lg">All</button>
-                            <button data-category="signature" class="category-filter-btn bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-sky-500 hover:text-white px-4 py-2 rounded-lg">Signature</button>
-                            <button data-category="bombay" class="category-filter-btn bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-sky-500 hover:text-white px-4 py-2 rounded-lg">Bombay</button>
-                            <button data-category="classic" class="category-filter-btn bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-sky-500 hover:text-white px-4 py-2 rounded-lg">Classic</button>
+                            <button data-category="all"
+                                class="category-filter-btn active bg-sky-600 text-white px-4 py-2 rounded-lg">All</button>
+                            <button data-category="signature"
+                                class="category-filter-btn bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-sky-500 hover:text-white px-4 py-2 rounded-lg">Signature</button>
+                            <button data-category="bombay"
+                                class="category-filter-btn bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-sky-500 hover:text-white px-4 py-2 rounded-lg">Bombay</button>
+                            <button data-category="classic"
+                                class="category-filter-btn bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-sky-500 hover:text-white px-4 py-2 rounded-lg">Classic</button>
                         </div>
 
                         <!-- Блок 3: Добавление новой категории -->
                         <div class="flex gap-2">
                             <input type="text" id="newCategoryName" placeholder="New category name..."
-                                   class="flex-1 p-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white text-sm">
+                                class="flex-1 p-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white text-sm">
                             <button id="addCategoryBtn" type="button"
-                                    class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-sm">Add Category</button>
+                                class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-sm">Add
+                                Category</button>
                         </div>
 
                     </div>
-                    
+
                     <div id="cocktailsList" class="space-y-4">
                         <div class="text-center text-gray-500 dark:text-gray-400 py-8">
                             <div class="text-4xl mb-2">🍸</div>
@@ -315,7 +371,7 @@
 
             // Filter by search term (name)
             if (searchTerm) {
-                filteredCocktails = filteredCocktails.filter(c => 
+                filteredCocktails = filteredCocktails.filter(c =>
                     c.name.toLowerCase().includes(searchTerm.toLowerCase())
                 );
             }
@@ -391,13 +447,48 @@
         }
 
         function downloadJS() {
-            const dataStr = JSON.stringify(cocktails, null, 2);
-            const jsContent = `const allCocktails = ${dataStr};\n`;
-            const jsBlob = new Blob([jsContent], { type: 'application/javascript' });
-            const url = URL.createObjectURL(jsBlob);
+            // Create a modal or prompt to select category
+            const categories = [...new Set(cocktails.map(c => c.category))];
+
+            // Simple generic export (all in one, legacy format)? 
+            // Or strictly per category as requested.
+            // Let's ask user what to do or just export the currently filtered category if active?
+
+            // Allow user to choose: All (legacy) or Specific Category
+            const choice = prompt("Enter category name to export (or 'all' for single file):", activeCategory !== 'all' ? activeCategory : 'all');
+
+            if (!choice) return;
+
+            if (choice === 'all') {
+                const dataStr = JSON.stringify(cocktails, null, 2);
+                const jsContent = `const allCocktails = ${dataStr};\n`;
+                downloadString(jsContent, 'cocktails-data.js');
+            } else {
+                const catCocktails = cocktails.filter(c => c.category === choice);
+                if (catCocktails.length === 0) {
+                    alert('No cocktails in this category!');
+                    return;
+                }
+
+                // Format for modular system
+                const jsContent = `// Category: ${choice}
+if (typeof window.registerCocktails === 'function') {
+    window.registerCocktails('${choice}', ${JSON.stringify(catCocktails, null, 2)});
+} else {
+    window.pendingCocktails = window.pendingCocktails || [];
+    window.pendingCocktails.push({ category: '${choice}', data: ${JSON.stringify(catCocktails, null, 2)} });
+}
+`;
+                downloadString(jsContent, `${choice}.js`);
+            }
+        }
+
+        function downloadString(content, filename) {
+            const blob = new Blob([content], { type: 'application/javascript' });
+            const url = URL.createObjectURL(blob);
             const link = document.createElement('a');
             link.href = url;
-            link.download = 'cocktails-data.js';
+            link.download = filename;
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -405,7 +496,7 @@
         }
 
         // Глобально доступная функция для кнопки редактирования
-        window.editCocktail = function(index) {
+        window.editCocktail = function (index) {
             const cocktail = cocktails[index]; // Use original index
             if (!cocktail) {
                 console.error('Cocktail not found for editing at index:', index);
@@ -421,7 +512,7 @@
             ingredientsList.innerHTML = '';
             (cocktail.ingredients || []).forEach(ing => addIngredientRow(ing.name, ing.qty));
             editIndex = index;
-            form.scrollIntoView({behavior: 'smooth'});
+            form.scrollIntoView({ behavior: 'smooth' });
         }
 
         // Event Listeners
@@ -429,7 +520,7 @@
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            
+
             const name = document.getElementById('cocktailName').value.trim();
             const category = document.getElementById('cocktailCategory').value;
             const method = document.getElementById('cocktailMethod').value.trim();
@@ -477,15 +568,15 @@
             renderCocktails();
             form.reset();
             ingredientsList.innerHTML = '';
-            addIngredientRow(); 
-            
+            addIngredientRow();
+
             const btn = form.querySelector('button[type="submit"]');
             const originalText = (editIndex === null || typeof originalAddBtnText === 'undefined') ? '🎯 Add Cocktail' : originalAddBtnText; // Fallback for safety
-            
+
             btn.textContent = '✅ Saved!';
             btn.classList.add('bg-green-600');
             setTimeout(() => {
-                btn.textContent = originalText; 
+                btn.textContent = originalText;
                 btn.classList.remove('bg-green-600');
             }, 2000);
         });
@@ -544,7 +635,7 @@
                 btn.dataset.category = category;
                 btn.textContent = category.charAt(0).toUpperCase() + category.slice(1);
                 // Add more padding to the right if we plan to add a delete icon inside or next to it.
-                btn.className = `category-filter-btn px-4 py-2 rounded-lg`; 
+                btn.className = `category-filter-btn px-4 py-2 rounded-lg`;
 
                 if (activeCategory === category) {
                     btn.classList.add('active', 'bg-sky-600', 'text-white');
@@ -571,7 +662,7 @@
                 renameIcon.title = `Rename category "${category}"`;
                 renameIcon.addEventListener('click', handleRenameCategoryClick);
                 btnWrapper.appendChild(renameIcon);
-                
+
                 categoryFilterBtnsContainer.appendChild(btnWrapper);
             });
         }
@@ -579,11 +670,11 @@
         // Handler for category filter button clicks
         function handleCategoryFilterClick(event) {
             // Check if the click is on the delete or rename icon
-            if (event.target.dataset.categoryToDelete || event.target.dataset.categoryToRename) return; 
+            if (event.target.dataset.categoryToDelete || event.target.dataset.categoryToRename) return;
 
             const clickedCategory = event.target.closest('[data-category]').dataset.category;
             activeCategory = clickedCategory;
-            renderCategoryFilters(); 
+            renderCategoryFilters();
             renderCocktails();
         }
 
@@ -636,7 +727,7 @@
 
             if (newCategoryName === oldCategoryName) {
                 // No change, do nothing or inform user
-                return; 
+                return;
             }
 
             if (newCategoryName === 'all') {
@@ -706,7 +797,7 @@
 
         // Ensure download button works
         if (downloadBtn) {
-            downloadBtn.addEventListener('click', function() {
+            downloadBtn.addEventListener('click', function () {
                 downloadJS();
             });
         } else {
@@ -729,7 +820,7 @@
         // Handle click for the new GUI button for uploading JS file
         if (uploadJsFileGuiBtn && uploadFile) {
             uploadJsFileGuiBtn.addEventListener('click', () => {
-                uploadFile.click(); 
+                uploadFile.click();
             });
         } else {
             if (!uploadJsFileGuiBtn) console.warn('Upload JS File GUI button (uploadJsFileGuiBtn) not found!');
@@ -796,11 +887,11 @@
         // Ensure the file upload functionality is correctly wired
         // 1. Event listener for the actual hidden file input
         if (uploadFile) {
-            uploadFile.addEventListener('change', function(e) {
+            uploadFile.addEventListener('change', function (e) {
                 const file = e.target.files[0];
                 if (!file) return;
                 const reader = new FileReader();
-                reader.onload = function(ev) {
+                reader.onload = function (ev) {
                     processImportedData(ev.target.result);
                 };
                 reader.readAsText(file);
@@ -835,7 +926,7 @@
         // 2. Event listener for the visible GUI button to trigger the hidden file input
         if (uploadJsFileGuiBtn && uploadFile) {
             uploadJsFileGuiBtn.addEventListener('click', () => {
-                uploadFile.click(); 
+                uploadFile.click();
             });
         } else {
             if (!uploadJsFileGuiBtn) console.warn('Upload JS File GUI button (uploadJsFileGuiBtn) not found!');

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>File Load Test</title>
+</head>
+
+<body>
+    <h1>Testing if files load correctly</h1>
+    <div id="results"></div>
+
+    <script>
+        const filesToTest = [
+            'data/config.js',
+            'data/categories/signature.js',
+            'data/categories/classic.js',
+            'data/categories/non-alcoholic.js',
+            'data/combiner.js'
+        ];
+
+        const results = document.getElementById('results');
+
+        Promise.all(filesToTest.map(file =>
+            fetch(file)
+                .then(response => ({
+                    file,
+                    status: response.status,
+                    ok: response.ok
+                }))
+                .catch(error => ({
+                    file,
+                    status: 'ERROR',
+                    error: error.message
+                }))
+        )).then(allResults => {
+            let html = '<h2>File Loading Results:</h2><ul>';
+            allResults.forEach(result => {
+                const icon = result.ok ? '✅' : '❌';
+                html += `<li>${icon} <strong>${result.file}</strong>: ${result.status} ${result.error || ''}</li>`;
+            });
+            html += '</ul>';
+            results.innerHTML = html;
+        });
+    </script>
+</body>
+
+</html>
