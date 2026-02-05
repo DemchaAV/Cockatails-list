@@ -88,49 +88,49 @@
 
 <body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
     <!-- Hero Section -->
-    <div class="hero-gradient text-white py-12 px-4 relative overflow-hidden">
+    <div class="hero-gradient text-white py-4 sm:py-8 px-4 relative overflow-hidden">
         <!-- Decorative elements -->
-        <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full -mr-32 -mt-32"></div>
-        <div class="absolute bottom-0 left-0 w-48 h-48 bg-white opacity-5 rounded-full -ml-24 -mb-24"></div>
+        <div class="absolute top-0 right-0 w-48 h-48 bg-white opacity-5 rounded-full -mr-24 -mt-24"></div>
+        <div class="absolute bottom-0 left-0 w-32 h-32 bg-white opacity-5 rounded-full -ml-16 -mb-16"></div>
 
         <div class="container mx-auto max-w-md relative z-10">
-            <div class="text-center mb-8">
-                <div class="text-6xl mb-4">🍹</div>
-                <h1 class="text-4xl font-bold mb-2">Cocktail List</h1>
-                <p class="text-sky-100 text-sm">Your personal guide to cocktails</p>
+            <div class="text-center mb-3 sm:mb-6">
+                <div class="text-4xl sm:text-5xl mb-2">🍹</div>
+                <h1 class="text-2xl sm:text-3xl font-bold mb-1">Cocktail List</h1>
+                <p class="text-sky-100 text-xs sm:text-sm">Your personal guide to cocktails</p>
             </div>
 
             <!-- Stats -->
-            <div class="stat-item flex justify-center gap-6 text-center mt-8">
-                <div class="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
-                    <div class="text-2xl font-bold" id="totalCocktails">-</div>
-                    <div class="text-xs text-sky-100">cocktails</div>
+            <div class="stat-item flex justify-center gap-4 text-center mt-3 sm:mt-6">
+                <div class="bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-lg">
+                    <div class="text-lg sm:text-xl font-bold" id="totalCocktails">-</div>
+                    <div class="text-[10px] text-sky-100">cocktails</div>
                 </div>
-                <div class="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
-                    <div class="text-2xl font-bold" id="totalCategories">-</div>
-                    <div class="text-xs text-sky-100">categories</div>
+                <div class="bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-lg">
+                    <div class="text-lg sm:text-xl font-bold" id="totalCategories">-</div>
+                    <div class="text-[10px] text-sky-100">categories</div>
                 </div>
-                <div class="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
-                    <div class="text-2xl font-bold">✨</div>
-                    <div class="text-xs text-sky-100">free</div>
+                <div class="bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-lg">
+                    <div class="text-lg sm:text-xl font-bold">✨</div>
+                    <div class="text-[10px] text-sky-100">free</div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Main Content -->
-    <div class="flex-1 container mx-auto max-w-md px-4 py-8">
-        <h2 class="text-xl font-semibold text-gray-100 mb-4 text-center">Choose Mode</h2>
+    <div class="flex-1 container mx-auto max-w-md px-4 py-4 sm:py-6">
+        <h2 class="text-base sm:text-lg font-semibold text-gray-100 mb-3 text-center">Choose Mode</h2>
 
-        <div class="space-y-4">
+        <div class="space-y-3">
             <!-- Catalog Card -->
             <a href="mobile_cocktails.html"
-                class="card block bg-gradient-to-br from-sky-500 to-blue-600 rounded-2xl p-6 shadow-xl opacity-0 animate-fade-in-up">
-                <div class="flex items-center gap-4">
-                    <div class="text-5xl">📋</div>
+                class="card block bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl p-4 shadow-xl opacity-0 animate-fade-in-up">
+                <div class="flex items-center gap-3">
+                    <div class="text-3xl sm:text-4xl">📋</div>
                     <div class="flex-1">
-                        <h3 class="text-2xl font-bold text-white mb-1">Catalog</h3>
-                        <p class="text-sky-100 text-sm">Browse all recipes with search and filters</p>
+                        <h3 class="text-lg sm:text-xl font-bold text-white">Catalog</h3>
+                        <p class="text-sky-100 text-xs sm:text-sm">Browse recipes with search</p>
                     </div>
                     <div class="text-white opacity-50">→</div>
                 </div>
@@ -138,12 +138,12 @@
 
             <!-- Builder Card -->
             <a href="cocktail_builder.html"
-                class="card block bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl p-6 shadow-xl opacity-0 animate-fade-in-up">
-                <div class="flex items-center gap-4">
-                    <div class="text-5xl">🛠️</div>
+                class="card block bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl p-4 shadow-xl opacity-0 animate-fade-in-up">
+                <div class="flex items-center gap-3">
+                    <div class="text-3xl sm:text-4xl">🛠️</div>
                     <div class="flex-1">
-                        <h3 class="text-2xl font-bold text-white mb-1">Builder</h3>
-                        <p class="text-emerald-100 text-sm">Create and edit cocktail recipes</p>
+                        <h3 class="text-lg sm:text-xl font-bold text-white">Builder</h3>
+                        <p class="text-emerald-100 text-xs sm:text-sm">Create and edit recipes</p>
                     </div>
                     <div class="text-white opacity-50">→</div>
                 </div>
@@ -151,12 +151,12 @@
 
             <!-- Trainer Card -->
             <a href="cocktail_trainer.html"
-                class="card block bg-gradient-to-br from-violet-500 to-purple-600 rounded-2xl p-6 shadow-xl opacity-0 animate-fade-in-up">
-                <div class="flex items-center gap-4">
-                    <div class="text-5xl">🎓</div>
+                class="card block bg-gradient-to-br from-violet-500 to-purple-600 rounded-xl p-4 shadow-xl opacity-0 animate-fade-in-up">
+                <div class="flex items-center gap-3">
+                    <div class="text-3xl sm:text-4xl">🎓</div>
                     <div class="flex-1">
-                        <h3 class="text-2xl font-bold text-white mb-1">Trainer</h3>
-                        <p class="text-violet-100 text-sm">Test your knowledge with quiz</p>
+                        <h3 class="text-lg sm:text-xl font-bold text-white">Trainer</h3>
+                        <p class="text-violet-100 text-xs sm:text-sm">Test your knowledge</p>
                     </div>
                     <div class="text-white opacity-50">→</div>
                 </div>
@@ -164,10 +164,9 @@
         </div>
 
         <!-- Footer Info -->
-        <div class="mt-8 text-center text-gray-400 text-sm space-y-2">
-            <p>💾 All data stored locally</p>
-            <p>📱 Works offline</p>
-            <p class="text-xs mt-4 text-gray-500">v1.0.0 • Made with ❤️</p>
+        <div class="mt-4 sm:mt-6 text-center text-gray-400 text-xs sm:text-sm space-y-1">
+            <p>💾 All data stored locally • 📱 Works offline</p>
+            <p class="text-[10px] mt-2 text-gray-500">v1.0.0 • Made with ❤️</p>
         </div>
     </div>
 

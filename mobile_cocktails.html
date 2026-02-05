@@ -169,6 +169,62 @@
         #searchBox {
             font-size: 16px;
             /* Предотвращает зум на iOS */
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+
+        /* Search wrapper with icon */
+        .search-wrapper {
+            position: relative;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1;
+        }
+
+        /* search icon hides when text is entered */
+
+        .clear-btn {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%) scale(0.8);
+            color: #9ca3af;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 50%;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .clear-btn:hover {
+            color: #6b7280;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .dark .clear-btn:hover {
+            color: #d1d5db;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .search-wrapper.has-text .search-icon {
+            opacity: 0;
+            transform: translateY(-50%) scale(0.8);
+        }
+
+        .search-wrapper.has-text .clear-btn {
+            opacity: 1;
+            transform: translateY(-50%) scale(1);
+            pointer-events: auto;
         }
 
         .cocktail-item {
@@ -235,25 +291,46 @@
 <body class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300 transition-colors duration-300">
     <!-- Backdrop для модального окна -->
     <div id="modalBackdrop" class="modal-backdrop"></div>
-    <div class="container mx-auto max-w-3xl bg-white dark:bg-gray-800 min-h-screen relative"> <!-- Sticky Header -->
+    <div class="container mx-auto max-w-3xl bg-white dark:bg-gray-800 min-h-screen relative">
+        <!-- Sticky Header -->
         <header
             class="sticky top-0 bg-white dark:bg-gray-800 z-30 p-4 md:p-6 border-b border-gray-200 dark:border-gray-700">
-            <!-- Home Button --> <a href="index.html"
+            <!-- Home Button -->
+            <a href="index.html"
                 class="inline-flex items-center gap-2 text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 mb-3 transition-colors">
-                <span class="text-xl">←</span> <span class="text-sm font-medium">Home</span> </a>
+                <span class="text-xl">←</span>
+                <span class="text-sm font-medium">Home</span>
+            </a>
             <div class="text-center mb-4">
-                <h1 class="text-3xl md:text-4xl font-bold text-sky-700 dark:text-sky-400">🍹 Cocktails</h1>
-                <p class="text-gray-600 dark:text-gray-400 text-sm md:text-base">Find your perfect drink</p>
-            </div> <!-- Поиск -->
-            <div class="mb-4"> <input type="text" id="searchBox" placeholder="Search cocktails..."
+                <h1 class="text-2xl md:text-3xl font-bold text-sky-700 dark:text-sky-400">🍹 Cocktails</h1>
+                <p class="text-gray-600 dark:text-gray-400 text-xs md:text-sm">Find your perfect drink</p>
+            </div>
+            <!-- Поиск -->
+            <div class="mb-4 search-wrapper" id="searchWrapper">
+                <!-- Magnifying glass icon -->
+                <svg class="search-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                <!-- Clear button (replaces icon when text entered) -->
+                <button type="button" id="clearSearch" class="clear-btn" aria-label="Clear search">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+                <input type="text" id="searchBox" placeholder="Search cocktails..."
                     class="w-full p-3 md:p-4 border border-gray-300 dark:border-gray-600 rounded-xl shadow-sm focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all text-base dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
-                    aria-label="Search for a cocktail"> </div> <!-- Фильтры с горизонтальной прокруткой -->
+                    aria-label="Search for a cocktail">
+            </div>
+            <!-- Фильтры с горизонтальной прокруткой -->
             <div class="overflow-x-auto pb-2">
                 <div id="filterContainer" class="flex gap-2 min-w-max">
                     <!-- Category buttons will be generated by JavaScript -->
                 </div>
             </div>
-        </header> <!-- Список коктейлей -->
+        </header>
+        <!-- Список коктейлей -->
         <div id="cocktailListContainer" class="p-4 pb-20">
             <ul id="cocktailList" class="space-y-2">
                 <li id="noResults" class="p-4 text-center text-gray-500 dark:text-gray-400 hidden">
@@ -493,8 +570,29 @@
                 });
             }
 
-            if (searchBoxEl) {
-                searchBoxEl.addEventListener('input', filterAndDisplayCocktails);
+            // Search input handling with icon animation
+            const searchWrapper = document.getElementById('searchWrapper');
+            const clearSearchBtn = document.getElementById('clearSearch');
+
+            if (searchBoxEl && searchWrapper) {
+                searchBoxEl.addEventListener('input', () => {
+                    // Toggle has-text class for icon animation
+                    if (searchBoxEl.value.length > 0) {
+                        searchWrapper.classList.add('has-text');
+                    } else {
+                        searchWrapper.classList.remove('has-text');
+                    }
+                    filterAndDisplayCocktails();
+                });
+            }
+
+            if (clearSearchBtn && searchBoxEl && searchWrapper) {
+                clearSearchBtn.addEventListener('click', () => {
+                    searchBoxEl.value = '';
+                    searchWrapper.classList.remove('has-text');
+                    filterAndDisplayCocktails();
+                    searchBoxEl.focus();
+                });
             }
 
             if (filterContainer) {
