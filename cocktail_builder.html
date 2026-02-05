@@ -447,40 +447,48 @@
         }
 
         function downloadJS() {
-            // Create a modal or prompt to select category
-            const categories = [...new Set(cocktails.map(c => c.category))];
+            // Default to active category if it's not 'all'
+            const defaultName = activeCategory !== 'all' ? activeCategory : 'new-category';
 
-            // Simple generic export (all in one, legacy format)? 
-            // Or strictly per category as requested.
-            // Let's ask user what to do or just export the currently filtered category if active?
+            const categoryName = prompt("Enter the category name (ID) for this file.\nThis will be used as the filename and internal ID.", defaultName);
 
-            // Allow user to choose: All (legacy) or Specific Category
-            const choice = prompt("Enter category name to export (or 'all' for single file):", activeCategory !== 'all' ? activeCategory : 'all');
+            if (!categoryName) return;
 
-            if (!choice) return;
+            let dataToExport = cocktails;
 
-            if (choice === 'all') {
-                const dataStr = JSON.stringify(cocktails, null, 2);
-                const jsContent = `const allCocktails = ${dataStr};\n`;
-                downloadString(jsContent, 'cocktails-data.js');
-            } else {
-                const catCocktails = cocktails.filter(c => c.category === choice);
-                if (catCocktails.length === 0) {
-                    alert('No cocktails in this category!');
-                    return;
+            // Allow user to decide scope: All vs Filtered
+            // If likely creating a new list from scratch (which is common), exporting ALL as the new category is helpful.
+            if (cocktails.length > 0) {
+                const exportAll = confirm(`Export ALL ${cocktails.length} cocktails as '${categoryName}'?\n\n[OK] Yes, export all (and set their category to '${categoryName}').\n[Cancel] No, only export cocktails currently labeled '${categoryName}'.`);
+
+                if (!exportAll) {
+                    dataToExport = cocktails.filter(c => c.category === categoryName);
+                    if (dataToExport.length === 0) {
+                        alert(`No cocktails found with category '${categoryName}'.`);
+                        return;
+                    }
+                } else {
+                    // Override category for export consistency
+                    dataToExport = dataToExport.map(c => ({
+                        ...c,
+                        category: categoryName
+                    }));
                 }
+            } else {
+                alert('No cocktails to export!');
+                return;
+            }
 
-                // Format for modular system
-                const jsContent = `// Category: ${choice}
+            // Generate content in the new standardized format
+            const jsContent = `// Category: ${categoryName}
 if (typeof window.registerCocktails === 'function') {
-    window.registerCocktails('${choice}', ${JSON.stringify(catCocktails, null, 2)});
+    window.registerCocktails('${categoryName}', ${JSON.stringify(dataToExport, null, 2)});
 } else {
     window.pendingCocktails = window.pendingCocktails || [];
-    window.pendingCocktails.push({ category: '${choice}', data: ${JSON.stringify(catCocktails, null, 2)} });
+    window.pendingCocktails.push({ category: '${categoryName}', data: ${JSON.stringify(dataToExport, null, 2)} });
 }
 `;
-                downloadString(jsContent, `${choice}.js`);
-            }
+            downloadString(jsContent, `${categoryName}.js`);
         }
 
         function downloadString(content, filename) {
