@@ -107,6 +107,100 @@
         .submit-btn:active {
             transform: translateY(0);
         }
+
+        /* Floating Edit Panel */
+        .edit-panel-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 40;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .edit-panel-backdrop.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .edit-panel {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            max-height: 85vh;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.4);
+            z-index: 50;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+        }
+
+        .edit-panel.active {
+            transform: translateY(0);
+        }
+
+        .edit-panel-header {
+            position: sticky;
+            top: 0;
+            background: inherit;
+            z-index: 10;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #374151;
+        }
+
+        .swipe-indicator {
+            width: 40px;
+            height: 4px;
+            background: #4b5563;
+            border-radius: 2px;
+            margin: 12px auto 8px;
+        }
+
+        .edit-panel-content {
+            padding: 1rem 1.5rem 2rem;
+        }
+
+        .edit-panel .ingredient-item-edit {
+            animation: slideIn 0.3s ease-out;
+        }
+
+        /* Dark scrollbar for edit panel */
+        .edit-panel::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .edit-panel::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+
+        .edit-panel::-webkit-scrollbar-thumb {
+            background: #4b5563;
+            border-radius: 3px;
+        }
+
+        .edit-panel::-webkit-scrollbar-thumb:hover {
+            background: #6b7280;
+        }
+
+        #editIngredientsList::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        #editIngredientsList::-webkit-scrollbar-track {
+            background: #374151;
+        }
+
+        #editIngredientsList::-webkit-scrollbar-thumb {
+            background: #6b7280;
+            border-radius: 2px;
+        }
     </style>
 
 
@@ -292,6 +386,91 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Floating Edit Panel Backdrop -->
+    <div id="editPanelBackdrop" class="edit-panel-backdrop"></div>
+
+    <!-- Floating Edit Panel -->
+    <div id="editPanel" class="edit-panel">
+        <div class="swipe-indicator"></div>
+        <div class="edit-panel-header">
+            <div class="flex justify-between items-center">
+                <h2 class="text-xl font-bold text-sky-400">✏️ Edit Cocktail</h2>
+                <button id="closeEditPanel"
+                    class="text-gray-400 hover:text-red-400 text-2xl p-2 -m-2 rounded-full hover:bg-gray-700 transition-colors">
+                    ✕
+                </button>
+            </div>
+        </div>
+        <div class="edit-panel-content">
+            <form id="editPanelForm" class="space-y-4">
+                <!-- Name & Category -->
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 mb-1">Name *</label>
+                        <input type="text" id="editName" required
+                            class="w-full p-2 border border-gray-600 rounded-lg bg-gray-700 text-white text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 mb-1">Category *</label>
+                        <select id="editCategory" required
+                            class="w-full p-2 border border-gray-600 rounded-lg bg-gray-700 text-white text-sm">
+                        </select>
+                    </div>
+                </div>
+                <!-- Method & Glass -->
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 mb-1">Method</label>
+                        <input type="text" id="editMethod"
+                            class="w-full p-2 border border-gray-600 rounded-lg bg-gray-700 text-white text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 mb-1">Glass</label>
+                        <input type="text" id="editGlass"
+                            class="w-full p-2 border border-gray-600 rounded-lg bg-gray-700 text-white text-sm">
+                    </div>
+                </div>
+                <!-- Ice & Garnish -->
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 mb-1">Ice</label>
+                        <input type="text" id="editIce"
+                            class="w-full p-2 border border-gray-600 rounded-lg bg-gray-700 text-white text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 mb-1">Garnish</label>
+                        <input type="text" id="editGarnish"
+                            class="w-full p-2 border border-gray-600 rounded-lg bg-gray-700 text-white text-sm">
+                    </div>
+                </div>
+                <!-- Allergens -->
+                <div>
+                    <label class="block text-xs font-semibold text-gray-400 mb-1">Allergens</label>
+                    <input type="text" id="editAllergens"
+                        class="w-full p-2 border border-gray-600 rounded-lg bg-gray-700 text-white text-sm">
+                </div>
+                <!-- Ingredients -->
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="text-xs font-semibold text-gray-400">Ingredients *</label>
+                        <button type="button" id="addEditIngredientBtn"
+                            class="bg-sky-600 hover:bg-sky-700 text-white px-3 py-1 rounded text-xs">
+                            + Add
+                        </button>
+                    </div>
+                    <div id="editIngredientsList" class="space-y-2 max-h-40 overflow-y-auto">
+                        <!-- Ingredients rows -->
+                    </div>
+                </div>
+                <!-- Submit -->
+                <button type="submit"
+                    class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-lg transition-all">
+                    💾 Save Changes
+                </button>
+            </form>
         </div>
     </div>
 
@@ -503,25 +682,160 @@ if (typeof window.registerCocktails === 'function') {
             URL.revokeObjectURL(url);
         }
 
-        // Глобально доступная функция для кнопки редактирования
+        // ===== FLOATING EDIT PANEL LOGIC =====
+        const editPanel = document.getElementById('editPanel');
+        const editPanelBackdrop = document.getElementById('editPanelBackdrop');
+        const closeEditPanelBtn = document.getElementById('closeEditPanel');
+        const editPanelForm = document.getElementById('editPanelForm');
+        const editIngredientsList = document.getElementById('editIngredientsList');
+        const addEditIngredientBtn = document.getElementById('addEditIngredientBtn');
+        const editCategorySelect = document.getElementById('editCategory');
+
+        let currentEditIndex = null;
+
+        function openEditPanel() {
+            editPanel.classList.add('active');
+            editPanelBackdrop.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeEditPanel() {
+            editPanel.classList.remove('active');
+            editPanelBackdrop.classList.remove('active');
+            document.body.style.overflow = '';
+            currentEditIndex = null;
+        }
+
+        function renderEditCategoryOptions() {
+            if (!editCategorySelect) return;
+            editCategorySelect.innerHTML = '';
+            appCategories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category;
+                option.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+                editCategorySelect.appendChild(option);
+            });
+        }
+
+        function addEditIngredientRow(name = '', qty = '') {
+            const div = document.createElement('div');
+            div.className = 'ingredient-item-edit flex gap-2 items-center bg-gray-700 p-2 rounded border border-gray-600';
+            div.innerHTML = `
+                <input type="text" placeholder="Name" value="${name}"
+                    class="edit-ing-name flex-1 p-1.5 border border-gray-600 rounded bg-gray-600 text-white text-xs">
+                <input type="text" placeholder="Qty" value="${qty}"
+                    class="edit-ing-qty w-16 p-1.5 border border-gray-600 rounded bg-gray-600 text-white text-xs">
+                <button type="button" class="edit-ing-delete text-red-400 hover:text-red-300 text-sm px-1">🗑️</button>
+            `;
+            div.querySelector('.edit-ing-delete').addEventListener('click', () => div.remove());
+            editIngredientsList.appendChild(div);
+        }
+
+        // Open edit panel with cocktail data
         window.editCocktail = function (index) {
-            const cocktail = cocktails[index]; // Use original index
+            const cocktail = cocktails[index];
             if (!cocktail) {
                 console.error('Cocktail not found for editing at index:', index);
                 return;
             }
-            document.getElementById('cocktailName').value = cocktail.name;
-            document.getElementById('cocktailCategory').value = cocktail.category;
-            document.getElementById('cocktailMethod').value = cocktail.method || '';
-            document.getElementById('cocktailGlass').value = cocktail.glass || '';
-            document.getElementById('cocktailIce').value = cocktail.ice || '';
-            document.getElementById('cocktailGarnish').value = cocktail.garnish || '';
-            document.getElementById('cocktailAllergens').value = cocktail.allergens || '';
-            ingredientsList.innerHTML = '';
-            (cocktail.ingredients || []).forEach(ing => addIngredientRow(ing.name, ing.qty));
-            editIndex = index;
-            form.scrollIntoView({ behavior: 'smooth' });
+
+            currentEditIndex = index;
+
+            // Populate edit category select
+            renderEditCategoryOptions();
+
+            // Fill form fields
+            document.getElementById('editName').value = cocktail.name;
+            document.getElementById('editCategory').value = cocktail.category;
+            document.getElementById('editMethod').value = cocktail.method || '';
+            document.getElementById('editGlass').value = cocktail.glass || '';
+            document.getElementById('editIce').value = cocktail.ice || '';
+            document.getElementById('editGarnish').value = cocktail.garnish || '';
+            document.getElementById('editAllergens').value = cocktail.allergens || '';
+
+            // Fill ingredients
+            editIngredientsList.innerHTML = '';
+            (cocktail.ingredients || []).forEach(ing => addEditIngredientRow(ing.name, ing.qty));
+
+            openEditPanel();
         }
+
+        // Close panel event listeners
+        if (closeEditPanelBtn) {
+            closeEditPanelBtn.addEventListener('click', closeEditPanel);
+        }
+        if (editPanelBackdrop) {
+            editPanelBackdrop.addEventListener('click', closeEditPanel);
+        }
+
+        // Add ingredient in edit panel
+        if (addEditIngredientBtn) {
+            addEditIngredientBtn.addEventListener('click', () => addEditIngredientRow());
+        }
+
+        // Handle edit panel form submission
+        if (editPanelForm) {
+            editPanelForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                if (currentEditIndex === null) return;
+
+                const name = document.getElementById('editName').value.trim();
+                const category = document.getElementById('editCategory').value;
+                const method = document.getElementById('editMethod').value.trim();
+                const glass = document.getElementById('editGlass').value.trim();
+                const ice = document.getElementById('editIce').value.trim();
+                const garnish = document.getElementById('editGarnish').value.trim();
+                const allergens = document.getElementById('editAllergens').value.trim();
+
+                const ingredientRows = editIngredientsList.querySelectorAll('.ingredient-item-edit');
+                const ingredients = Array.from(ingredientRows).map(row => ({
+                    name: row.querySelector('.edit-ing-name').value.trim(),
+                    qty: row.querySelector('.edit-ing-qty').value.trim()
+                })).filter(ing => ing.name && ing.qty);
+
+                if (!name || !category) {
+                    alert('Name and Category are required.');
+                    return;
+                }
+                if (ingredients.length === 0) {
+                    alert('Add at least one ingredient.');
+                    return;
+                }
+
+                // Update cocktail
+                cocktails[currentEditIndex] = {
+                    id: generateId(name + Date.now()),
+                    name,
+                    category,
+                    method: method || null,
+                    glass: glass || null,
+                    ice: ice || null,
+                    garnish: garnish || null,
+                    ingredients,
+                    allergens: allergens || null
+                };
+
+                saveCocktails();
+                renderCocktails();
+                closeEditPanel();
+            });
+        }
+
+        // Touch swipe to close edit panel
+        let editPanelTouchStartY = 0;
+        if (editPanel) {
+            editPanel.addEventListener('touchstart', (e) => {
+                editPanelTouchStartY = e.changedTouches[0].screenY;
+            });
+            editPanel.addEventListener('touchend', (e) => {
+                const touchEndY = e.changedTouches[0].screenY;
+                if (touchEndY - editPanelTouchStartY > 80) {
+                    closeEditPanel();
+                }
+            });
+        }
+        // ===== END FLOATING EDIT PANEL LOGIC =====
 
         // Event Listeners
         addIngredientBtn.addEventListener('click', () => addIngredientRow());
