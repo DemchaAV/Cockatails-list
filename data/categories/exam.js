@@ -240,16 +240,6 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "margarita",
-    "name": "Margarita",
-    "category": "Exam",
-    "method": "TBD",
-    "glass": "TBD",
-    "ice": "TBD",
-    "garnish": "TBD",
-    "ingredients": []
-  },
-  {
     "id": "tommys-margarita",
     "name": "Tommy's Margarita",
     "category": "Exam",
@@ -1121,14 +1111,27 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "margarita",
+    "id": "classic-margarita",
     "name": "Margarita",
-    "category": "Exam",
-    "method": "TBD",
-    "glass": "TBD",
-    "ice": "TBD",
-    "garnish": "TBD",
-    "ingredients": []
+    "category": "signature",
+    "method": "Shake",
+    "glass": "Nick&Nora/Rocks",
+    "ice": "As per glass choice",
+    "garnish": "Salt Rim",
+    "ingredients": [
+      {
+        "name": "Casamigos Blanco",
+        "qty": "50ml"
+      },
+      {
+        "name": "Cointreau",
+        "qty": "20ml"
+      },
+      {
+        "name": "Lime Juice",
+        "qty": "20ml"
+      }
+    ]
   },
   {
     "id": "tommys-margarita",
@@ -1370,16 +1373,6 @@ if (typeof window.registerCocktails === 'function') {
         "qty": "1dash"
       }
     ]
-  },
-  {
-    "id": "penicillin",
-    "name": "Penicillin",
-    "category": "Exam",
-    "method": "TBD",
-    "glass": "TBD",
-    "ice": "TBD",
-    "garnish": "TBD",
-    "ingredients": []
   },
   {
     "id": "pisco-sour",

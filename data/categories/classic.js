@@ -2148,6 +2148,29 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
+    "id": "classic-margarita",
+    "name": "Margarita",
+    "category": "signature",
+    "method": "Shake",
+    "glass": "Nick&Nora/Rocks",
+    "ice": "As per glass choice",
+    "garnish": "Salt Rim",
+    "ingredients": [
+      {
+        "name": "Casamigos Blanco",
+        "qty": "50ml"
+      },
+      {
+        "name": "Cointreau",
+        "qty": "20ml"
+      },
+      {
+        "name": "Lime Juice",
+        "qty": "20ml"
+      }
+    ]
+  },
+  {
     "id": "tommys-margarita",
     "name": "Tommy's Margarita",
     "category": "classic",
