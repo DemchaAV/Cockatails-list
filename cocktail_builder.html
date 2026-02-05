@@ -904,21 +904,134 @@ if (typeof window.registerCocktails === 'function') {
         // Handle Load from URL button click
         if (loadFromUrlBtn) {
             loadFromUrlBtn.addEventListener('click', async () => {
-                const url = 'https://demchaav.github.io/Cockatails-list/cocktails-data.js';
-                if (!confirm(`Load recipes from the default URL?\n${url}`)) {
+                const baseUrl = 'https://demchaav.github.io/Cockatails-list/data/';
+                const configUrl = baseUrl + 'config.js';
+
+                if (!confirm(`Load recipes from GitHub? This will fetch the latest configuration and categories from:\n${baseUrl}`)) {
                     return;
                 }
 
+                const loadingMsg = document.createElement('div');
+                loadingMsg.className = 'fixed top-4 right-4 bg-sky-600 text-white px-6 py-3 rounded-lg shadow-xl z-50 flex items-center gap-3';
+                loadingMsg.innerHTML = '<span class="animate-spin text-xl">⏳</span> <span>Connecting to GitHub...</span>';
+                document.body.appendChild(loadingMsg);
+
                 try {
-                    const response = await fetch(url);
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
+                    // 1. Fetch Config
+                    loadingMsg.innerHTML = '<span class="animate-spin text-xl">⏳</span> <span>Fetching config...</span>';
+                    const configResponse = await fetch(configUrl);
+                    if (!configResponse.ok) throw new Error(`Failed to load config: ${configResponse.status}`);
+                    const configText = await configResponse.text();
+
+                    // Extract categories array using Regex
+                    const categoriesMatch = configText.match(/categories:\s*(\[[^\]]+\])/s);
+                    if (!categoriesMatch) throw new Error('Could not parse categories from config.js');
+
+                    // Safe eval of the array string
+                    const categories = (new Function('return ' + categoriesMatch[1]))();
+                    console.log('Found categories:', categories);
+
+                    if (!Array.isArray(categories) || categories.length === 0) {
+                        throw new Error('No categories found in config.');
                     }
-                    const data = await response.text();
-                    processImportedData(data);
+
+                    // 2. Fetch all categories
+                    let allFetcherCocktails = [];
+                    let loadedCount = 0;
+
+                    for (const catFile of categories) {
+                        loadingMsg.innerHTML = `<span class="animate-spin text-xl">⏳</span> <span>Loading ${catFile}...</span>`;
+                        const catUrl = baseUrl + 'categories/' + catFile;
+
+                        try {
+                            const catResponse = await fetch(catUrl);
+                            if (!catResponse.ok) throw new Error(`HTTP ${catResponse.status}`);
+                            const catText = await catResponse.text();
+
+                            // Extract JSON data from window.registerCocktails('name', [...])
+                            // Regex looks for: window.registerCocktails('catName', [ ... ])
+                            // We capture the array content.
+                            const dataMatch = catText.match(/window\.registerCocktails\s*\(\s*['"][^'"]+['"]\s*,\s*(\[.*\])\s*\)/s); // dotAll for multiline
+
+                            if (dataMatch && dataMatch[1]) {
+                                const recipes = (new Function('return ' + dataMatch[1]))();
+                                if (Array.isArray(recipes)) {
+                                    allFetcherCocktails = allFetcherCocktails.concat(recipes);
+                                    loadedCount += recipes.length;
+                                    console.log(`Loaded ${recipes.length} from ${catFile}`);
+                                }
+                            } else {
+                                console.warn(`Could not parse data from ${catFile}`);
+                            }
+                        } catch (err) {
+                            console.error(`Failed to load category ${catFile}:`, err);
+                        }
+                    }
+
+                    // 3. Process Data
+                    if (allFetcherCocktails.length > 0) {
+                        loadingMsg.style.backgroundColor = '#059669'; // Green
+                        loadingMsg.innerHTML = `<span>✅ Loaded ${allFetcherCocktails.length} cocktails! Processing...</span>`;
+
+                        // Fake delay to show success message
+                        await new Promise(r => setTimeout(r, 1000));
+
+                        // Use existing process function, but wrap in a way it accepts the array directly 
+                        // or we just call the logic directly since processImportedData expects text regex.
+
+                        const imported = allFetcherCocktails;
+
+                        // Discover and add new categories from the imported file
+                        let newCategoriesAdded = false;
+                        const discoveredCategories = new Set(appCategories);
+
+                        imported.forEach(cocktail => {
+                            if (cocktail.category) {
+                                const categoryFromFile = cocktail.category.trim().toLowerCase();
+                                if (categoryFromFile && categoryFromFile !== 'all' && !discoveredCategories.has(categoryFromFile)) {
+                                    discoveredCategories.add(categoryFromFile);
+                                    appCategories.push(categoryFromFile);
+                                    newCategoriesAdded = true;
+                                }
+                            }
+                        });
+
+                        if (newCategoriesAdded) {
+                            saveAppCategories();
+                            renderCategoryOptionsForForm();
+                            renderCategoryFilters();
+                        }
+
+                        if (confirm(`Successfully downloaded ${imported.length} cocktails from GitHub.\n\nClick OK to REPLACE your current list with these.\nClick Cancel to MERGE them with your current list.`)) {
+                            cocktails = imported;
+                        } else {
+                            // Merge logic
+                            const existingIds = new Set(cocktails.map(c => c.id));
+                            let addedCount = 0;
+                            imported.forEach(newC => {
+                                if (!existingIds.has(newC.id)) {
+                                    cocktails.push(newC);
+                                    addedCount++;
+                                }
+                            });
+                            alert(`Merged ${addedCount} new cocktails.`);
+                        }
+
+                        saveCocktails();
+                        renderCocktails();
+                    } else {
+                        throw new Error('No cocktails extracted from any category file.');
+                    }
+
                 } catch (error) {
-                    console.error('Failed to load from URL:', error);
-                    alert('Failed to load recipes from URL. Check console for details.');
+                    console.error('GitHub Load Error:', error);
+                    loadingMsg.style.backgroundColor = '#dc2626'; // Red
+                    loadingMsg.innerHTML = `<span>❌ Error: ${error.message}</span>`;
+                    setTimeout(() => alert('Failed to load from GitHub. See console for details.'), 500);
+                } finally {
+                    setTimeout(() => {
+                        if (loadingMsg.parentNode) document.body.removeChild(loadingMsg);
+                    }, 3000);
                 }
             });
         }
