@@ -1286,6 +1286,37 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
+  "id": "penicillin-torabhaig",
+  "name": "Penicillin (Torabhaig riff)",
+  "category": "classic",
+  "method": "Shake",
+  "glass": "Old Fashioned (Rocks)",
+  "ice": "Large cube (or ice-filled)",
+  "garnish": "Skewered crystallised ginger",
+  "ingredients": [
+    {
+      "name": "Blended Scotch whisky",
+      "qty": "45ml"
+    },
+    {
+      "name": "Giffard Ginger of the Indies liqueur",
+      "qty": "15ml"
+    },
+    {
+      "name": "Torabhaig Peated Single Malt Whisky",
+      "qty": "10ml"
+    },
+    {
+      "name": "Lemon juice (freshly squeezed)",
+      "qty": "20ml"
+    },
+    {
+      "name": "Honey syrup (3 parts honey : 1 part water by weight)",
+      "qty": "20ml"
+    }
+  ]
+},
+  {
     "id": "martinez",
     "name": "Martinez",
     "category": "classic",
