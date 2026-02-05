@@ -1055,6 +1055,61 @@ if (typeof window.registerCocktails === 'function') {
         }
 
         // Initialize
+
+        // --- NEW: Sync categories with config.js ---
+        function initCategoriesFromConfig() {
+            // Check if config is loaded (loader.js does this globally)
+            if (window.cocktailConfig && window.cocktailConfig.categories) {
+                console.log('🔄 Syncing categories from config...');
+
+                const loadedIds = window.cocktailConfig.categories.map(filename =>
+                    filename.replace('.js', '').trim()
+                );
+
+                // Add 'all' if not present (internal logic)
+                const newAppCategories = [];
+                loadedIds.forEach(id => {
+                    if (id && id !== 'all' && !newAppCategories.includes(id)) {
+                        newAppCategories.push(id);
+                    }
+                });
+
+                // Compare with current and update if different
+                const currentSet = new Set(appCategories);
+                const newSet = new Set(newAppCategories);
+
+                // If they differ, update localStorage and state
+                // We use a simple JSON string compare for order irrelevant checks or just force update
+                // Let's force update because the user explicitly said "not updated"
+                appCategories = newAppCategories;
+                saveAppCategories();
+
+                console.log('✅ Categories synced:', appCategories);
+
+                // Re-render UI
+                renderCategoryOptionsForForm();
+                renderCategoryFilters();
+            } else {
+                console.warn('⚠️ Config not loaded yet or invalid.');
+            }
+        }
+
+        // Listen for the event dispatched by loader.js
+        window.addEventListener('cocktailsLoaded', () => {
+            initCategoriesFromConfig();
+            // Also re-render cocktails in case some were loaded via loader (though builder uses localStorage for recipes)
+            // Builder usually manages its own recipes in localStorage, separate from the 'data/' folder content
+            // unless we import.
+            // But categories MUST match.
+        });
+
+        // Fallback check in case event fired before we listened
+        setTimeout(() => {
+            if (window.cocktailConfig) {
+                initCategoriesFromConfig();
+            }
+        }, 500);
+
         addIngredientRow(); // Add initial ingredient row
         renderCategoryOptionsForForm(); // Populate category select in form
         renderCategoryFilters(); // Render filter buttons
