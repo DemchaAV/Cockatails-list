@@ -493,7 +493,7 @@ if (typeof window.registerCocktails === 'function') {
    {
   "id": "penicillin-torabhaig",
   "name": "Penicillin (Torabhaig riff)",
-  "category": "classic",
+  "category": "Exam",
   "method": "Shake",
   "glass": "Old Fashioned (Rocks)",
   "ice": "Large cube (or ice-filled)",
