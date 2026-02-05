@@ -140,7 +140,7 @@ if (typeof window.registerCocktails === 'function') {
     "garnish": "Lime wedge",
     "ingredients": [
       {
-        "name": "Ron Santiago de Cuba A\u00c3\u0192\u00c6\u2019\u00c3\u201a\u00c2\u00b1ejo 8yo",
+        "name": "Ron Santiago de Cuba Añejo 8-Year-Old Rum",
         "qty": "30ml"
       },
       {
@@ -675,7 +675,7 @@ if (typeof window.registerCocktails === 'function') {
     "garnish": "Lime wedge and 3 dash angostura bitters",
     "ingredients": [
       {
-        "name": "Ron Santiago de Cuba A\u00c3\u0192\u00c6\u2019\u00c3\u201a\u00c2\u00b1ejo 8yo",
+        "name": "Ron Santiago de Cuba Añejo 8-Year-Old Rum",
         "qty": "50ml"
       },
       {
@@ -1026,7 +1026,7 @@ if (typeof window.registerCocktails === 'function') {
     "garnish": "Lime wedge",
     "ingredients": [
       {
-        "name": "Ron Santiago de Cuba A\u00c3\u0192\u00c6\u2019\u00c3\u201a\u00c2\u00b1ejo 8yo",
+        "name": "Ron Santiago de Cuba Añejo 8-Year-Old Rum",
         "qty": "45ml"
       },
       {
@@ -1327,7 +1327,7 @@ if (typeof window.registerCocktails === 'function') {
         "qty": "20ml"
       },
       {
-        "name": "Ron Santiago de Cuba A\u00c3\u0192\u00c6\u2019\u00c3\u201a\u00c2\u00b1ejo 8yo",
+        "name": "Ron Santiago de Cuba Añejo 8-Year-Old Rum",
         "qty": "20ml"
       },
       {
@@ -1551,7 +1551,7 @@ if (typeof window.registerCocktails === 'function') {
     "garnish": "Mint leaf",
     "ingredients": [
       {
-        "name": "Ron Santiago de Cuba A\u00c3\u0192\u00c6\u2019\u00c3\u201a\u00c2\u00b1ejo 8yo",
+        "name": "Ron Santiago de Cuba Añejo 8-Year-Old Rum",
         "qty": "50ml"
       },
       {
@@ -2063,7 +2063,7 @@ if (typeof window.registerCocktails === 'function') {
     "garnish": "Lime wedge",
     "ingredients": [
       {
-        "name": "Ron Santiago de Cuba A\u00c3\u0192\u00c6\u2019\u00c3\u201a\u00c2\u00b1ejo 8yo",
+        "name": "Ron Santiago de Cuba Añejo 8-Year-Old Rum",
         "qty": "50ml"
       },
       {
@@ -2397,7 +2397,7 @@ if (typeof window.registerCocktails === 'function') {
     "garnish": "Lime wedge",
     "ingredients": [
       {
-        "name": "Ron Santiago de Cuba A\u00c3\u0192\u00c6\u2019\u00c3\u201a\u00c2\u00b1ejo 8yo",
+        "name": "Ron Santiago de Cuba Añejo 8-Year-Old Rum",
         "qty": "30ml"
       },
       {
@@ -2932,7 +2932,7 @@ if (typeof window.registerCocktails === 'function') {
     "garnish": "Lime wedge and 3 dash angostura bitters",
     "ingredients": [
       {
-        "name": "Ron Santiago de Cuba A\u00c3\u0192\u00c6\u2019\u00c3\u201a\u00c2\u00b1ejo 8yo",
+        "name": "Ron Santiago de Cuba Añejo 8-Year-Old Rum",
         "qty": "50ml"
       },
       {
@@ -3283,7 +3283,7 @@ if (typeof window.registerCocktails === 'function') {
     "garnish": "Lime wedge",
     "ingredients": [
       {
-        "name": "Ron Santiago de Cuba A\u00c3\u0192\u00c6\u2019\u00c3\u201a\u00c2\u00b1ejo 8yo",
+        "name": "Ron Santiago de Cuba Añejo 8-Year-Old Rum",
         "qty": "45ml"
       },
       {
@@ -3584,7 +3584,7 @@ if (typeof window.registerCocktails === 'function') {
         "qty": "20ml"
       },
       {
-        "name": "Ron Santiago de Cuba A\u00c3\u0192\u00c6\u2019\u00c3\u201a\u00c2\u00b1ejo 8yo",
+        "name": "Ron Santiago de Cuba Añejo 8-Year-Old Rum",
         "qty": "20ml"
       },
       {
@@ -3808,7 +3808,7 @@ if (typeof window.registerCocktails === 'function') {
     "garnish": "Mint leaf",
     "ingredients": [
       {
-        "name": "Ron Santiago de Cuba A\u00c3\u0192\u00c6\u2019\u00c3\u201a\u00c2\u00b1ejo 8yo",
+        "name": "Ron Santiago de Cuba Añejo 8-Year-Old Rum",
         "qty": "50ml"
       },
       {
@@ -4320,7 +4320,7 @@ if (typeof window.registerCocktails === 'function') {
     "garnish": "Lime wedge",
     "ingredients": [
       {
-        "name": "Ron Santiago de Cuba A\u00c3\u0192\u00c6\u2019\u00c3\u201a\u00c2\u00b1ejo 8yo",
+        "name": "Ron Santiago de Cuba Añejo 8-Year-Old Rum",
         "qty": "50ml"
       },
       {
