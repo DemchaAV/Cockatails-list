@@ -277,90 +277,91 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <!-- Form Section -->
-            <div class="form-section p-6 rounded-2xl shadow-lg">
-                <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-6">✨ Add New Cocktail</h2>
+            <div class="form-section p-4 sm:p-6 rounded-2xl shadow-lg">
+                <h2 class="text-xl sm:text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4">✨ Add New Cocktail</h2>
 
-                <form id="cocktailForm" class="space-y-6">
-                    <!-- Basic Info -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <form id="cocktailForm" class="space-y-3">
+                    <!-- Name & Category - always 2 columns on mobile -->
+                    <div class="grid grid-cols-2 gap-2">
                         <div>
-                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Name
+                            <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">Name
                                 *</label>
                             <input type="text" id="cocktailName" required
-                                class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white"
-                                placeholder="e.g., Time for Tea">
+                                class="w-full p-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white"
+                                placeholder="Cocktail name">
                         </div>
                         <div>
-                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Category
+                            <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">Category
                                 *</label>
                             <select id="cocktailCategory" required
-                                class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white">
-                                <option value="">Select category</option>
+                                class="w-full p-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white">
+                                <option value="">Select</option>
                                 <!-- Options will be rendered here by JS -->
                             </select>
                         </div>
                     </div>
 
-                    <!-- Method, Glass, Ice, Garnish -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Method & Glass -->
+                    <div class="grid grid-cols-2 gap-2">
                         <div>
                             <label
-                                class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Method</label>
+                                class="block text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">Method</label>
                             <input type="text" id="cocktailMethod"
-                                class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white"
-                                placeholder="e.g., Wet/dry Shake">
+                                class="w-full p-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white"
+                                placeholder="Shake/Stir">
                         </div>
                         <div>
                             <label
-                                class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Glass</label>
+                                class="block text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">Glass</label>
                             <input type="text" id="cocktailGlass"
-                                class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white"
-                                placeholder="e.g., Savage Pony">
+                                class="w-full p-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white"
+                                placeholder="Glass type">
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Ice & Garnish -->
+                    <div class="grid grid-cols-2 gap-2">
                         <div>
-                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Ice</label>
+                            <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">Ice</label>
                             <input type="text" id="cocktailIce"
-                                class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white"
-                                placeholder="e.g., no ice">
+                                class="w-full p-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white"
+                                placeholder="No ice/Cubed">
                         </div>
                         <div>
                             <label
-                                class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Garnish</label>
+                                class="block text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">Garnish</label>
                             <input type="text" id="cocktailGarnish"
-                                class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white"
-                                placeholder="e.g., Peychauds bitters hearts">
+                                class="w-full p-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white"
+                                placeholder="Garnish">
                         </div>
                     </div>
 
                     <!-- Allergens -->
                     <div>
                         <label
-                            class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Allergens</label>
+                            class="block text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">Allergens</label>
                         <input type="text" id="cocktailAllergens"
-                            class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white"
-                            placeholder="Leave empty for null, or list allergens">
+                            class="w-full p-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all dark:bg-gray-700 dark:text-white"
+                            placeholder="e.g., MILK, EGGS (or leave empty)">
                     </div>
 
                     <!-- Ingredients Section -->
                     <div>
-                        <div class="flex justify-between items-center mb-4">
-                            <label class="text-sm font-semibold text-gray-700 dark:text-gray-300">Ingredients *</label>
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="text-xs font-semibold text-gray-500 dark:text-gray-400">Ingredients *</label>
                             <button type="button" id="addIngredientBtn"
-                                class="add-ingredient-btn text-white px-4 py-2 rounded-lg font-medium shadow-md">
-                                + Add Ingredient
+                                class="add-ingredient-btn text-white text-xs px-3 py-1.5 rounded-lg font-medium shadow-md">
+                                + Add
                             </button>
                         </div>
-                        <div id="ingredientsList" class="space-y-3">
+                        <div id="ingredientsList" class="space-y-2">
                             <!-- Ingredients will be added here -->
                         </div>
                     </div>
 
                     <!-- Submit Button -->
                     <button type="submit"
-                        class="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 rounded-lg transition-all transform hover:scale-105 shadow-lg">
+                        class="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 rounded-lg transition-all shadow-lg">
                         🎯 Add Cocktail
                     </button>
                 </form>
@@ -577,7 +578,7 @@
 
         function addIngredientRow(name = '', qty = '') {
             const div = document.createElement('div');
-            div.className = 'ingredient-item flex gap-3 items-center bg-white dark:bg-gray-700 p-3 rounded-lg border border-gray-200 dark:border-gray-600';
+            div.className = 'ingredient-item flex gap-2 items-center bg-white dark:bg-gray-700 p-2 rounded-lg border border-gray-200 dark:border-gray-600';
             div.innerHTML = `
                 <div class="flex-1">
                     <input type="text" placeholder="Ingredient name" value="${name}"
