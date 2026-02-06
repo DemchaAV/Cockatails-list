@@ -1,6 +1,7 @@
 // Category: signature
 if (typeof window.registerCocktails === 'function') {
     window.registerCocktails('signature', [
+<<<<<<< HEAD
   {
     "id": "classic-margarita",
     "name": "Margarita",
@@ -24,6 +25,8 @@ if (typeof window.registerCocktails === 'function') {
       }
     ]
   },
+=======
+>>>>>>> 44a27f15ce89f14e2e5dd0b62d97c88c4c34efca
   {
     "id": "pomelle-spritz",
     "name": "Pomelle Spritz",
