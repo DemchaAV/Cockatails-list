@@ -181,7 +181,7 @@ if (typeof window.registerCocktails === 'function') {
   },
   {
     "id": "sc-margarita",
-    "name": "SC Margarita",
+    "name": "SC Margarita 65ml",
     "category": "signature",
     "method": "Shake",
     "glass": "Nick&Nora/ Rocks",
@@ -282,7 +282,7 @@ if (typeof window.registerCocktails === 'function') {
   },
   {
     "id": "old-fashioned",
-    "name": "Old Fashioned",
+    "name": "SC Old Fashioned 55ml",
     "category": "signature",
     "method": "Stir",
     "glass": "Rocks",
@@ -321,7 +321,7 @@ if (typeof window.registerCocktails === 'function') {
   },
   {
     "id": "vesper",
-    "name": "Vesper",
+    "name": "Vesper 70ml",
     "category": "signature",
     "method": "Royal Shake",
     "glass": "Caprice Coupette",
@@ -402,7 +402,7 @@ if (typeof window.registerCocktails === 'function') {
   },
   {
     "id": "scotch-and-honey",
-    "name": "Scotch & Honey",
+    "name": "Scotch & Honey 50ml",
     "category": "signature",
     "method": "Stir",
     "glass": "Savage Low Ball",
@@ -433,7 +433,7 @@ if (typeof window.registerCocktails === 'function') {
   },
   {
     "id": "cherry-collins",
-    "name": "Cherry Collins",
+    "name": "Cherry Collins 45ml",
     "category": "signature",
     "method": "Shake",
     "glass": "Savage Highball",
