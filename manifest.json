@@ -2,7 +2,8 @@
   "name": "Cocktail List",
   "short_name": "Cocktails",
   "description": "Cocktail catalog with recipes, builder and training quiz",
-  "start_url": "/",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#0f172a",
   "theme_color": "#0ea5e9",
@@ -15,7 +16,10 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["food", "lifestyle"],
+  "categories": [
+    "food",
+    "lifestyle"
+  ],
   "shortcuts": [
     {
       "name": "Catalog",
