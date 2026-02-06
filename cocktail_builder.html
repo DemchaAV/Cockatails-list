@@ -380,18 +380,18 @@
                             </button>
                             <button id="downloadBtn" type="button"
                                 class="download-btn text-white px-4 py-2 rounded-lg font-medium shadow-md flex flex-col items-center justify-center">
-                                <span>📥</span>
-                                <span>Download JS file</span>
+                                <span>📤</span>
+                                <span>Export</span>
                             </button>
                             <button id="uploadJsFileGuiBtn" type="button"
                                 class="download-btn text-white px-4 py-2 rounded-lg font-medium shadow-md cursor-pointer flex flex-col items-center justify-center">
-                                <span>⬆️</span>
-                                <span>Upload JS file</span>
+                                <span>📥</span>
+                                <span>Import</span>
                             </button>
                             <button id="loadFromUrlBtn" type="button"
                                 class="download-btn text-white px-4 py-2 rounded-lg font-medium shadow-md cursor-pointer flex flex-col items-center justify-center">
                                 <span>🔗</span>
-                                <span>Load from URL</span>
+                                <span>Import from URL</span>
                             </button>
                             <input type="file" id="uploadFile" accept=".js" style="display:none">
                         </div>
@@ -606,9 +606,12 @@
         function renderCocktails() {
             let filteredCocktails = [...cocktails];
 
-            // Filter by active category
+            // Filter by active category (case-insensitive)
             if (activeCategory !== 'all') {
-                filteredCocktails = filteredCocktails.filter(c => c.category === activeCategory);
+                const activeCatLower = activeCategory.toLowerCase();
+                filteredCocktails = filteredCocktails.filter(c =>
+                    c.category && c.category.toLowerCase() === activeCatLower
+                );
             }
 
             // Filter by search term (name)
@@ -689,34 +692,47 @@
         }
 
         function downloadJS() {
-            // Default to active category if it's not 'all'
-            const defaultName = activeCategory !== 'all' ? activeCategory : 'new-category';
+            let categoryName;
+            let dataToExport;
 
-            const categoryName = prompt("Enter the category name (ID) for this file.\nThis will be used as the filename and internal ID.", defaultName);
+            // If a specific category is selected, export only that category
+            if (activeCategory !== 'all') {
+                categoryName = activeCategory;
+                const catLower = categoryName.toLowerCase();
+                dataToExport = cocktails.filter(c =>
+                    c.category && c.category.toLowerCase() === catLower
+                );
 
-            if (!categoryName) return;
+                if (dataToExport.length === 0) {
+                    alert(`No cocktails found in category '${categoryName}'.`);
+                    return;
+                }
+            } else {
+                // If "all" is selected, ask which category to export
+                categoryName = prompt("Enter the category name to export.\nThis will be used as the filename.", 'new-category');
 
-            let dataToExport = cocktails;
+                if (!categoryName) return;
 
-            // Allow user to decide scope: All vs Filtered
-            // If likely creating a new list from scratch (which is common), exporting ALL as the new category is helpful.
-            if (cocktails.length > 0) {
-                const exportAll = confirm(`Export ALL ${cocktails.length} cocktails as '${categoryName}'?\n\n[OK] Yes, export all (and set their category to '${categoryName}').\n[Cancel] No, only export cocktails currently labeled '${categoryName}'.`);
+                // Check if category exists
+                const existingCocktails = cocktails.filter(c => c.category === categoryName);
 
-                if (!exportAll) {
-                    dataToExport = cocktails.filter(c => c.category === categoryName);
-                    if (dataToExport.length === 0) {
-                        alert(`No cocktails found with category '${categoryName}'.`);
-                        return;
-                    }
+                if (existingCocktails.length > 0) {
+                    // Export existing category
+                    dataToExport = existingCocktails;
                 } else {
-                    // Override category for export consistency
-                    dataToExport = dataToExport.map(c => ({
+                    // Ask if they want to export all as new category
+                    const exportAll = confirm(`Category '${categoryName}' doesn't exist.\n\nExport ALL ${cocktails.length} cocktails as '${categoryName}'?`);
+
+                    if (!exportAll) return;
+
+                    dataToExport = cocktails.map(c => ({
                         ...c,
                         category: categoryName
                     }));
                 }
-            } else {
+            }
+
+            if (dataToExport.length === 0) {
                 alert('No cocktails to export!');
                 return;
             }
@@ -731,6 +747,7 @@ if (typeof window.registerCocktails === 'function') {
 }
 `;
             downloadString(jsContent, `${categoryName}.js`);
+            alert(`Exported ${dataToExport.length} cocktails as '${categoryName}.js'`);
         }
 
         function downloadString(content, filename) {
