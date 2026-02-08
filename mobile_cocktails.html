@@ -340,7 +340,13 @@
                         <div class="text-sky-600 dark:text-sky-400 font-semibold text-sm">Garnish</div>
                         <div id="detailGarnish" class="text-gray-800 dark:text-gray-200 text-sm"></div>
                     </div>
-                </div> <!-- Ингредиенты -->
+                </div>
+                <!-- Allergens -->
+                <div id="allergensContainer" class="bg-red-50 dark:bg-red-900/30 p-4 rounded-lg hidden">
+                    <h3 class="text-lg font-semibold text-red-600 dark:text-red-400 mb-2">⚠️ Allergens</h3>
+                    <div id="detailAllergens" class="text-red-700 dark:text-red-300 font-medium"></div>
+                </div>
+                <!-- Ингредиенты -->
                 <div class="bg-sky-50 dark:bg-sky-900/30 p-4 rounded-lg">
                     <h3 class="text-lg font-semibold text-sky-700 dark:text-sky-400 mb-3">📝 Ingredients</h3>
                     <ul id="detailIngredients" class="space-y-2"> </ul>
@@ -412,7 +418,8 @@
 
         function showCocktailDetails(cocktailId) {
             const { detailNameH2, detailMethodSpan, detailGlassSpan, detailIceSpan,
-                detailGarnishSpan, detailIngredientsUl, modalBackdrop, cocktailDetailViewDiv } = window.domElements || {};
+                detailGarnishSpan, detailIngredientsUl, modalBackdrop, cocktailDetailViewDiv,
+                allergensContainer, detailAllergens } = window.domElements || {};
             const cocktail = (window.allCocktails || []).find(c => c.id === cocktailId);
             if (!cocktail) {
                 console.error("Cocktail not found:", cocktailId);
@@ -423,6 +430,15 @@
             if (detailGlassSpan) detailGlassSpan.textContent = cocktail.glass || 'N/A';
             if (detailIceSpan) detailIceSpan.textContent = cocktail.ice || 'N/A';
             if (detailGarnishSpan) detailGarnishSpan.textContent = cocktail.garnish || 'N/A';
+            // Show allergens if present
+            if (allergensContainer && detailAllergens) {
+                if (cocktail.allergens && cocktail.allergens.trim()) {
+                    detailAllergens.textContent = cocktail.allergens;
+                    allergensContainer.classList.remove('hidden');
+                } else {
+                    allergensContainer.classList.add('hidden');
+                }
+            }
             if (detailIngredientsUl) {
                 detailIngredientsUl.innerHTML = '';
                 if (cocktail.ingredients && cocktail.ingredients.length > 0) {
@@ -519,12 +535,16 @@
             const closeDetailsButton = document.getElementById('closeDetails');
             const filterContainer = document.getElementById('filterContainer');
 
+            // Get allergens elements
+            const allergensContainer = document.getElementById('allergensContainer');
+            const detailAllergens = document.getElementById('detailAllergens');
+
             // Make DOM elements globally accessible for functions
             window.domElements = {
                 searchBoxEl, cocktailListUl, noResultsLi, cocktailDetailViewDiv,
                 modalBackdrop, detailNameH2, detailMethodSpan, detailGlassSpan,
                 detailIceSpan, detailGarnishSpan, detailIngredientsUl,
-                closeDetailsButton, filterContainer
+                closeDetailsButton, filterContainer, allergensContainer, detailAllergens
             };
 
             // Touch handling for swipe down
