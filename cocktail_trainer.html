@@ -201,19 +201,32 @@
                     <h2 class="text-lg font-semibold text-center mb-3">Question Type</h2>
                     <div id="typeSelect" class="flex flex-wrap justify-center gap-2">
                         <button data-type="mix"
-                            class="filter-btn active bg-gray-700 text-gray-300 px-4 py-2 rounded-xl font-medium">Mix</button>
+                            class="filter-btn active bg-gray-700 text-gray-300 px-4 py-2 rounded-xl font-medium">🎲
+                            Mix</button>
                         <button data-type="ingredients"
-                            class="filter-btn bg-gray-700 text-gray-300 px-4 py-2 rounded-xl font-medium">Ingredients</button>
+                            class="filter-btn bg-gray-700 text-gray-300 px-4 py-2 rounded-xl font-medium">🧪
+                            Ingredients</button>
                         <button data-type="glass"
-                            class="filter-btn bg-gray-700 text-gray-300 px-4 py-2 rounded-xl font-medium">Glass</button>
+                            class="filter-btn bg-gray-700 text-gray-300 px-4 py-2 rounded-xl font-medium">🥃
+                            Glass</button>
                         <button data-type="garnish"
-                            class="filter-btn bg-gray-700 text-gray-300 px-4 py-2 rounded-xl font-medium">Garnish</button>
+                            class="filter-btn bg-gray-700 text-gray-300 px-4 py-2 rounded-xl font-medium">🍋
+                            Garnish</button>
                         <button data-type="ice"
-                            class="filter-btn bg-gray-700 text-gray-300 px-4 py-2 rounded-xl font-medium">Ice</button>
+                            class="filter-btn bg-gray-700 text-gray-300 px-4 py-2 rounded-xl font-medium">🧊
+                            Ice</button>
                         <button data-type="method"
-                            class="filter-btn bg-gray-700 text-gray-300 px-4 py-2 rounded-xl font-medium">Method</button>
+                            class="filter-btn bg-gray-700 text-gray-300 px-4 py-2 rounded-xl font-medium">🔄
+                            Method</button>
                         <button data-type="qty"
-                            class="filter-btn bg-gray-700 text-gray-300 px-4 py-2 rounded-xl font-medium">Quantity</button>
+                            class="filter-btn bg-gray-700 text-gray-300 px-4 py-2 rounded-xl font-medium">📏
+                            Quantity</button>
+                        <button data-type="allergens"
+                            class="filter-btn bg-gray-700 text-gray-300 px-4 py-2 rounded-xl font-medium">⚠️
+                            Allergens</button>
+                        <button data-type="reverse"
+                            class="filter-btn bg-gray-700 text-gray-300 px-4 py-2 rounded-xl font-medium">🔮 Name
+                            It</button>
                     </div>
                 </div>
             </div>
@@ -506,7 +519,7 @@
             // Determine question type
             let type = selectedType;
             if (type === 'mix') {
-                const types = ['ingredients', 'glass', 'garnish', 'ice', 'method'];
+                const types = ['ingredients', 'glass', 'garnish', 'ice', 'method', 'qty'];
                 type = types[Math.floor(Math.random() * types.length)];
             }
 
@@ -517,13 +530,13 @@
             if (type === 'ingredients') {
                 questionBlock.innerHTML = `What are the ingredients in ${name}?`;
             } else if (type === 'glass') {
-                questionBlock.innerHTML = `What glass for ${name}?`;
+                questionBlock.innerHTML = `What glass is used for ${name}?`;
             } else if (type === 'garnish') {
-                questionBlock.innerHTML = `What garnish for ${name}?`;
+                questionBlock.innerHTML = `What is the garnish for ${name}?`;
             } else if (type === 'ice') {
-                questionBlock.innerHTML = `What ice for ${name}?`;
+                questionBlock.innerHTML = `What type of ice is used in ${name}?`;
             } else if (type === 'method') {
-                questionBlock.innerHTML = `What method for ${name}?`;
+                questionBlock.innerHTML = `What is the preparation method for ${name}?`;
             } else if (type === 'qty') {
                 if (!cocktail.ingredients || !cocktail.ingredients.length) {
                     sessionQueue.push(cocktail); // Re-add and try another
@@ -532,7 +545,23 @@
                 }
                 const ing = cocktail.ingredients[Math.floor(Math.random() * cocktail.ingredients.length)];
                 currentQuestion.ingredient = ing;
-                questionBlock.innerHTML = `How much <span class="text-amber-400 font-bold">${ing.name}</span> in ${name}?`;
+                questionBlock.innerHTML = `How much <span class="text-amber-400 font-bold">${ing.name}</span> goes in ${name}?`;
+            } else if (type === 'allergens') {
+                if (!cocktail.allergens) {
+                    sessionQueue.push(cocktail); // Re-add and try another
+                    nextQuestion();
+                    return;
+                }
+                questionBlock.innerHTML = `What allergens are in ${name}?`;
+            } else if (type === 'reverse') {
+                // Show ingredients, guess the cocktail name
+                if (!cocktail.ingredients || cocktail.ingredients.length < 2) {
+                    sessionQueue.push(cocktail);
+                    nextQuestion();
+                    return;
+                }
+                const ingList = cocktail.ingredients.map(i => `<span class="text-amber-400">${i.name}</span>`).join(', ');
+                questionBlock.innerHTML = `Name the cocktail with these ingredients:<br><span class="text-base mt-2 block">${ingList}</span>`;
             }
 
             updateProgress();
@@ -550,15 +579,19 @@
                         `<li>• <span class="font-semibold">${ing.name}</span> <span class="text-gray-400 text-sm">(${ing.qty})</span></li>`
                     ).join('') + '</ul>';
             } else if (type === 'glass') {
-                answerHtml = `<span class="text-2xl font-bold">${cocktail.glass || 'N/A'}</span>`;
+                answerHtml = `<span class="text-2xl font-bold">🥃 ${cocktail.glass || 'N/A'}</span>`;
             } else if (type === 'garnish') {
-                answerHtml = `<span class="text-2xl font-bold">${cocktail.garnish || 'N/A'}</span>`;
+                answerHtml = `<span class="text-2xl font-bold">🍋 ${cocktail.garnish || 'N/A'}</span>`;
             } else if (type === 'ice') {
-                answerHtml = `<span class="text-2xl font-bold">${cocktail.ice || 'N/A'}</span>`;
+                answerHtml = `<span class="text-2xl font-bold">🧊 ${cocktail.ice || 'N/A'}</span>`;
             } else if (type === 'method') {
-                answerHtml = `<span class="text-2xl font-bold">${cocktail.method || 'N/A'}</span>`;
+                answerHtml = `<span class="text-2xl font-bold">🔄 ${cocktail.method || 'N/A'}</span>`;
             } else if (type === 'qty') {
-                answerHtml = `<span class="text-2xl font-bold">${ingredient.qty}</span>`;
+                answerHtml = `<span class="text-2xl font-bold">📏 ${ingredient.qty}</span>`;
+            } else if (type === 'allergens') {
+                answerHtml = `<span class="text-2xl font-bold text-orange-400">⚠️ ${cocktail.allergens || 'None'}</span>`;
+            } else if (type === 'reverse') {
+                answerHtml = `<span class="text-2xl font-bold text-sky-400">🍸 ${cocktail.name}</span>`;
             }
 
             answerBlock.innerHTML = answerHtml;

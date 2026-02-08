@@ -1,5 +1,5 @@
 // Service Worker for Cocktail List PWA
-const CACHE_NAME = 'cocktails-v4.0.2';
+const CACHE_NAME = 'cocktails-v4.0.3';
 const urlsToCache = [
   './',
   './index.html',
