@@ -388,7 +388,7 @@ if (typeof window.registerCocktails === 'function') {
           "qty": "100ml"
         }
       ],
-      "allergens": "SULPHITES, TREE NUTS, PEANUTS"
+      "allergens": "SULPHITES, TREE NUTS, PEANUTS, NUTS"
     },
     {
       "id": "bloody-mary-mix",

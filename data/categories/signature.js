@@ -45,7 +45,8 @@ if (typeof window.registerCocktails === 'function') {
           "name": "Prosseco",
           "qty": "80ml"
         }
-      ]
+      ],
+      "allergens": "SULPHITES"
     },
     {
       "id": "twinkle",
@@ -68,7 +69,8 @@ if (typeof window.registerCocktails === 'function') {
           "name": "Henriot",
           "qty": "60ml"
         }
-      ]
+      ],
+      "allergens": "SULPHITES"
     },
     {
       "id": "white-negroni",
@@ -547,7 +549,8 @@ if (typeof window.registerCocktails === 'function') {
             "name": "Prosseco",
             "qty": "80ml"
           }
-        ]
+        ],
+        "allergens": "SULPHITES"
       },
       {
         "id": "twinkle",
@@ -570,7 +573,8 @@ if (typeof window.registerCocktails === 'function') {
             "name": "Henriot",
             "qty": "60ml"
           }
-        ]
+        ],
+        "allergens": "SULPHITES"
       },
       {
         "id": "white-negroni",
@@ -893,7 +897,7 @@ if (typeof window.registerCocktails === 'function') {
             "qty": "TBD"
           }
         ],
-        "allergens": null
+        "allergens": "SULPHITES"
       },
       {
         "id": "savy-tini",
