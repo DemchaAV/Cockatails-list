@@ -2282,6 +2282,34 @@ if (typeof window.registerCocktails === 'function') {
         }
       ],
       "allergens": "MILK"
+    },
+    {
+      "id": "bloody-mary-63898gs",
+      "name": "Bloody Mary",
+      "category": "classic",
+      "method": "Build",
+      "glass": "Hiball",
+      "ice": "Cubed",
+      "garnish": "Lemon wedge",
+      "ingredients": [
+        {
+          "name": "Vodka Ketel One",
+          "qty": "50ml"
+        },
+        {
+          "name": "Tomato Juice",
+          "qty": "90ml"
+        },
+        {
+          "name": "Mary Mix",
+          "qty": "15ml(Low), 25ml(Medium), 35ml(Spicy)"
+        },
+        {
+          "name": "Lemon Juice",
+          "qty": "10ml"
+        }
+      ],
+      "allergens": "MUSTARD, EGGS, FISH, CELERY, SULPHITES"
     }
   ]);
 } else {
