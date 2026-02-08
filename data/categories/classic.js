@@ -2704,7 +2704,7 @@ if (typeof window.registerCocktails === 'function') {
             "qty": "100ml"
           }
         ],
-        "allergens": "SULPHITES, TREE NUTS, PEANUTS"
+        "allergens": "SULPHITES, TREE NUTS, PEANUTS, NUTS"
       },
       {
         "id": "bloody-mary-63898gs",
@@ -2892,7 +2892,7 @@ if (typeof window.registerCocktails === 'function') {
             "qty": "30ml"
           }
         ],
-        "allergens": null
+        "allergens": "SULPHITES"
       },
       {
         "id": "caipirinha",
@@ -3667,7 +3667,7 @@ if (typeof window.registerCocktails === 'function') {
             "qty": "10ml"
           }
         ],
-        "allergens": "TREE NUTS"
+        "allergens": "TREE NUTS, NUTS"
       },
       {
         "id": "milano-torino",
@@ -3918,7 +3918,8 @@ if (typeof window.registerCocktails === 'function') {
             "name": "Lemon Juice",
             "qty": "20ml"
           }
-        ]
+        ],
+        "allergens": "SULPHITES"
       },
       {
         "id": "passionfruit-martini",
