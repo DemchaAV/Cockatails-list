@@ -1,0 +1,899 @@
+{
+  "scraped_source": "C:\\Users\\Demch\\OneDrive\\projects\\Food-list\\data\\viewthemenu_allergens.json",
+  "target_menu": "Drinks and wine menu",
+  "updated_files": [
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "updated": 10,
+      "total": 83
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\exam.js",
+      "updated": 4,
+      "total": 30
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\non-alcoholic.js",
+      "updated": 5,
+      "total": 5
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\signature.js",
+      "updated": 15,
+      "total": 16
+    }
+  ],
+  "summary": {
+    "files": 4,
+    "total_items": 134,
+    "updated_items": 34,
+    "exceptions_count": 100,
+    "match_methods": {
+      "matched_manual": 10,
+      "matched_exact": 24
+    }
+  },
+  "exceptions": [
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Aviation",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Amaretto Sour",
+      "category": "classic",
+      "candidates": [
+        "Sage Sour (0.64)"
+      ],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Absinthe Frappe",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Americano Cocktail",
+      "category": "classic",
+      "candidates": [
+        "Grapefruit Americano (0.62)"
+      ],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Airmail",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Bramble",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Bacardi Cocktail",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Bellini",
+      "category": "classic",
+      "candidates": [
+        "Virgini Bellini (0.64)"
+      ],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Black Russian",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Blood and Sand",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Brandy Crusta",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Brooklyn",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Black Velvet",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Bloody Mary Mix",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Boulevardier",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Buck's Fizz/Mimosa",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Champagne Cocktail",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Charlie Chaplin",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Caipirinha",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Clover Club",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Corpse Rev No.2",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Dark and Stormy",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Death in the Afternoon",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Elderflower Colins",
+      "category": "classic",
+      "candidates": [
+        "Cherry Collins (0.62)",
+        "Elderflower Spritz (0.72)"
+      ],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Espresso Martini",
+      "category": "classic",
+      "candidates": [
+        "Scott’s Vesper Martini (0.65)"
+      ],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "El Diablo",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "French Martini",
+      "category": "classic",
+      "candidates": [
+        "French 75 (0.61)"
+      ],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Gimlet",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Golden Dawn",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Hugo Spritz",
+      "category": "classic",
+      "candidates": [
+        "Pomelle Spritz (0.64)"
+      ],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Hemingway Daiquiri",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Horse's Neck",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Irish Coffee",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Jungle Bird",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Knickerbocker",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Kir Royal",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Long Island Iced Tea",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Last Word",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Martini",
+      "category": "classic",
+      "candidates": [
+        "Savy Tini (0.62)"
+      ],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Manhattan",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Mojito",
+      "category": "classic",
+      "candidates": [
+        "Virgin Mojito (0.63)"
+      ],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Penicillin (Torabhaig riff)",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Martinez",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Milano-Torino",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Mint Julep",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Moscow Mule",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Negroni Sbagliato",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Negroni",
+      "category": "classic",
+      "candidates": [
+        "White Negroni (0.70)"
+      ],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "New York Sour",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Old Fashioned",
+      "category": "classic",
+      "candidates": [
+        "Scott’s Old Fashioned (0.79)"
+      ],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Old Pal",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Old Cuban",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Paper Plane",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Passionfruit Martini",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Pisco Sour",
+      "category": "classic",
+      "candidates": [
+        "Sage Sour (0.63)"
+      ],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Pina Colada",
+      "category": "classic",
+      "candidates": [
+        "Virgin Pina Colada (0.76)"
+      ],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Rusty Nail",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Ramos Gin Fizz",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Rattlesnake",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Rob Roy",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Southside Fizz",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Sidecar",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Screwdriver",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Tom Collins",
+      "category": "classic",
+      "candidates": [
+        "Cherry Collins (0.64)"
+      ],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Treacle",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Tuxedo",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Margarita",
+      "category": "signature",
+      "candidates": [
+        "Mai Tai (0.62)",
+        "Scott’s Margarita (0.72)"
+      ],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Tommy's Margarita",
+      "category": "classic",
+      "candidates": [
+        "Scott’s Margarita (0.73)"
+      ],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Vieux Carre",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Whiskey Sour",
+      "category": "classic",
+      "candidates": [
+        "Sage Sour (0.67)"
+      ],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "White Lady",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "White Russian",
+      "category": "classic",
+      "candidates": [
+        "White Negroni (0.62)"
+      ],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\classic.js",
+      "status": "not_found",
+      "name": "Bloody Mary",
+      "category": "classic",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\exam.js",
+      "status": "not_found",
+      "name": "Amaretto Sour",
+      "category": "Exam",
+      "candidates": [
+        "Sage Sour (0.64)"
+      ],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\exam.js",
+      "status": "not_found",
+      "name": "Bellini",
+      "category": "Exam",
+      "candidates": [
+        "Virgini Bellini (0.64)"
+      ],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\exam.js",
+      "status": "not_found",
+      "name": "Bloody Mary",
+      "category": "Exam",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\exam.js",
+      "status": "not_found",
+      "name": "Espresso Martini",
+      "category": "Exam",
+      "candidates": [
+        "Scott’s Vesper Martini (0.65)"
+      ],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\exam.js",
+      "status": "not_found",
+      "name": "Irish Coffee",
+      "category": "Exam",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\exam.js",
+      "status": "not_found",
+      "name": "Manhattan",
+      "category": "Exam",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\exam.js",
+      "status": "not_found",
+      "name": "Tommy's Margarita",
+      "category": "Exam",
+      "candidates": [
+        "Scott’s Margarita (0.73)"
+      ],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\exam.js",
+      "status": "not_found",
+      "name": "Mojito",
+      "category": "Exam",
+      "candidates": [
+        "Virgin Mojito (0.63)"
+      ],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\exam.js",
+      "status": "not_found",
+      "name": "Moscow Mule",
+      "category": "Exam",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\exam.js",
+      "status": "not_found",
+      "name": "Old Cuban",
+      "category": "Exam",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\exam.js",
+      "status": "not_found",
+      "name": "Passionfruit Martini",
+      "category": "Exam",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\exam.js",
+      "status": "not_found",
+      "name": "Paper Plane",
+      "category": "Exam",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\exam.js",
+      "status": "not_found",
+      "name": "Pina Colada",
+      "category": "Exam",
+      "candidates": [
+        "Virgin Pina Colada (0.76)"
+      ],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\exam.js",
+      "status": "not_found",
+      "name": "Penicillin (Torabhaig riff)",
+      "category": "Exam",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\exam.js",
+      "status": "not_found",
+      "name": "Pisco Sour",
+      "category": "Exam",
+      "candidates": [
+        "Sage Sour (0.63)"
+      ],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\exam.js",
+      "status": "not_found",
+      "name": "Martini",
+      "category": "Exam",
+      "candidates": [
+        "Savy Tini (0.62)"
+      ],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\exam.js",
+      "status": "not_found",
+      "name": "Whiskey Sour",
+      "category": "Exam",
+      "candidates": [
+        "Sage Sour (0.67)"
+      ],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\exam.js",
+      "status": "not_found",
+      "name": "White Russian",
+      "category": "Exam",
+      "candidates": [
+        "White Negroni (0.62)"
+      ],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\exam.js",
+      "status": "not_found",
+      "name": "Sidecar",
+      "category": "Exam",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\exam.js",
+      "status": "not_found",
+      "name": "Bramble",
+      "category": "Exam",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\exam.js",
+      "status": "not_found",
+      "name": "Caipirinha",
+      "category": "Exam",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\exam.js",
+      "status": "not_found",
+      "name": "Champagne Cocktail",
+      "category": "Exam",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\exam.js",
+      "status": "not_found",
+      "name": "Dark and Stormy",
+      "category": "Exam",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\exam.js",
+      "status": "not_found",
+      "name": "Last Word",
+      "category": "Exam",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\exam.js",
+      "status": "not_found",
+      "name": "Black Velvet",
+      "category": "Exam",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\exam.js",
+      "status": "not_found",
+      "name": "Southside Fizz",
+      "category": "Exam",
+      "candidates": [],
+      "used_key": ""
+    },
+    {
+      "file": "C:\\Users\\Demch\\OneDrive\\projects\\CockatailList\\Cockatails-list\\data\\categories\\signature.js",
+      "status": "not_found",
+      "name": "Margarita",
+      "category": "signature",
+      "candidates": [
+        "Mai Tai (0.62)",
+        "Scott’s Margarita (0.72)"
+      ],
+      "used_key": ""
+    }
+  ]
+}
