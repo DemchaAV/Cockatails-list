@@ -143,6 +143,13 @@
             margin: 0 auto;
         }
 
+        .learning-card {
+            background: linear-gradient(135deg, #132033 0%, #0b1220 100%);
+            border: 1px solid rgba(14, 165, 233, 0.14);
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 32px rgba(0, 0, 0, 0.28);
+        }
+
         /* Swipe animations */
         .swipe-left {
             transform: translateX(-120%) rotate(-8deg);
@@ -271,6 +278,23 @@
                             <span class="material-symbols-outlined text-sm">help</span> Name It</button>
                     </div>
                 </div>
+
+                <div class="mb-6">
+                    <h2 class="text-sm font-semibold text-center mb-2 text-slate-400 flex items-center justify-center gap-1.5">
+                        <span class="material-symbols-outlined text-primary text-sm">school</span>
+                        Learning Flow
+                    </h2>
+                    <div id="flowSelect" class="flex flex-wrap justify-center gap-2">
+                        <button data-flow="cards-quiz"
+                            class="filter-btn active bg-card-dark text-slate-300 px-4 py-2 rounded-xl text-sm font-medium flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-sm">style</span> Cards + Quiz
+                        </button>
+                        <button data-flow="quiz-only"
+                            class="filter-btn bg-card-dark text-slate-300 px-4 py-2 rounded-xl text-sm font-medium flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-sm">bolt</span> Quiz only
+                        </button>
+                    </div>
+                </div>
             </div>
 
             <!-- Start Button -->
@@ -282,6 +306,87 @@
                     class="btn-primary w-full text-white py-4 rounded-xl font-bold text-lg shadow-lg flex items-center justify-center gap-2">
                     <span class="material-symbols-outlined">rocket_launch</span> Start Training
                 </button>
+            </div>
+        </div>
+
+        <!-- ============ FLASHCARD SCREEN ============ -->
+        <div id="flashcardScreen" class="screen p-4">
+            <div class="mb-4">
+                <div class="flex justify-between items-center mb-2">
+                    <button id="exitFlashcardsBtn" class="text-slate-400 hover:text-white text-sm flex items-center gap-1">
+                        ← Exit
+                    </button>
+                    <div id="flashcardProgressText" class="text-sm font-medium text-slate-300">0/0</div>
+                    <div class="flex gap-2">
+                        <span class="stat-badge bg-green-900/50 text-green-400 px-3 py-1 rounded-full text-sm font-semibold">
+                            ✓ <span id="flashKnownCount">0</span>
+                        </span>
+                        <span class="stat-badge bg-amber-900/50 text-amber-400 px-3 py-1 rounded-full text-sm font-semibold">
+                            ↺ <span id="flashReviewCount">0</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="progress-container">
+                    <div id="flashcardProgressBar" class="progress-bar" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <div class="flex-1 flex items-center justify-center">
+                <div class="learning-card w-full p-5 md:p-6">
+                    <div class="flex items-start justify-between gap-3 mb-3">
+                        <div>
+                            <h2 id="flashCardName" class="text-2xl font-bold text-primary"></h2>
+                            <div class="mt-1 flex flex-wrap items-center gap-2">
+                                <span id="flashCardCategory"
+                                    class="px-2 py-0.5 bg-primary/10 border border-primary/20 rounded-full text-xs text-primary"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 mb-4">
+                        <div class="bg-primary/5 border border-primary/20 p-3 rounded-xl">
+                            <div class="text-primary font-semibold text-xs uppercase tracking-wide">Method</div>
+                            <div id="flashCardMethod" class="text-slate-200 text-sm mt-1"></div>
+                        </div>
+                        <div class="bg-primary/5 border border-primary/20 p-3 rounded-xl">
+                            <div class="text-primary font-semibold text-xs uppercase tracking-wide">Glass</div>
+                            <div id="flashCardGlass" class="text-slate-200 text-sm mt-1"></div>
+                        </div>
+                        <div class="bg-primary/5 border border-primary/20 p-3 rounded-xl">
+                            <div class="text-primary font-semibold text-xs uppercase tracking-wide">Ice</div>
+                            <div id="flashCardIce" class="text-slate-200 text-sm mt-1"></div>
+                        </div>
+                        <div class="bg-primary/5 border border-primary/20 p-3 rounded-xl">
+                            <div class="text-primary font-semibold text-xs uppercase tracking-wide">Garnish</div>
+                            <div id="flashCardGarnish" class="text-slate-200 text-sm mt-1"></div>
+                        </div>
+                    </div>
+
+                    <div class="bg-card-dark/70 border border-primary/15 rounded-xl p-3 mb-4">
+                        <div class="text-slate-400 text-xs uppercase tracking-wide mb-2">Ingredients</div>
+                        <ul id="flashCardIngredients" class="space-y-1.5 text-sm"></ul>
+                    </div>
+
+                    <div id="flashCardAllergensWrap" class="hidden mb-4">
+                        <span id="flashCardAllergens"
+                            class="inline-flex items-center gap-1.5 px-2 py-1 bg-amber-500/10 border border-amber-400/30 rounded-full text-xs text-amber-300"></span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 pt-1">
+                        <button id="flashNotYetBtn"
+                            class="btn-danger text-white py-3 rounded-xl font-semibold shadow-lg flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined">refresh</span> Not Yet
+                        </button>
+                        <button id="flashKnowBtn"
+                            class="btn-success text-white py-3 rounded-xl font-semibold shadow-lg flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined">check</span> Know It
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center text-slate-500 text-xs pb-2">
+                Review cards first, then auto-start quiz
             </div>
         </div>
 
@@ -422,16 +527,43 @@
         let currentQuestion = null;
         let selectedCategory = 'all';
         let selectedType = 'mix';
+        let selectedFlow = 'cards-quiz';
+
+        // Flashcards state
+        let flashcardQueue = [];
+        let flashcardKnown = [];
+        let flashcardReview = [];
+        let currentFlashcard = null;
+        let flashcardTotal = 0;
 
         // ============ DOM ELEMENTS ============
         const setupScreen = document.getElementById('setupScreen');
+        const flashcardScreen = document.getElementById('flashcardScreen');
         const trainingScreen = document.getElementById('trainingScreen');
         const completeScreen = document.getElementById('completeScreen');
 
         const categorySelect = document.getElementById('categorySelect');
         const typeSelect = document.getElementById('typeSelect');
+        const flowSelect = document.getElementById('flowSelect');
         const sessionInfo = document.getElementById('sessionInfo');
         const startSessionBtn = document.getElementById('startSessionBtn');
+
+        const exitFlashcardsBtn = document.getElementById('exitFlashcardsBtn');
+        const flashcardProgressText = document.getElementById('flashcardProgressText');
+        const flashcardProgressBar = document.getElementById('flashcardProgressBar');
+        const flashKnownCount = document.getElementById('flashKnownCount');
+        const flashReviewCount = document.getElementById('flashReviewCount');
+        const flashCardName = document.getElementById('flashCardName');
+        const flashCardCategory = document.getElementById('flashCardCategory');
+        const flashCardMethod = document.getElementById('flashCardMethod');
+        const flashCardGlass = document.getElementById('flashCardGlass');
+        const flashCardIce = document.getElementById('flashCardIce');
+        const flashCardGarnish = document.getElementById('flashCardGarnish');
+        const flashCardIngredients = document.getElementById('flashCardIngredients');
+        const flashCardAllergensWrap = document.getElementById('flashCardAllergensWrap');
+        const flashCardAllergens = document.getElementById('flashCardAllergens');
+        const flashNotYetBtn = document.getElementById('flashNotYetBtn');
+        const flashKnowBtn = document.getElementById('flashKnowBtn');
 
         const progressText = document.getElementById('progressText');
         const progressBar = document.getElementById('progressBar');
@@ -457,7 +589,7 @@
 
         // ============ SCREEN NAVIGATION ============
         function showScreen(screenId) {
-            [setupScreen, trainingScreen, completeScreen].forEach(s => s.classList.remove('active'));
+            [setupScreen, flashcardScreen, trainingScreen, completeScreen].forEach(s => s.classList.remove('active'));
             document.getElementById(screenId).classList.add('active');
         }
 
@@ -491,9 +623,21 @@
             });
         }
 
+        function setupFlowButtons() {
+            flowSelect.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.onclick = () => {
+                    flowSelect.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    selectedFlow = btn.dataset.flow;
+                    updateSessionInfo();
+                };
+            });
+        }
+
         function updateSessionInfo() {
             const count = getFilteredCocktails().length;
-            sessionInfo.textContent = `${count} questions in this session`;
+            const flowLabel = selectedFlow === 'cards-quiz' ? 'cards + quiz' : 'quiz only';
+            sessionInfo.textContent = `${count} cocktails • ${flowLabel}`;
         }
 
         function getFilteredCocktails() {
@@ -509,7 +653,14 @@
                 return;
             }
 
-            // Build and shuffle queue
+            if (selectedFlow === 'cards-quiz') {
+                startFlashcards(cocktails);
+            } else {
+                startQuiz(cocktails);
+            }
+        }
+
+        function startQuiz(cocktails) {
             sessionQueue = shuffleArray([...cocktails]);
             sessionCompleted = [];
             sessionTotal = sessionQueue.length;
@@ -519,6 +670,18 @@
             updateStats();
             showScreen('trainingScreen');
             nextQuestion();
+        }
+
+        function startFlashcards(cocktails) {
+            flashcardQueue = shuffleArray([...cocktails]);
+            flashcardKnown = [];
+            flashcardReview = [];
+            currentFlashcard = null;
+            flashcardTotal = flashcardQueue.length;
+
+            updateFlashcardStats();
+            showScreen('flashcardScreen');
+            nextFlashcard();
         }
 
         function shuffleArray(array) {
@@ -538,6 +701,68 @@
             const accuracy = sessionTotal > 0 ? Math.round((statCorrect / sessionTotal) * 100) : 0;
             document.getElementById('finalAccuracy').textContent = accuracy + '%';
             showScreen('completeScreen');
+        }
+
+        function updateFlashcardStats() {
+            const done = flashcardKnown.length + flashcardReview.length;
+            const total = flashcardTotal;
+            const percent = total > 0 ? Math.round((done / total) * 100) : 0;
+            flashKnownCount.textContent = flashcardKnown.length;
+            flashReviewCount.textContent = flashcardReview.length;
+            flashcardProgressText.textContent = `${done}/${total}`;
+            flashcardProgressBar.style.width = percent + '%';
+        }
+
+        function renderFlashcard(cocktail) {
+            flashCardName.textContent = cocktail.name || 'Unknown Cocktail';
+            flashCardCategory.textContent = (cocktail.category || 'uncategorized').toString();
+            flashCardMethod.textContent = cocktail.method || 'N/A';
+            flashCardGlass.textContent = cocktail.glass || 'N/A';
+            flashCardIce.textContent = cocktail.ice || 'N/A';
+            flashCardGarnish.textContent = cocktail.garnish || 'N/A';
+
+            const ingredients = Array.isArray(cocktail.ingredients) ? cocktail.ingredients : [];
+            flashCardIngredients.innerHTML = ingredients.length
+                ? ingredients.map(ing => `<li class="flex justify-between gap-2"><span class="text-slate-200">${ing.name || '-'}</span><span class="text-primary font-semibold">${ing.qty || '-'}</span></li>`).join('')
+                : '<li class="text-slate-400">No ingredients listed</li>';
+
+            if (cocktail.allergens) {
+                flashCardAllergensWrap.classList.remove('hidden');
+                flashCardAllergens.innerHTML = `<span class="material-symbols-outlined text-sm">warning</span> ${cocktail.allergens}`;
+            } else {
+                flashCardAllergensWrap.classList.add('hidden');
+                flashCardAllergens.textContent = '';
+            }
+        }
+
+        function nextFlashcard() {
+            if (flashcardQueue.length === 0) {
+                const quizPool = flashcardReview.length > 0
+                    ? [...flashcardReview, ...flashcardKnown]
+                    : [...flashcardKnown];
+                if (quizPool.length === 0) {
+                    showScreen('setupScreen');
+                    return;
+                }
+                startQuiz(quizPool);
+                return;
+            }
+
+            currentFlashcard = flashcardQueue.shift();
+            renderFlashcard(currentFlashcard);
+            updateFlashcardStats();
+        }
+
+        function markFlashcardKnown() {
+            if (!currentFlashcard) return;
+            flashcardKnown.push(currentFlashcard);
+            nextFlashcard();
+        }
+
+        function markFlashcardReview() {
+            if (!currentFlashcard) return;
+            flashcardReview.push(currentFlashcard);
+            nextFlashcard();
         }
 
         // ============ QUESTION FLOW ============
@@ -749,6 +974,8 @@
 
         // ============ EVENT LISTENERS ============
         startSessionBtn.onclick = startSession;
+        flashKnowBtn.onclick = markFlashcardKnown;
+        flashNotYetBtn.onclick = markFlashcardReview;
         showAnswerBtn.onclick = showAnswer;
         correctBtn.onclick = handleCorrect;
         wrongBtn.onclick = handleWrong;
@@ -762,6 +989,12 @@
             }
         };
 
+        exitFlashcardsBtn.onclick = () => {
+            if (confirm('Exit flashcards session?')) {
+                showScreen('setupScreen');
+            }
+        };
+
         restartSessionBtn.onclick = startSession;
         changeCategoryBtn.onclick = () => showScreen('setupScreen');
 
@@ -771,6 +1004,7 @@
                 allCocktails = window.allCocktails;
                 renderCategoryButtons();
                 setupTypeButtons();
+                setupFlowButtons();
                 updateSessionInfo();
             } else {
                 sessionInfo.textContent = 'Loading data...';
