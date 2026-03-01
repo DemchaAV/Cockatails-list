@@ -43,6 +43,7 @@
 
         /* Fullscreen mobile layout */
         .trainer-container {
+            min-height: 100svh;
             min-height: 100dvh;
             display: flex;
             flex-direction: column;
@@ -209,6 +210,13 @@
             background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(4px);
         }
+
+        .start-cta {
+            position: sticky;
+            bottom: 0;
+            padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+            background: linear-gradient(to top, rgba(11, 18, 32, 0.92), rgba(11, 18, 32, 0));
+        }
     </style>
     <script src="data/loader.js"></script>
 </head>
@@ -298,7 +306,7 @@
             </div>
 
             <!-- Start Button -->
-            <div class="pb-6">
+            <div class="start-cta">
                 <div id="sessionInfo" class="text-center text-slate-400 text-sm mb-3">
                     <!-- Shows how many questions will be in session -->
                 </div>
