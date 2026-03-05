@@ -195,7 +195,7 @@
 
         <div class="mt-7 text-center text-slate-600 text-xs flex items-center gap-2">
             <span class="material-symbols-outlined text-sm text-primary/50">local_bar</span>
-            <p>Cocktail List • Static PWA</p>
+            <p>Cocktail List • Static PWA <span id="app-version">v2026.3.5</span></p>
         </div>
     </div>
 
@@ -213,7 +213,14 @@
         } else {
             window.addEventListener('cocktailsLoaded', updateStats);
         }
-
+        fetch('./manifest.json')
+            .then(response => response.json())
+            .then(manifest => {
+                if (manifest && manifest.version) {
+                    document.getElementById('app-version').textContent = `v${manifest.version}`;
+                }
+            })
+            .catch(() => {});
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('./sw.js')
                 .then(() => console.log('SW registered'))
@@ -223,3 +230,4 @@
 </body>
 
 </html>
+

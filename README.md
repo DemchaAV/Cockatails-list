@@ -1,124 +1,149 @@
-# Cocktail List PWA
+# Cockatails-list
 
-A modern, mobile-first Progressive Web App for managing and learning cocktail recipes.
+A web app for cocktail catalog browsing, staff training, and recipe editing.
 
-## 📁 Project Structure
+The project is static (HTML/CSS/JS, no build step) plus Python utilities for data maintenance.
 
+## Project Contents
+
+- `index.html` - home page with navigation and stats.
+- `mobile_cocktails.html` - mobile-first catalog with search and filters.
+- `cocktail_trainer.html` - training mode (method, ingredients, glass, allergens).
+- `cocktail_builder.html` - recipe builder/editor (create, import/export, category management).
+- `data/loader.js` - dynamic category loading into `window.allCocktails`.
+- `data/config.js` - category file list used by loader.
+- `data/categories/*.js` - cocktail datasets by category.
+- `manifest.json`, `sw.js` - PWA and offline caching.
+
+## Current Data Snapshot
+
+Based on files currently in the repository:
+
+- Total cocktails: `134`
+- Category files: `4`
+- File-level distribution:
+  - `classic.js`: `83`
+  - `exam.js`: `30`
+  - `non-alcoholic.js`: `5`
+  - `signature.js`: `16`
+
+Note: `category` values are not fully normalized (for example `classic`, `signature`, `Exam`), which affects filters and category totals.
+
+## Quick Start
+
+1. Run a local HTTP server in the project root:
+
+```powershell
+python -m http.server 8080
 ```
-Cockatails-list/
-├── data/                       # Data layer (modular)
-│   ├── config.js              # List of all categories
-│   ├── combiner.js            # Combines categories into allCocktails
-│   └── categories/            # Individual category files
-│       ├── signature.js       # Signature cocktails
-│       ├── classic.js         # Classic cocktails
-│       └── non-alcoholic.js   # Non-alcoholic drinks
-├── index.html                 # Landing page
-├── mobile_cocktails.html      # Cocktail catalog (mobile-optimized)
-├── cocktail_trainer.html      # Quiz/training mode
-├── cocktail_builder.html      # Recipe creator/editor
-├── manifest.json              # PWA manifest
-└── sw.js                      # Service worker
+
+2. Open in browser:
+
+```text
+http://localhost:8080
 ```
 
-## ✨ Features
+Important: use HTTP/HTTPS (not `file://`) so loader and service worker behavior is correct.
 
-- 🍹 **Catalog**: Browse all cocktails with filtering
-- 🎯 **Trainer**: Test your knowledge with quizzes
-- 🛠️ **Builder**: Create and edit recipes
-- 📱 **Mobile-First**: Optimized for phones
-- 🌙 **Dark Mode**: Auto theme switching
-- 💾 **PWA**: Install as app, works offline
+## Category File Format
 
-## 🚀 Quick Start
+Each file in `data/categories/` registers an array via:
 
-1. **Run locally:**
-   ```bash
-   python -m http.server 8000
-   ```
-   
-2. **Open browser:**
-   ```
-   http://localhost:8000
-   ```
-
-## 📝 How to Add a New Category
-
-1. **Create category file:**
-   ```bash
-   # Create data/categories/new-category.js
-   ```
-   
-   Format:
-   ```javascript
-   // New category cocktails
-   const newcategoryCocktails = [
-     {
-       "id": "unique-id",
-       "name": "Cocktail Name",
-       "category": "new-category",
-       "method": "Shake",
-       "glass": "Rocks",
-       "ice": "Cubes",
-       "garnish": "Orange",
-       "ingredients": [
-         { "name": "Spirit", "qty": "50ml" }
-       ]
-     }
-   ];
-   ```
-
-2. **Update config:**
-   Add to `data/config.js`:
-   ```javascript
-   const COCKTAIL_CATEGORIES = [
-       'signature',
-       'classic',
-       'non-alcoholic',
-       'new-category'  // ← Add here
-   ];
-   ```
-
-3. **Refresh browser** - Done! ✅
-
-## 🗑️ How to Remove a Category
-
-1. Delete `data/categories/category-name.js`
-2. Remove from `data/config.js`
-3. Refresh browser
-
-## 🎨 Customization
-
-### Category Colors
-Edit `mobile_cocktails.html` CSS to add/modify category colors:
-
-```css
-.category-yourcategory {
-    background-color: #yourcolor;
-    color: white;
+```javascript
+if (typeof window.registerCocktails === 'function') {
+  window.registerCocktails('category-name', [
+    {
+      "id": "unique-id",
+      "name": "Cocktail Name",
+      "category": "category-name",
+      "method": "Shake",
+      "glass": "Nick&Nora",
+      "ice": "Cubed",
+      "garnish": "Lemon zest",
+      "ingredients": [
+        { "name": "Ingredient", "qty": "50ml" }
+      ],
+      "allergens": "SULPHITES"
+    }
+  ]);
 }
 ```
 
-### PWA Settings
-Edit `manifest.json` for app name, colors, icons.
+`allergens` can be `null` or a string (for example `"SULPHITES"`, `"GLUTEN, MILK"`).
 
-## 📦 Deployment
+## Adding a New Category
 
-### GitHub Pages
-1. Push to GitHub
-2. Settings → Pages → Deploy from main branch
-3. Done!
+1. Create `data/categories/<name>.js` in the format above.
+2. Rebuild config:
 
-### Other Platforms
-Just upload all files - it's static HTML/JS!
+```powershell
+python auto_config.py
+```
 
-## 🛠️ Development
+This regenerates `data/config.js` from existing `.js` files in `data/categories`.
 
-- **No build step** required
-- Pure HTML/CSS/JavaScript
-- Uses Tailwind CSS via CDN
-- Mobile-first responsive design
+## Builder Workflow
 
-## 📄 License
+`cocktail_builder.html` stores working data in `localStorage` (`cocktails`, `appCategories`) and supports:
 
-Free to use and modify.
+- create/edit recipes,
+- add/rename/delete categories,
+- import category `*.js` files,
+- export a selected category as `*.js` for `data/categories`.
+
+Recommended flow:
+
+1. Edit in Builder.
+2. Export category to `*.js`.
+3. Place the file in `data/categories/`.
+4. Run `python auto_config.py`.
+5. Verify in UI (`mobile_cocktails.html`, `cocktail_trainer.html`).
+
+## Allergen Sync From viewthe.menu
+
+Script:
+
+- `sync_allergens_from_viewthemenu.py`
+
+What it does:
+
+- reads `viewthemenu_allergens.json` (by default from sibling `Food-list` project),
+- matches drinks to local cocktails,
+- updates `allergens` fields in `data/categories/*.js`,
+- writes `data/allergen_sync_from_viewthemenu_report.json`.
+
+Run:
+
+```powershell
+python sync_allergens_from_viewthemenu.py
+```
+
+Custom input path:
+
+```powershell
+python sync_allergens_from_viewthemenu.py --scraped "C:\path\to\viewthemenu_allergens.json"
+```
+
+## PWA
+
+Installable as an app:
+
+- `manifest.json` defines app metadata.
+- `sw.js` caches main pages and category datasets for offline use.
+
+If you still see old content after updates, do a hard refresh and clear service worker/cache in DevTools if needed.
+
+## Repository Utilities
+
+- `auto_config.py` - auto-updates `data/config.js`.
+- `sync_allergens_from_viewthemenu.py` - allergen synchronization.
+- `convert_food.py` - legacy converter with hardcoded local paths.
+
+## Quick Post-Change Check
+
+1. Start server: `python -m http.server 8080`
+2. Check:
+   - `http://localhost:8080/mobile_cocktails.html`
+   - `http://localhost:8080/cocktail_trainer.html`
+   - `http://localhost:8080/cocktail_builder.html`
+3. Confirm categories/cocktails load and filters behave correctly.
