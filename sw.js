@@ -1,5 +1,14 @@
 // Service Worker for Cocktail List PWA
-const CACHE_NAME = 'cocktails-v4.0.4';
+const SW_VERSION = (() => {
+  try {
+    const url = new URL(self.location.href);
+    return url.searchParams.get('v') || 'dev';
+  } catch (_) {
+    return 'dev';
+  }
+})();
+
+const CACHE_NAME = 'cocktails-v' + SW_VERSION;
 const urlsToCache = [
   './',
   './index.html',
