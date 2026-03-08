@@ -313,7 +313,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "GLUTEN"
   },
   {
-    "id": "old-fashioned",
+    "id": "sc-old-fashioned6546",
     "name": "SC Old Fashioned 55ml",
     "category": "signature",
     "method": "Stir",
