@@ -2,7 +2,7 @@
 if (typeof window.registerCocktails === 'function') {
   window.registerCocktails('classic', [
   {
-    "id": "aviation",
+    "id": "aviation-da5e54",
     "name": "Aviation",
     "category": "classic",
     "method": "Shake",
@@ -29,7 +29,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "amaretto-sour",
+    "id": "amaretto-sour-380174",
     "name": "Amaretto Sour",
     "category": "classic",
     "method": "Shake",
@@ -60,7 +60,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "absinthe-frappe",
+    "id": "absinthe-frappe-d4ce71",
     "name": "Absinthe Frappe",
     "category": "classic",
     "method": "Build",
@@ -83,7 +83,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "americano-cocktail",
+    "id": "americano-cocktail-54984b",
     "name": "Americano Cocktail",
     "category": "classic",
     "method": "Build",
@@ -107,7 +107,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "aperolcampari-spritz1749299784416",
+    "id": "aperol-campari-spritz-60ee61",
     "name": "Aperol/Campari Spritz",
     "category": "classic",
     "method": "Build",
@@ -131,7 +131,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "airmail",
+    "id": "airmail-4d59a4",
     "name": "Airmail",
     "category": "classic",
     "method": "Shake / top",
@@ -159,7 +159,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "brandy-alexander",
+    "id": "brandy-alexander-d8ce67",
     "name": "Brandy Alexander",
     "category": "classic",
     "method": "Shake",
@@ -183,7 +183,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "MILK"
   },
   {
-    "id": "bramble",
+    "id": "bramble-d9fa80",
     "name": "Bramble",
     "category": "classic",
     "method": "Shake",
@@ -210,7 +210,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "bacardi-cocktail",
+    "id": "bacardi-cocktail-b1e83e",
     "name": "Bacardi Cocktail",
     "category": "classic",
     "method": "Shake",
@@ -233,7 +233,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "bellini",
+    "id": "bellini-28130d",
     "name": "Bellini",
     "category": "classic",
     "method": "Build",
@@ -261,7 +261,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "black-russian",
+    "id": "black-russian-2749ab",
     "name": "Black Russian",
     "category": "classic",
     "method": "Build",
@@ -280,7 +280,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "blood-and-sand",
+    "id": "blood-and-sand-a0e1dd",
     "name": "Blood and Sand",
     "category": "classic",
     "method": "Shake",
@@ -308,7 +308,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "brandy-crusta",
+    "id": "brandy-crusta-2748fe",
     "name": "Brandy Crusta",
     "category": "classic",
     "method": "Shake",
@@ -339,7 +339,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "brooklyn",
+    "id": "brooklyn-7da825",
     "name": "Brooklyn",
     "category": "classic",
     "method": "Stir",
@@ -367,7 +367,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "black-velvet",
+    "id": "black-velvet-b8688b",
     "name": "Black Velvet",
     "category": "classic",
     "method": "Build",
@@ -391,7 +391,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES, TREE NUTS, PEANUTS, NUTS"
   },
   {
-    "id": "bloody-mary-mix",
+    "id": "bloody-mary-mix-74aeb7",
     "name": "Bloody Mary Mix",
     "category": "classic",
     "method": "Build",
@@ -432,7 +432,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "MUSTARD, EGGS, FISH, CELERY, SULPHITES"
   },
   {
-    "id": "boulevardier",
+    "id": "boulevardier-3d1b32",
     "name": "Boulevardier",
     "category": "classic",
     "method": "Stir",
@@ -456,7 +456,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "bucks-fizz-mimosa",
+    "id": "buck-s-fizz-mimosa-f3352a",
     "name": "Buck's Fizz/Mimosa",
     "category": "classic",
     "method": "Build",
@@ -476,7 +476,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "champagne-cocktail",
+    "id": "champagne-cocktail-35d25d",
     "name": "Champagne Cocktail",
     "category": "classic",
     "method": "Build",
@@ -500,7 +500,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "charlie-chaplin",
+    "id": "charlie-chaplin-24c51f",
     "name": "Charlie Chaplin",
     "category": "classic",
     "method": "Shaken",
@@ -523,7 +523,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "cosmopolitan1749234543046",
+    "id": "cosmopolitan-1bb809",
     "name": "Cosmopolitan",
     "category": "classic",
     "method": "Shake",
@@ -551,7 +551,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "caipirinha",
+    "id": "caipirinha-5b1f0f",
     "name": "Caipirinha",
     "category": "classic",
     "method": "Build",
@@ -578,7 +578,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "clover-club",
+    "id": "clover-club-7b5069",
     "name": "Clover Club",
     "category": "classic",
     "method": "Shake",
@@ -614,7 +614,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "corpse-rev-no-2",
+    "id": "corpse-rev-no-2-25af1a",
     "name": "Corpse Rev No.2",
     "category": "classic",
     "method": "Shake",
@@ -642,7 +642,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "dark-and-stormy",
+    "id": "dark-and-stormy-6e17f8",
     "name": "Dark and Stormy",
     "category": "classic",
     "method": "Build",
@@ -665,7 +665,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "death-in-the-afternoon",
+    "id": "death-in-the-afternoon-c9d066",
     "name": "Death in the Afternoon",
     "category": "classic",
     "method": "Build",
@@ -685,7 +685,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "elderflower-colins",
+    "id": "elderflower-colins-5a1d5d",
     "name": "Elderflower Colins",
     "category": "classic",
     "method": "Shake / top",
@@ -712,7 +712,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "espresso-martini",
+    "id": "espresso-martini-5c396e",
     "name": "Espresso Martini",
     "category": "classic",
     "method": "Shake",
@@ -739,7 +739,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "el-diablo",
+    "id": "el-diablo-fb5e33",
     "name": "El Diablo",
     "category": "classic",
     "method": "Shake / top",
@@ -766,7 +766,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "french-75",
+    "id": "french-75-39154f",
     "name": "French 75",
     "category": "classic",
     "method": "Shake / top",
@@ -794,7 +794,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "french-martini",
+    "id": "french-martini-2c0702",
     "name": "French Martini",
     "category": "classic",
     "method": "Shake / Dry shake",
@@ -817,7 +817,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "gimlet",
+    "id": "gimlet-8c5725",
     "name": "Gimlet",
     "category": "classic",
     "method": "Shake",
@@ -836,7 +836,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "golden-dawn",
+    "id": "golden-dawn-54f3e1",
     "name": "Golden Dawn",
     "category": "classic",
     "method": "Shake",
@@ -863,7 +863,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "grasshopper",
+    "id": "grasshopper-05c225",
     "name": "Grasshopper",
     "category": "classic",
     "method": "Shake",
@@ -887,7 +887,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "MILK"
   },
   {
-    "id": "hugo-spritz",
+    "id": "hugo-spritz-bf9210",
     "name": "Hugo Spritz",
     "category": "classic",
     "method": "Build",
@@ -915,7 +915,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "hemingway-daiquiri",
+    "id": "hemingway-daiquiri-09420c",
     "name": "Hemingway Daiquiri",
     "category": "classic",
     "method": "Shake",
@@ -946,7 +946,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "horses-neck",
+    "id": "horse-s-neck-d699fb",
     "name": "Horse's Neck",
     "category": "classic",
     "method": "Build",
@@ -965,7 +965,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "irish-coffee",
+    "id": "irish-coffee-e2cdeb",
     "name": "Irish Coffee",
     "category": "classic",
     "method": "Build",
@@ -993,7 +993,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "MILK"
   },
   {
-    "id": "jungle-bird",
+    "id": "jungle-bird-0713bd",
     "name": "Jungle Bird",
     "category": "classic",
     "method": "Shake",
@@ -1025,7 +1025,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "knickerbocker",
+    "id": "knickerbocker-bdd610",
     "name": "Knickerbocker",
     "category": "classic",
     "method": "Shake",
@@ -1056,7 +1056,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "kir-royal",
+    "id": "kir-royal-85bdc8",
     "name": "Kir Royal",
     "category": "classic",
     "method": "Build",
@@ -1076,7 +1076,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "long-island-iced-tea",
+    "id": "long-island-iced-tea-c52a38",
     "name": "Long Island Iced Tea",
     "category": "classic",
     "method": "Shake",
@@ -1119,7 +1119,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "last-word",
+    "id": "last-word-f24fea",
     "name": "Last Word",
     "category": "classic",
     "method": "Shake",
@@ -1147,7 +1147,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SESAME"
   },
   {
-    "id": "martini",
+    "id": "martini-3b801f",
     "name": "Martini",
     "category": "classic",
     "method": "Stir",
@@ -1183,7 +1183,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "manhattan",
+    "id": "manhattan-cea0fd",
     "name": "Manhattan",
     "category": "classic",
     "method": "Stir",
@@ -1235,7 +1235,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "mojito",
+    "id": "mojito-81f090",
     "name": "Mojito",
     "category": "classic",
     "method": "Build",
@@ -1262,7 +1262,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "penicillin-torabhaig",
+    "id": "penicillin-torabhaig-riff-4568d1",
     "name": "Penicillin (Torabhaig riff)",
     "category": "classic",
     "method": "Shake",
@@ -1293,7 +1293,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "martinez",
+    "id": "martinez-d8a440",
     "name": "Martinez",
     "category": "classic",
     "method": "Stir",
@@ -1321,7 +1321,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "mai-tai",
+    "id": "mai-tai-741638",
     "name": "Mai Tai",
     "category": "classic",
     "method": "Shake",
@@ -1357,7 +1357,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "TREE NUTS"
   },
   {
-    "id": "milano-torino",
+    "id": "milano-torino-20cbeb",
     "name": "Milano-Torino",
     "category": "classic",
     "method": "Build",
@@ -1377,7 +1377,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "mint-julep",
+    "id": "mint-julep-edb46c",
     "name": "Mint Julep",
     "category": "classic",
     "method": "Build",
@@ -1404,7 +1404,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "moscow-mule",
+    "id": "moscow-mule-3d8071",
     "name": "Moscow Mule",
     "category": "classic",
     "method": "Build",
@@ -1427,7 +1427,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "negroni-sbagliato",
+    "id": "negroni-sbagliato-0a2cfa",
     "name": "Negroni Sbagliato",
     "category": "classic",
     "method": "Stir/top",
@@ -1451,7 +1451,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "negroni",
+    "id": "negroni-933fc1",
     "name": "Negroni",
     "category": "classic",
     "method": "Stir",
@@ -1475,7 +1475,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "new-york-sour",
+    "id": "new-york-sour-57a242",
     "name": "New York Sour",
     "category": "classic",
     "method": "Shake",
@@ -1502,7 +1502,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "old-fashioned",
+    "id": "old-fashioned-951621",
     "name": "Old Fashioned",
     "category": "classic",
     "method": "Stir",
@@ -1525,7 +1525,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "old-pal",
+    "id": "old-pal-84984b",
     "name": "Old Pal",
     "category": "classic",
     "method": "Stir",
@@ -1549,7 +1549,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "old-cuban",
+    "id": "old-cuban-b39a54",
     "name": "Old Cuban",
     "category": "classic",
     "method": "Shake / top",
@@ -1581,7 +1581,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "paper-plane",
+    "id": "paper-plane-a439f4",
     "name": "Paper Plane",
     "category": "classic",
     "method": "Shake",
@@ -1608,7 +1608,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "passionfruit-martini",
+    "id": "passionfruit-martini-ca647e",
     "name": "Passionfruit Martini",
     "category": "classic",
     "method": "Shake",
@@ -1647,7 +1647,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "pisco-sour",
+    "id": "pisco-sour-78db21",
     "name": "Pisco Sour",
     "category": "classic",
     "method": "Hard dry shake / shake",
@@ -1678,7 +1678,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "pina-colada",
+    "id": "pina-colada-e9a7f4",
     "name": "Pina Colada",
     "category": "classic",
     "method": "Shake",
@@ -1713,7 +1713,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "paloma",
+    "id": "paloma-361acd",
     "name": "Paloma",
     "category": "classic",
     "method": "Shake / top",
@@ -1749,7 +1749,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": null
   },
   {
-    "id": "rusty-nail",
+    "id": "rusty-nail-ba2a42",
     "name": "Rusty Nail",
     "category": "classic",
     "method": "Build",
@@ -1768,7 +1768,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "ramos-gin-fizz",
+    "id": "ramos-gin-fizz-09abf6",
     "name": "Ramos Gin Fizz",
     "category": "classic",
     "method": "Hard dry shake / shake",
@@ -1812,7 +1812,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "MILK"
   },
   {
-    "id": "rattlesnake",
+    "id": "rattlesnake-8faff7",
     "name": "Rattlesnake",
     "category": "classic",
     "method": "Shake",
@@ -1843,7 +1843,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "rob-roy",
+    "id": "rob-roy-fdb882",
     "name": "Rob Roy",
     "category": "classic",
     "method": "Stir",
@@ -1867,7 +1867,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "southside-fizz",
+    "id": "southside-fizz-8a61fa",
     "name": "Southside Fizz",
     "category": "classic",
     "method": "Shake / top",
@@ -1898,7 +1898,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "sidecar",
+    "id": "sidecar-0d5d74",
     "name": "Sidecar",
     "category": "classic",
     "method": "Shake",
@@ -1921,7 +1921,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "sazerac",
+    "id": "sazerac-0ac478",
     "name": "Sazerac",
     "category": "classic",
     "method": "Stir",
@@ -1953,7 +1953,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": null
   },
   {
-    "id": "singapore-sling",
+    "id": "singapore-sling-bf1e14",
     "name": "Singapore Sling",
     "category": "classic",
     "method": "Shake",
@@ -1993,7 +1993,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": null
   },
   {
-    "id": "screwdriver",
+    "id": "screwdriver-067b43",
     "name": "Screwdriver",
     "category": "classic",
     "method": "Build",
@@ -2012,7 +2012,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "twinkle",
+    "id": "twinkle-dcb782",
     "name": "Twinkle",
     "category": "classic",
     "method": "Stir/top",
@@ -2036,7 +2036,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "tom-collins",
+    "id": "tom-collins-960ec5",
     "name": "Tom Collins",
     "category": "classic",
     "method": "Shake",
@@ -2063,7 +2063,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "treacle",
+    "id": "treacle-010d76",
     "name": "Treacle",
     "category": "classic",
     "method": "Shake",
@@ -2094,7 +2094,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "tuxedo",
+    "id": "tuxedo-ee4452",
     "name": "Tuxedo",
     "category": "classic",
     "method": "Stir",
@@ -2126,7 +2126,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "classic-margarita",
+    "id": "margarita-2b860a",
     "name": "Margarita",
     "category": "signature",
     "method": "Shake",
@@ -2149,7 +2149,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "tommys-margarita",
+    "id": "tommy-s-margarita-8119c8",
     "name": "Tommy's Margarita",
     "category": "classic",
     "method": "Shake",
@@ -2172,7 +2172,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "vieux-carre",
+    "id": "vieux-carre-31ffed",
     "name": "Vieux Carre",
     "category": "classic",
     "method": "Stir",
@@ -2208,7 +2208,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "whiskey-sour",
+    "id": "whiskey-sour-4b7075",
     "name": "Whiskey Sour",
     "category": "classic",
     "method": "Hard dry shake / shake",
@@ -2235,7 +2235,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "white-lady",
+    "id": "white-lady-fcef03",
     "name": "White Lady",
     "category": "classic",
     "method": "Shake",
@@ -2262,7 +2262,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "white-russian",
+    "id": "white-russian-a8d12a",
     "name": "White Russian",
     "category": "classic",
     "method": "Build",
@@ -2286,7 +2286,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "MILK"
   },
   {
-    "id": "bloody-mary-63898gs",
+    "id": "bloody-mary-b26ef0",
     "name": "Bloody Mary",
     "category": "classic",
     "method": "Build",
@@ -2320,7 +2320,7 @@ if (typeof window.registerCocktails === 'function') {
   window.pendingCocktails.push({
     category: 'classic', data: [
       {
-        "id": "aviation",
+        "id": "aviation-da5e54",
         "name": "Aviation",
         "category": "classic",
         "method": "Shake",
@@ -2347,7 +2347,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "amaretto-sour",
+        "id": "amaretto-sour-380174",
         "name": "Amaretto Sour",
         "category": "classic",
         "method": "Shake",
@@ -2378,7 +2378,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "absinthe-frappe",
+        "id": "absinthe-frappe-d4ce71",
         "name": "Absinthe Frappe",
         "category": "classic",
         "method": "Build",
@@ -2401,7 +2401,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "americano-cocktail",
+        "id": "americano-cocktail-54984b",
         "name": "Americano Cocktail",
         "category": "classic",
         "method": "Build",
@@ -2425,7 +2425,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "aperolcampari-spritz1749299784416",
+        "id": "aperol-campari-spritz-60ee61",
         "name": "Aperol/Campari Spritz",
         "category": "classic",
         "method": "Build",
@@ -2449,7 +2449,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "airmail",
+        "id": "airmail-4d59a4",
         "name": "Airmail",
         "category": "classic",
         "method": "Shake / top",
@@ -2477,7 +2477,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "brandy-alexander",
+        "id": "brandy-alexander-d8ce67",
         "name": "Brandy Alexander",
         "category": "classic",
         "method": "Shake",
@@ -2501,7 +2501,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "MILK"
       },
       {
-        "id": "bramble",
+        "id": "bramble-d9fa80",
         "name": "Bramble",
         "category": "classic",
         "method": "Shake",
@@ -2528,7 +2528,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "bacardi-cocktail",
+        "id": "bacardi-cocktail-b1e83e",
         "name": "Bacardi Cocktail",
         "category": "classic",
         "method": "Shake",
@@ -2551,7 +2551,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "bellini",
+        "id": "bellini-28130d",
         "name": "Bellini",
         "category": "classic",
         "method": "Build",
@@ -2579,7 +2579,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "black-russian",
+        "id": "black-russian-2749ab",
         "name": "Black Russian",
         "category": "classic",
         "method": "Build",
@@ -2598,7 +2598,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "blood-and-sand",
+        "id": "blood-and-sand-a0e1dd",
         "name": "Blood and Sand",
         "category": "classic",
         "method": "Shake",
@@ -2626,7 +2626,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "brandy-crusta",
+        "id": "brandy-crusta-2748fe",
         "name": "Brandy Crusta",
         "category": "classic",
         "method": "Shake",
@@ -2657,7 +2657,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "brooklyn",
+        "id": "brooklyn-7da825",
         "name": "Brooklyn",
         "category": "classic",
         "method": "Stir",
@@ -2685,7 +2685,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "black-velvet",
+        "id": "black-velvet-b8688b",
         "name": "Black Velvet",
         "category": "classic",
         "method": "Build",
@@ -2709,7 +2709,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES, TREE NUTS, PEANUTS, NUTS"
       },
       {
-        "id": "bloody-mary-63898gs",
+        "id": "bloody-mary-b26ef0",
         "name": "Bloody Mary",
         "category": "classic",
         "method": "Build",
@@ -2737,7 +2737,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "MUSTARD, EGGS, FISH, CELERY, SULPHITES"
       },
       {
-        "id": "bloody-mary-mix",
+        "id": "bloody-mary-mix-74aeb7",
         "name": "Bloody Mary Mix",
         "category": "classic",
         "method": "Build",
@@ -2778,7 +2778,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "MUSTARD, EGGS, FISH, CELERY, SULPHITES"
       },
       {
-        "id": "boulevardier",
+        "id": "boulevardier-3d1b32",
         "name": "Boulevardier",
         "category": "classic",
         "method": "Stir",
@@ -2802,7 +2802,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "bucks-fizz-mimosa",
+        "id": "buck-s-fizz-mimosa-f3352a",
         "name": "Buck's Fizz/Mimosa",
         "category": "classic",
         "method": "Build",
@@ -2822,7 +2822,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "champagne-cocktail",
+        "id": "champagne-cocktail-35d25d",
         "name": "Champagne Cocktail",
         "category": "classic",
         "method": "Build",
@@ -2846,7 +2846,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "charlie-chaplin",
+        "id": "charlie-chaplin-24c51f",
         "name": "Charlie Chaplin",
         "category": "classic",
         "method": "Shaken",
@@ -2869,7 +2869,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "cosmopolitan1749234543046",
+        "id": "cosmopolitan-1bb809",
         "name": "Cosmopolitan",
         "category": "classic",
         "method": "Shake",
@@ -2897,7 +2897,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "caipirinha",
+        "id": "caipirinha-5b1f0f",
         "name": "Caipirinha",
         "category": "classic",
         "method": "Build",
@@ -2924,7 +2924,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "clover-club",
+        "id": "clover-club-7b5069",
         "name": "Clover Club",
         "category": "classic",
         "method": "Shake",
@@ -2960,7 +2960,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "corpse-rev-no-2",
+        "id": "corpse-rev-no-2-25af1a",
         "name": "Corpse Rev No.2",
         "category": "classic",
         "method": "Shake",
@@ -2988,7 +2988,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "dark-and-stormy",
+        "id": "dark-and-stormy-6e17f8",
         "name": "Dark and Stormy",
         "category": "classic",
         "method": "Build",
@@ -3011,7 +3011,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "death-in-the-afternoon",
+        "id": "death-in-the-afternoon-c9d066",
         "name": "Death in the Afternoon",
         "category": "classic",
         "method": "Build",
@@ -3031,7 +3031,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "elderflower-colins",
+        "id": "elderflower-colins-5a1d5d",
         "name": "Elderflower Colins",
         "category": "classic",
         "method": "Shake / top",
@@ -3058,7 +3058,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "espresso-martini",
+        "id": "espresso-martini-5c396e",
         "name": "Espresso Martini",
         "category": "classic",
         "method": "Shake",
@@ -3085,7 +3085,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "el-diablo",
+        "id": "el-diablo-fb5e33",
         "name": "El Diablo",
         "category": "classic",
         "method": "Shake / top",
@@ -3112,7 +3112,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "french-75",
+        "id": "french-75-39154f",
         "name": "French 75",
         "category": "classic",
         "method": "Shake / top",
@@ -3140,7 +3140,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "french-martini",
+        "id": "french-martini-2c0702",
         "name": "French Martini",
         "category": "classic",
         "method": "Shake / Dry shake",
@@ -3163,7 +3163,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "gimlet",
+        "id": "gimlet-8c5725",
         "name": "Gimlet",
         "category": "classic",
         "method": "Shake",
@@ -3182,7 +3182,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "golden-dawn",
+        "id": "golden-dawn-54f3e1",
         "name": "Golden Dawn",
         "category": "classic",
         "method": "Shake",
@@ -3209,7 +3209,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "grasshopper",
+        "id": "grasshopper-05c225",
         "name": "Grasshopper",
         "category": "classic",
         "method": "Shake",
@@ -3233,7 +3233,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "MILK"
       },
       {
-        "id": "hugo-spritz",
+        "id": "hugo-spritz-bf9210",
         "name": "Hugo Spritz",
         "category": "classic",
         "method": "Build",
@@ -3261,7 +3261,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "hemingway-daiquiri",
+        "id": "hemingway-daiquiri-09420c",
         "name": "Hemingway Daiquiri",
         "category": "classic",
         "method": "Shake",
@@ -3292,7 +3292,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "horses-neck",
+        "id": "horse-s-neck-d699fb",
         "name": "Horse's Neck",
         "category": "classic",
         "method": "Build",
@@ -3311,7 +3311,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "irish-coffee",
+        "id": "irish-coffee-e2cdeb",
         "name": "Irish Coffee",
         "category": "classic",
         "method": "Build",
@@ -3339,7 +3339,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "MILK"
       },
       {
-        "id": "jungle-bird",
+        "id": "jungle-bird-0713bd",
         "name": "Jungle Bird",
         "category": "classic",
         "method": "Shake",
@@ -3371,7 +3371,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "knickerbocker",
+        "id": "knickerbocker-bdd610",
         "name": "Knickerbocker",
         "category": "classic",
         "method": "Shake",
@@ -3402,7 +3402,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "kir-royal",
+        "id": "kir-royal-85bdc8",
         "name": "Kir Royal",
         "category": "classic",
         "method": "Build",
@@ -3422,7 +3422,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "long-island-iced-tea",
+        "id": "long-island-iced-tea-c52a38",
         "name": "Long Island Iced Tea",
         "category": "classic",
         "method": "Shake",
@@ -3465,7 +3465,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "last-word",
+        "id": "last-word-f24fea",
         "name": "Last Word",
         "category": "classic",
         "method": "Shake",
@@ -3493,7 +3493,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SESAME"
       },
       {
-        "id": "martini",
+        "id": "martini-3b801f",
         "name": "Martini",
         "category": "classic",
         "method": "Stir",
@@ -3529,7 +3529,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "manhattan",
+        "id": "manhattan-cea0fd",
         "name": "Manhattan",
         "category": "classic",
         "method": "Stir",
@@ -3581,7 +3581,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "mojito",
+        "id": "mojito-81f090",
         "name": "Mojito",
         "category": "classic",
         "method": "Build",
@@ -3608,7 +3608,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "martinez",
+        "id": "martinez-d8a440",
         "name": "Martinez",
         "category": "classic",
         "method": "Stir",
@@ -3636,7 +3636,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "mai-tai",
+        "id": "mai-tai-741638",
         "name": "Mai Tai",
         "category": "classic",
         "method": "Shake",
@@ -3672,7 +3672,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "TREE NUTS, NUTS"
       },
       {
-        "id": "milano-torino",
+        "id": "milano-torino-20cbeb",
         "name": "Milano-Torino",
         "category": "classic",
         "method": "Build",
@@ -3692,7 +3692,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "mint-julep",
+        "id": "mint-julep-edb46c",
         "name": "Mint Julep",
         "category": "classic",
         "method": "Build",
@@ -3719,7 +3719,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "moscow-mule",
+        "id": "moscow-mule-3d8071",
         "name": "Moscow Mule",
         "category": "classic",
         "method": "Build",
@@ -3742,7 +3742,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "negroni-sbagliato",
+        "id": "negroni-sbagliato-0a2cfa",
         "name": "Negroni Sbagliato",
         "category": "classic",
         "method": "Stir/top",
@@ -3766,7 +3766,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "negroni",
+        "id": "negroni-933fc1",
         "name": "Negroni",
         "category": "classic",
         "method": "Stir",
@@ -3790,7 +3790,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "new-york-sour",
+        "id": "new-york-sour-57a242",
         "name": "New York Sour",
         "category": "classic",
         "method": "Shake",
@@ -3817,7 +3817,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "old-fashioned",
+        "id": "old-fashioned-951621",
         "name": "Old Fashioned",
         "category": "classic",
         "method": "Stir",
@@ -3840,7 +3840,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "old-pal",
+        "id": "old-pal-84984b",
         "name": "Old Pal",
         "category": "classic",
         "method": "Stir",
@@ -3864,7 +3864,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "old-cuban",
+        "id": "old-cuban-b39a54",
         "name": "Old Cuban",
         "category": "classic",
         "method": "Shake / top",
@@ -3896,7 +3896,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "paper-plane",
+        "id": "paper-plane-a439f4",
         "name": "Paper Plane",
         "category": "classic",
         "method": "Shake",
@@ -3924,7 +3924,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "passionfruit-martini",
+        "id": "passionfruit-martini-ca647e",
         "name": "Passionfruit Martini",
         "category": "classic",
         "method": "Shake",
@@ -3963,7 +3963,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "pisco-sour",
+        "id": "pisco-sour-78db21",
         "name": "Pisco Sour",
         "category": "classic",
         "method": "Hard dry shake / shake",
@@ -3994,7 +3994,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "pina-colada",
+        "id": "pina-colada-e9a7f4",
         "name": "Pina Colada",
         "category": "classic",
         "method": "Shake",
@@ -4029,7 +4029,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "paloma",
+        "id": "paloma-361acd",
         "name": "Paloma",
         "category": "classic",
         "method": "Shake / top",
@@ -4064,7 +4064,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "rusty-nail",
+        "id": "rusty-nail-ba2a42",
         "name": "Rusty Nail",
         "category": "classic",
         "method": "Build",
@@ -4083,7 +4083,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "ramos-gin-fizz",
+        "id": "ramos-gin-fizz-09abf6",
         "name": "Ramos Gin Fizz",
         "category": "classic",
         "method": "Hard dry shake / shake",
@@ -4127,7 +4127,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "MILK"
       },
       {
-        "id": "rattlesnake",
+        "id": "rattlesnake-8faff7",
         "name": "Rattlesnake",
         "category": "classic",
         "method": "Shake",
@@ -4158,7 +4158,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "rob-roy",
+        "id": "rob-roy-fdb882",
         "name": "Rob Roy",
         "category": "classic",
         "method": "Stir",
@@ -4182,7 +4182,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "southside-fizz",
+        "id": "southside-fizz-8a61fa",
         "name": "Southside Fizz",
         "category": "classic",
         "method": "Shake / top",
@@ -4213,7 +4213,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "sidecar",
+        "id": "sidecar-0d5d74",
         "name": "Sidecar",
         "category": "classic",
         "method": "Shake",
@@ -4236,7 +4236,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "sazerac",
+        "id": "sazerac-0ac478",
         "name": "Sazerac",
         "category": "classic",
         "method": "Stir",
@@ -4268,7 +4268,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "singapore-sling",
+        "id": "singapore-sling-bf1e14",
         "name": "Singapore Sling",
         "category": "classic",
         "method": "Shake",
@@ -4307,7 +4307,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "screwdriver",
+        "id": "screwdriver-067b43",
         "name": "Screwdriver",
         "category": "classic",
         "method": "Build",
@@ -4326,7 +4326,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "twinkle",
+        "id": "twinkle-dcb782",
         "name": "Twinkle",
         "category": "classic",
         "method": "Stir/top",
@@ -4350,7 +4350,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "tom-collins",
+        "id": "tom-collins-960ec5",
         "name": "Tom Collins",
         "category": "classic",
         "method": "Shake",
@@ -4377,7 +4377,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "treacle",
+        "id": "treacle-010d76",
         "name": "Treacle",
         "category": "classic",
         "method": "Shake",
@@ -4408,7 +4408,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "tuxedo",
+        "id": "tuxedo-ee4452",
         "name": "Tuxedo",
         "category": "classic",
         "method": "Stir",
@@ -4440,7 +4440,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "tommys-margarita",
+        "id": "tommy-s-margarita-8119c8",
         "name": "Tommy's Margarita",
         "category": "classic",
         "method": "Shake",
@@ -4463,7 +4463,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "vieux-carre",
+        "id": "vieux-carre-31ffed",
         "name": "Vieux Carre",
         "category": "classic",
         "method": "Stir",
@@ -4499,7 +4499,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "whiskey-sour",
+        "id": "whiskey-sour-4b7075",
         "name": "Whiskey Sour",
         "category": "classic",
         "method": "Hard dry shake / shake",
@@ -4526,7 +4526,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "white-lady",
+        "id": "white-lady-fcef03",
         "name": "White Lady",
         "category": "classic",
         "method": "Shake",
@@ -4553,7 +4553,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "white-russian",
+        "id": "white-russian-a8d12a",
         "name": "White Russian",
         "category": "classic",
         "method": "Build",

@@ -2,7 +2,7 @@
 if (typeof window.registerCocktails === 'function') {
     window.registerCocktails('non-alcoholic', [
   {
-    "id": "grapefruit-americano1749227062485",
+    "id": "grapefruit-americano-c5f3c9",
     "name": "Grapefruit Americano",
     "category": "non-alcoholic",
     "method": "Build",
@@ -26,7 +26,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": null
   },
   {
-    "id": "cucumber-cooler1749226912604",
+    "id": "cucumber-cooler-323f6e",
     "name": "Cucumber Cooler",
     "category": "non-alcoholic",
     "method": "Build",
@@ -62,7 +62,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": null
   },
   {
-    "id": "fruit-cup1749227293259",
+    "id": "fruit-cup-836c7f",
     "name": "Fruit Cup",
     "category": "non-alcoholic",
     "method": "Build",
@@ -82,7 +82,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": null
   },
   {
-    "id": "mojito-na1749294096317",
+    "id": "mojito-n-a-c9b915",
     "name": "Mojito (N/A)",
     "category": "non-alcoholic",
     "method": "Build",
@@ -110,7 +110,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": null
   },
   {
-    "id": "pina-colada-na1749249056858",
+    "id": "pina-colada-n-a-17eaa6",
     "name": "Pina Colada (N/A)",
     "category": "non-alcoholic",
     "method": "Shake",
@@ -147,7 +147,7 @@ if (typeof window.registerCocktails === 'function') {
     window.pendingCocktails = window.pendingCocktails || [];
     window.pendingCocktails.push({ category: 'non-alcoholic', data: [
   {
-    "id": "grapefruit-americano1749227062485",
+    "id": "grapefruit-americano-c5f3c9",
     "name": "Grapefruit Americano",
     "category": "non-alcoholic",
     "method": "Build",
@@ -171,7 +171,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": null
   },
   {
-    "id": "cucumber-cooler1749226912604",
+    "id": "cucumber-cooler-323f6e",
     "name": "Cucumber Cooler",
     "category": "non-alcoholic",
     "method": "Build",
@@ -207,7 +207,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": null
   },
   {
-    "id": "fruit-cup1749227293259",
+    "id": "fruit-cup-836c7f",
     "name": "Fruit Cup",
     "category": "non-alcoholic",
     "method": "Build",
@@ -227,7 +227,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": null
   },
   {
-    "id": "mojito-na1749294096317",
+    "id": "mojito-n-a-c9b915",
     "name": "Mojito (N/A)",
     "category": "non-alcoholic",
     "method": "Build",
@@ -255,7 +255,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": null
   },
   {
-    "id": "pina-colada-na1749249056858",
+    "id": "pina-colada-n-a-17eaa6",
     "name": "Pina Colada (N/A)",
     "category": "non-alcoholic",
     "method": "Shake",

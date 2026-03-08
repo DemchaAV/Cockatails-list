@@ -2,7 +2,7 @@
 if (typeof window.registerCocktails === 'function') {
   window.registerCocktails('signature', [
   {
-    "id": "classic-margarita",
+    "id": "margarita-9a0d25",
     "name": "Margarita",
     "category": "signature",
     "method": "Shake",
@@ -25,7 +25,7 @@ if (typeof window.registerCocktails === 'function') {
     ]
   },
   {
-    "id": "pomelle-spritz",
+    "id": "pomelle-spritz-a1f21f",
     "name": "Pomelle Spritz",
     "category": "signature",
     "method": "Build",
@@ -49,7 +49,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "twinkle",
+    "id": "twinkle-476e9a",
     "name": "Twinkle",
     "category": "signature",
     "method": "Shake, top",
@@ -73,7 +73,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "white-negroni",
+    "id": "white-negroni-ca6f2f",
     "name": "White Negroni",
     "category": "signature",
     "method": "Stir",
@@ -97,7 +97,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "singapore-sling",
+    "id": "singapore-sling-8cbafb",
     "name": "Singapore Sling",
     "category": "signature",
     "method": "Shake",
@@ -137,7 +137,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": null
   },
   {
-    "id": "mai-tai",
+    "id": "mai-tai-b1db28",
     "name": "Mai Tai",
     "category": "signature",
     "method": "Shake",
@@ -169,7 +169,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "TREE NUTS"
   },
   {
-    "id": "sage-sour",
+    "id": "sage-sour-676f80",
     "name": "Sage Sour",
     "category": "signature",
     "method": "Shake, dry",
@@ -209,7 +209,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "sc-margarita",
+    "id": "sc-margarita-65ml-b7107e",
     "name": "SC Margarita 65ml",
     "category": "signature",
     "method": "Shake",
@@ -245,7 +245,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": null
   },
   {
-    "id": "sc-paloma",
+    "id": "sc-paloma-2136e7",
     "name": "SC Paloma",
     "category": "signature",
     "method": "Shake",
@@ -281,7 +281,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": null
   },
   {
-    "id": "picante",
+    "id": "picante-4fb467",
     "name": "Picante",
     "category": "signature",
     "method": "Shake",
@@ -313,7 +313,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "GLUTEN"
   },
   {
-    "id": "sc-old-fashioned6546",
+    "id": "sc-old-fashioned-55ml-f49581",
     "name": "SC Old Fashioned 55ml",
     "category": "signature",
     "method": "Stir",
@@ -353,7 +353,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "EGGS"
   },
   {
-    "id": "vesper",
+    "id": "vesper-70ml-9c160c",
     "name": "Vesper 70ml",
     "category": "signature",
     "method": "Royal Shake",
@@ -377,7 +377,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "lychee-tini-75ml1770409342661",
+    "id": "lychee-tini-75ml-7a11ae",
     "name": "Lychee Tini 75ml",
     "category": "signature",
     "method": "Stir",
@@ -405,7 +405,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "savy-tini",
+    "id": "savy-tini-6ce456",
     "name": "Savy Tini",
     "category": "signature",
     "method": "Stir",
@@ -437,7 +437,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "scotch-and-honey",
+    "id": "scotch-and-honey-50ml-e75883",
     "name": "Scotch & Honey 50ml",
     "category": "signature",
     "method": "Stir",
@@ -469,7 +469,7 @@ if (typeof window.registerCocktails === 'function') {
     "allergens": "SULPHITES"
   },
   {
-    "id": "cherry-collins",
+    "id": "cherry-collins-45ml-f2b80e",
     "name": "Cherry Collins 45ml",
     "category": "signature",
     "method": "Shake",
@@ -514,7 +514,7 @@ if (typeof window.registerCocktails === 'function') {
   window.pendingCocktails.push({
     category: 'signature', data: [
       {
-        "id": "classic-margarita",
+        "id": "margarita-9a0d25",
         "name": "Margarita",
         "category": "signature",
         "method": "Shake",
@@ -537,7 +537,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "pomelle-spritz",
+        "id": "pomelle-spritz-a1f21f",
         "name": "Pomelle Spritz",
         "category": "signature",
         "method": "Build",
@@ -561,7 +561,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "twinkle",
+        "id": "twinkle-476e9a",
         "name": "Twinkle",
         "category": "signature",
         "method": "Shake, top",
@@ -585,7 +585,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "white-negroni",
+        "id": "white-negroni-ca6f2f",
         "name": "White Negroni",
         "category": "signature",
         "method": "Stir",
@@ -608,7 +608,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "singapore-sling",
+        "id": "singapore-sling-8cbafb",
         "name": "Singapore Sling",
         "category": "signature",
         "method": "Shake",
@@ -647,7 +647,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "mai-tai",
+        "id": "mai-tai-b1db28",
         "name": "Mai Tai",
         "category": "signature",
         "method": "Shake",
@@ -678,7 +678,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "sage-sour",
+        "id": "sage-sour-676f80",
         "name": "Sage Sour",
         "category": "signature",
         "method": "Shake, dry",
@@ -717,7 +717,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "sc-margarita",
+        "id": "sc-margarita-65ml-b7107e",
         "name": "SC Margarita 65ml",
         "category": "signature",
         "method": "Shake",
@@ -752,7 +752,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "sc-paloma",
+        "id": "sc-paloma-2136e7",
         "name": "SC Paloma",
         "category": "signature",
         "method": "Shake",
@@ -787,7 +787,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "picante",
+        "id": "picante-4fb467",
         "name": "Picante",
         "category": "signature",
         "method": "Shake",
@@ -857,7 +857,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "vesper",
+        "id": "vesper-70ml-9c160c",
         "name": "Vesper 70ml",
         "category": "signature",
         "method": "Royal Shake",
@@ -880,7 +880,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "lychee-tini-75ml1770409342661",
+        "id": "lychee-tini-75ml-7a11ae",
         "name": "Lychee Tini 75ml",
         "category": "signature",
         "method": "Stir",
@@ -908,7 +908,7 @@ if (typeof window.registerCocktails === 'function') {
         "allergens": "SULPHITES"
       },
       {
-        "id": "savy-tini",
+        "id": "savy-tini-6ce456",
         "name": "Savy Tini",
         "category": "signature",
         "method": "Stir",
@@ -939,7 +939,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "scotch-and-honey",
+        "id": "scotch-and-honey-50ml-e75883",
         "name": "Scotch & Honey 50ml",
         "category": "signature",
         "method": "Stir",
@@ -970,7 +970,7 @@ if (typeof window.registerCocktails === 'function') {
         ]
       },
       {
-        "id": "cherry-collins",
+        "id": "cherry-collins-45ml-f2b80e",
         "name": "Cherry Collins 45ml",
         "category": "signature",
         "method": "Shake",

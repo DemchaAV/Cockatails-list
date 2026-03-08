@@ -1,0 +1,12 @@
+{
+  "name": "cockatails-list",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -c tailwind.config.js -i ./src/tailwind.css -o ./styles.css --minify",
+    "check:ids": "node scripts/ensure-unique-cocktail-ids.js",
+    "fix:ids": "node scripts/ensure-unique-cocktail-ids.js --fix"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
