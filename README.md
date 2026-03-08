@@ -1,67 +1,89 @@
 # Cockatails-list
 
-A web app for cocktail catalog browsing, staff training, and recipe editing.
+Static web app for cocktail catalog browsing, staff training, and recipe editing.
 
-The project is static (HTML/CSS/JS, no build step) plus Python utilities for data maintenance.
+No backend required: the UI is `HTML/CSS/JavaScript`, data lives in `data/categories/*.js`, styles are built via Tailwind CLI, and maintenance tasks are handled by small `Python` and `Node.js` scripts.
 
-## Project Contents
+## What's In This Repo
 
-- `index.html` - home page with navigation and stats.
+- `index.html` - home page with navigation to the main modes.
 - `mobile_cocktails.html` - mobile-first catalog with search and filters.
-- `cocktail_trainer.html` - training mode (method, ingredients, glass, allergens).
-- `cocktail_builder.html` - recipe builder/editor (create, import/export, category management).
-- `data/loader.js` - dynamic category loading into `window.allCocktails`.
-- `data/config.js` - category file list used by loader.
+- `cocktail_trainer.html` - training mode (ingredients, method, glassware, allergens).
+- `cocktail_builder.html` - recipe builder/editor with category import/export.
+- `data/loader.js` - loader that aggregates all categories into `window.allCocktails`.
+- `data/config.js` - list of category files to load.
 - `data/categories/*.js` - cocktail datasets by category.
-- `manifest.json`, `sw.js` - PWA and offline caching.
-
-## Current Data Snapshot
-
-Based on files currently in the repository:
-
-- Total cocktails: `134`
-- Category files: `4`
-- File-level distribution:
-  - `classic.js`: `83`
-  - `exam.js`: `30`
-  - `non-alcoholic.js`: `5`
-  - `signature.js`: `16`
-
-Note: `category` values are not fully normalized (for example `classic`, `signature`, `Exam`), which affects filters and category totals.
+- `styles.css` - final CSS output (Tailwind build result).
+- `manifest.json`, `sw.js` - PWA config and offline caching.
 
 ## Quick Start
 
-1. Run a local HTTP server in the project root:
+Use any local HTTP server. Avoid opening via `file://`: data loading and the service worker behave correctly only on `http://` or `https://`.
 
 ```powershell
 python -m http.server 8080
 ```
 
-2. Open in browser:
+Then open:
 
 ```text
 http://localhost:8080
 ```
 
-Important: use HTTP/HTTPS (not `file://`) so loader and service worker behavior is correct.
+Key pages to verify:
 
-## Category File Format
+- `http://localhost:8080/index.html`
+- `http://localhost:8080/mobile_cocktails.html`
+- `http://localhost:8080/cocktail_trainer.html`
+- `http://localhost:8080/cocktail_builder.html`
 
-Each file in `data/categories/` registers an array via:
+## Install Dependencies
+
+This repo only needs a dev dependency to build CSS:
+
+```powershell
+npm install
+```
+
+## Commands
+
+```powershell
+npm run build:css
+npm run check:ids
+npm run fix:ids
+python auto_config.py
+python sync_allergens_from_viewthemenu.py
+```
+
+What each command does:
+
+- `npm run build:css` - builds `styles.css` from `src/tailwind.css`.
+- `npm run check:ids` - validates uniqueness/normalization of cocktail `id`s.
+- `npm run fix:ids` - auto-fixes `id`s inside `data/categories/*.js`.
+- `python auto_config.py` - regenerates `data/config.js` from current category files.
+- `python sync_allergens_from_viewthemenu.py` - syncs allergens from an external JSON and writes a report to `data/allergen_sync_from_viewthemenu_report.json`.
+
+## Data Format
+
+Each file in `data/categories/` should register an array via `window.registerCocktails(...)`.
+
+Example:
 
 ```javascript
 if (typeof window.registerCocktails === 'function') {
-  window.registerCocktails('category-name', [
+  window.registerCocktails('classic', [
     {
-      "id": "unique-id",
-      "name": "Cocktail Name",
-      "category": "category-name",
-      "method": "Shake",
-      "glass": "Nick&Nora",
+      "id": "negroni-123abc",
+      "name": "Negroni",
+      "category": "classic",
+      "method": "Stir",
+      "glass": "Rocks",
       "ice": "Cubed",
-      "garnish": "Lemon zest",
+      "garnish": "Orange peel",
       "ingredients": [
-        { "name": "Ingredient", "qty": "50ml" }
+        { "name": "Gin", "qty": "25ml" },
+        { "name": "Campari", "qty": "25ml" },
+        { "name": "Vermouth", "qty": "25ml" }
       ],
       "allergens": "SULPHITES"
     }
@@ -69,81 +91,63 @@ if (typeof window.registerCocktails === 'function') {
 }
 ```
 
-`allergens` can be `null` or a string (for example `"SULPHITES"`, `"GLUTEN, MILK"`).
+`allergens` may be `null`, an empty string, or a comma-separated string like `"GLUTEN, MILK"`.
 
-## Adding a New Category
+## Adding A New Category
 
-1. Create `data/categories/<name>.js` in the format above.
-2. Rebuild config:
+1. Create `data/categories/<name>.js`.
+2. Add data in a format compatible with `window.registerCocktails(...)`.
+3. Run `python auto_config.py`.
+4. Verify categories load in the browser.
 
-```powershell
-python auto_config.py
-```
+If you changed/added cocktails, it is worth running `npm run check:ids`.
 
-This regenerates `data/config.js` from existing `.js` files in `data/categories`.
+## Working With Builder
 
-## Builder Workflow
+`cocktail_builder.html` is intended for manual editing. It stores working state in `localStorage` and supports:
 
-`cocktail_builder.html` stores working data in `localStorage` (`cocktails`, `appCategories`) and supports:
+- creating and editing recipes;
+- adding/renaming/deleting categories;
+- importing category `*.js` files;
+- exporting a selected category back to `*.js`.
 
-- create/edit recipes,
-- add/rename/delete categories,
-- import category `*.js` files,
-- export a selected category as `*.js` for `data/categories`.
+Practical workflow:
 
-Recommended flow:
-
-1. Edit in Builder.
-2. Export category to `*.js`.
-3. Place the file in `data/categories/`.
+1. Edit recipes in Builder.
+2. Export the category to a file.
+3. Place the file into `data/categories/`.
 4. Run `python auto_config.py`.
-5. Verify in UI (`mobile_cocktails.html`, `cocktail_trainer.html`).
+5. Verify Catalog and Trainer in the browser.
 
-## Allergen Sync From viewthe.menu
+## Allergen Sync
 
-Script:
+The script `sync_allergens_from_viewthemenu.py`:
 
-- `sync_allergens_from_viewthemenu.py`
+- reads an allergens JSON;
+- matches scraped items to local cocktails;
+- updates `allergens` fields in `data/categories/*.js`;
+- writes a report to `data/allergen_sync_from_viewthemenu_report.json`.
 
-What it does:
-
-- reads `viewthemenu_allergens.json` (by default from sibling `Food-list` project),
-- matches drinks to local cocktails,
-- updates `allergens` fields in `data/categories/*.js`,
-- writes `data/allergen_sync_from_viewthemenu_report.json`.
-
-Run:
-
-```powershell
-python sync_allergens_from_viewthemenu.py
-```
-
-Custom input path:
+By default it uses a file from the sibling `Food-list` project. You can pass a custom path:
 
 ```powershell
 python sync_allergens_from_viewthemenu.py --scraped "C:\path\to\viewthemenu_allergens.json"
 ```
 
-## PWA
+## PWA And Cache
 
-Installable as an app:
+The app is installable as a PWA. Relevant files:
 
-- `manifest.json` defines app metadata.
-- `sw.js` caches main pages and category datasets for offline use.
+- `manifest.json` - app metadata and version.
+- `sw.js` - caching of main pages and data files.
 
-If you still see old content after updates, do a hard refresh and clear service worker/cache in DevTools if needed.
+If you still see old UI/data after updates, clear cache/service worker in DevTools and reload.
 
-## Repository Utilities
+## Minimal Post-Change Check
 
-- `auto_config.py` - auto-updates `data/config.js`.
-- `sync_allergens_from_viewthemenu.py` - allergen synchronization.
-- `convert_food.py` - legacy converter with hardcoded local paths.
+After changes, a quick check is usually enough:
 
-## Quick Post-Change Check
-
-1. Start server: `python -m http.server 8080`
-2. Check:
-   - `http://localhost:8080/mobile_cocktails.html`
-   - `http://localhost:8080/cocktail_trainer.html`
-   - `http://localhost:8080/cocktail_builder.html`
-3. Confirm categories/cocktails load and filters behave correctly.
+1. Start a local server.
+2. Open `index.html`, `mobile_cocktails.html`, `cocktail_trainer.html`, `cocktail_builder.html`.
+3. Confirm categories load, search/filters work, and new recipes appear.
+4. If data changed, run `npm run check:ids`.
