@@ -22,9 +22,18 @@ const urlsToCache = [
   './data/combiner.js',
   './data/categories/signature.js',
   './data/categories/classic.js',
+  './data/categories/cv.js',
   './data/categories/exam.js',
   './data/categories/non-alcoholic.js'
 ];
+
+function isDataRequest(requestUrl) {
+  return (
+    requestUrl.pathname.endsWith('/manifest.json') ||
+    requestUrl.pathname.endsWith('/data/config.js') ||
+    requestUrl.pathname.includes('/data/categories/')
+  );
+}
 
 // Install event - cache resources
 self.addEventListener('install', event => {
@@ -56,10 +65,35 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Fetch event - serve from cache, fallback to network
+// Fetch event - use network-first for manifest/config/category data,
+// cache-first for the rest of the static shell.
 self.addEventListener('fetch', event => {
   // Skip non-GET requests
   if (event.request.method !== 'GET') return;
+
+  let requestUrl;
+  try {
+    requestUrl = new URL(event.request.url);
+  } catch (_) {
+    return;
+  }
+
+  if (isDataRequest(requestUrl)) {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          if (response && response.status === 200) {
+            const responseToCache = response.clone();
+            caches.open(CACHE_NAME).then(cache => {
+              cache.put(event.request, responseToCache);
+            });
+          }
+          return response;
+        })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
 
   event.respondWith(
     caches.match(event.request)
