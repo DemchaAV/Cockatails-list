@@ -32,12 +32,12 @@ Do not leave the old version in place after a real change.
 Use the current local date:
 
 - first version of the day: `YYYY.M.D`
-- another change later the same day: `YYYY.M.D.HH:mm`
+- another change later the same day: `YYYY.M.D.HHmm`
 
 Examples for March 9, 2026:
 
 - first change of the day: `2026.3.9`
-- later same day: `2026.3.9.11:24`
+- later same day: `2026.3.9.1124`
 
 If the manifest already has today's base version, switch to the timestamp format.
 If it already has today's timestamp version, replace the time with the current time.

@@ -26,11 +26,11 @@ The app pages fetch `manifest.json`, read `version`, and register:
 ## Rules
 
 - First meaningful change on a day: `YYYY.M.D`
-- Second or later meaningful change on the same day: `YYYY.M.D.HH:mm`
+- Second or later meaningful change on the same day: `YYYY.M.D.HHmm`
 - Use 24-hour time
 - Keep month/day unpadded to match existing project format
 
 ## Examples
 
 - `2026.3.9`
-- `2026.3.9.11:24`
+- `2026.3.9.1124`
