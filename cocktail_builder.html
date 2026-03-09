@@ -545,7 +545,13 @@
 
         // State
         let cocktails = JSON.parse(localStorage.getItem('cocktails') || '[]');
-        let appCategories = JSON.parse(localStorage.getItem('appCategories')) || ['signature', 'bombay', 'classic'];
+        let appCategories = Array.from(new Set([
+            'signature',
+            'bombay',
+            'classic',
+            'CV',
+            ...(JSON.parse(localStorage.getItem('appCategories')) || [])
+        ]));
         let ingredientCounter = 0;
         let activeCategory = 'all'; // For category filtering
         let searchTerm = ''; // For search input

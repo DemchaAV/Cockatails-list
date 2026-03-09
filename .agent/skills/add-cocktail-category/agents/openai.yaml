@@ -1,0 +1,4 @@
+interface:
+  display_name: "Add Cocktail Category"
+  short_description: "Create and wire category files"
+  default_prompt: "Use $add-cocktail-category to add a new cocktail category, regenerate config, and validate the data files."

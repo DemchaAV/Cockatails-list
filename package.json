@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "build:css": "tailwindcss -c tailwind.config.js -i ./src/tailwind.css -o ./styles.css --minify",
+    "bump:version": "python .agent/skills/app-version-bump/scripts/bump_app_version.py",
     "check:ids": "node scripts/ensure-unique-cocktail-ids.js",
     "fix:ids": "node scripts/ensure-unique-cocktail-ids.js --fix"
   },
