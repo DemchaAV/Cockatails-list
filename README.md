@@ -1,153 +1,187 @@
-# Cockatails-list
+# Cocktail List
 
-Static web app for cocktail catalog browsing, staff training, and recipe editing.
+`Cocktail List` - это статическое веб-приложение для работы с коктейльной картой. Проект объединяет каталог напитков, режим обучения для персонала и визуальный редактор рецептов. Приложение не требует backend: все страницы работают на `HTML`, `CSS` и `JavaScript`, а данные хранятся прямо в репозитории.
 
-No backend required: the UI is `HTML/CSS/JavaScript`, data lives in `data/categories/*.js`, styles are built via Tailwind CLI, and maintenance tasks are handled by small `Python` and `Node.js` scripts.
+Сейчас в проекте загружается `139` коктейлей из `5` категорий. Приложение можно запускать локально через обычный HTTP-сервер и публиковать как статический сайт.
 
-## What's In This Repo
+## Что умеет продукт
 
-- `index.html` - home page with navigation to the main modes.
-- `mobile_cocktails.html` - mobile-first catalog with search and filters.
-- `cocktail_trainer.html` - training mode (ingredients, method, glassware, allergens).
-- `cocktail_builder.html` - recipe builder/editor with category import/export.
-- `data/loader.js` - loader that aggregates all categories into `window.allCocktails`.
-- `data/config.js` - list of category files to load.
-- `data/categories/*.js` - cocktail datasets by category.
-- `styles.css` - final CSS output (Tailwind build result).
-- `manifest.json`, `sw.js` - PWA config and offline caching.
+- `Главная` (`index.html`) - точка входа с переходом в основные режимы.
+- `Catalog` (`mobile_cocktails.html`) - мобильный каталог с поиском, фильтрами и карточками коктейлей.
+- `Trainer` (`cocktail_trainer.html`) - обучение по ингредиентам, стеклу, методу приготовления и аллергенам.
+- `Builder` (`cocktail_builder.html`) - создание, редактирование, импорт и экспорт рецептов по категориям.
+- `PWA` - приложение можно установить на устройство, а основные ресурсы кэшируются через `sw.js`.
 
-## Quick Start
+## Для чего этот репозиторий
 
-Use any local HTTP server. Avoid opening via `file://`: data loading and the service worker behave correctly only on `http://` or `https://`.
+Репозиторий нужен для двух задач:
+
+1. Поддержка и обновление коктейльной базы.
+2. Развитие интерфейсов каталога, тренажера и редактора рецептов.
+
+Это особенно удобно для команд, которым нужен офлайн-доступ, быстрый деплой на статический хостинг и прозрачное хранение данных без отдельной CMS.
+
+## Стек
+
+- `HTML` - страницы приложения
+- `Tailwind CSS` - генерация финального `styles.css`
+- `Vanilla JavaScript` - вся логика интерфейса и загрузки данных
+- `Node.js` - утилиты проверки и нормализации `id`
+- `Python` - сервисные скрипты для генерации конфигурации и синхронизации аллергенов
+
+## Структура проекта
+
+- `index.html` - главная страница
+- `mobile_cocktails.html` - каталог
+- `cocktail_trainer.html` - тренажер
+- `cocktail_builder.html` - редактор рецептов
+- `data/config.js` - список файлов категорий для загрузки
+- `data/loader.js` - общий загрузчик, собирающий данные в `window.allCocktails`
+- `data/categories/*.js` - категории с коктейлями
+- `styles.css` - собранные стили
+- `src/tailwind.css` - исходник стилей для сборки
+- `scripts/ensure-unique-cocktail-ids.js` - проверка и исправление `id`
+- `manifest.json` - метаданные PWA
+- `sw.js` - service worker и офлайн-кэш
+
+## Быстрый старт
+
+Не открывайте приложение через `file://`. Загрузка данных и работа `service worker` рассчитаны на `http://` или `https://`.
+
+### 1. Установить зависимости
+
+```powershell
+npm install
+```
+
+### 2. Поднять локальный сервер
 
 ```powershell
 python -m http.server 8080
 ```
 
-Then open:
+### 3. Открыть приложение
 
 ```text
 http://localhost:8080
 ```
 
-Key pages to verify:
+Основные страницы для проверки:
 
 - `http://localhost:8080/index.html`
 - `http://localhost:8080/mobile_cocktails.html`
 - `http://localhost:8080/cocktail_trainer.html`
 - `http://localhost:8080/cocktail_builder.html`
 
-## Install Dependencies
-
-This repo only needs a dev dependency to build CSS:
-
-```powershell
-npm install
-```
-
-## Commands
+## NPM и Python команды
 
 ```powershell
 npm run build:css
 npm run check:ids
 npm run fix:ids
+npm run bump:version
 python auto_config.py
 python sync_allergens_from_viewthemenu.py
 ```
 
-What each command does:
+Что делает каждая команда:
 
-- `npm run build:css` - builds `styles.css` from `src/tailwind.css`.
-- `npm run check:ids` - validates uniqueness/normalization of cocktail `id`s.
-- `npm run fix:ids` - auto-fixes `id`s inside `data/categories/*.js`.
-- `python auto_config.py` - regenerates `data/config.js` from current category files.
-- `python sync_allergens_from_viewthemenu.py` - syncs allergens from an external JSON and writes a report to `data/allergen_sync_from_viewthemenu_report.json`.
+- `npm run build:css` - собирает `styles.css` из `src/tailwind.css`
+- `npm run check:ids` - проверяет уникальность и нормализацию `id` у коктейлей
+- `npm run fix:ids` - автоматически исправляет проблемные `id`
+- `npm run bump:version` - увеличивает версию приложения для PWA-обновлений
+- `python auto_config.py` - пересобирает `data/config.js` по текущему набору файлов категорий
+- `python sync_allergens_from_viewthemenu.py` - обновляет аллергены из внешнего JSON-источника и создает отчет
 
-## Data Format
+## Как устроены данные
 
-Each file in `data/categories/` should register an array via `window.registerCocktails(...)`.
+Каждый файл в `data/categories/` регистрирует массив коктейлей через `window.registerCocktails(categoryName, cocktails)`.
 
-Example:
+Пример структуры:
 
 ```javascript
 if (typeof window.registerCocktails === 'function') {
   window.registerCocktails('classic', [
     {
-      "id": "negroni-123abc",
-      "name": "Negroni",
-      "category": "classic",
-      "method": "Stir",
-      "glass": "Rocks",
-      "ice": "Cubed",
-      "garnish": "Orange peel",
-      "ingredients": [
-        { "name": "Gin", "qty": "25ml" },
-        { "name": "Campari", "qty": "25ml" },
-        { "name": "Vermouth", "qty": "25ml" }
+      id: 'negroni-123abc',
+      name: 'Negroni',
+      category: 'classic',
+      method: 'Stir',
+      glass: 'Rocks',
+      ice: 'Cubed',
+      garnish: 'Orange peel',
+      ingredients: [
+        { name: 'Gin', qty: '25ml' },
+        { name: 'Campari', qty: '25ml' },
+        { name: 'Vermouth', qty: '25ml' }
       ],
-      "allergens": "SULPHITES"
+      allergens: 'SULPHITES'
     }
   ]);
 }
 ```
 
-`allergens` may be `null`, an empty string, or a comma-separated string like `"GLUTEN, MILK"`.
+Поле `allergens` может быть:
 
-## Adding A New Category
+- `null`
+- пустой строкой
+- строкой со списком значений через запятую, например `GLUTEN, MILK`
 
-1. Create `data/categories/<name>.js`.
-2. Add data in a format compatible with `window.registerCocktails(...)`.
-3. Run `python auto_config.py`.
-4. Verify categories load in the browser.
+## Как добавить новую категорию
 
-If you changed/added cocktails, it is worth running `npm run check:ids`.
+1. Создайте файл `data/categories/<name>.js`.
+2. Зарегистрируйте данные через `window.registerCocktails(...)`.
+3. Запустите `python auto_config.py`.
+4. При необходимости выполните `npm run check:ids`.
+5. Проверьте загрузку категории в `Catalog`, `Trainer` и `Builder`.
 
-## Working With Builder
+## Рекомендуемый рабочий процесс для Builder
 
-`cocktail_builder.html` is intended for manual editing. It stores working state in `localStorage` and supports:
+`cocktail_builder.html` хранит рабочее состояние в `localStorage` и подходит для ручного редактирования карточек.
 
-- creating and editing recipes;
-- adding/renaming/deleting categories;
-- importing category `*.js` files;
-- exporting a selected category back to `*.js`.
+Типовой сценарий:
 
-Practical workflow:
+1. Откройте `Builder`.
+2. Создайте или измените рецепты.
+3. Экспортируйте нужную категорию в `*.js`.
+4. Сохраните файл в `data/categories/`.
+5. Запустите `python auto_config.py`.
+6. Проверьте результат в каталоге и тренажере.
 
-1. Edit recipes in Builder.
-2. Export the category to a file.
-3. Place the file into `data/categories/`.
-4. Run `python auto_config.py`.
-5. Verify Catalog and Trainer in the browser.
+## Синхронизация аллергенов
 
-## Allergen Sync
+Скрипт `sync_allergens_from_viewthemenu.py`:
 
-The script `sync_allergens_from_viewthemenu.py`:
+- читает внешний JSON с аллергенами
+- сопоставляет позиции с локальными коктейлями
+- обновляет поле `allergens` в файлах категорий
+- сохраняет отчет в `data/allergen_sync_from_viewthemenu_report.json`
 
-- reads an allergens JSON;
-- matches scraped items to local cocktails;
-- updates `allergens` fields in `data/categories/*.js`;
-- writes a report to `data/allergen_sync_from_viewthemenu_report.json`.
-
-By default it uses a file from the sibling `Food-list` project. You can pass a custom path:
+По умолчанию скрипт использует источник из соседнего проекта `Food-list`, но можно передать свой путь:
 
 ```powershell
 python sync_allergens_from_viewthemenu.py --scraped "C:\path\to\viewthemenu_allergens.json"
 ```
 
-## PWA And Cache
+## PWA и обновления
 
-The app is installable as a PWA. Relevant files:
+- `manifest.json` хранит имя, иконки и версию приложения
+- `sw.js` отвечает за кэширование страниц и данных
+- после изменений интерфейса или данных полезно обновлять версию и проверять, что клиент не держит старый кэш
 
-- `manifest.json` - app metadata and version.
-- `sw.js` - caching of main pages and data files.
+Если браузер показывает устаревшую версию:
 
-If you still see old UI/data after updates, clear cache/service worker in DevTools and reload.
+1. обновите версию приложения
+2. очистите `service worker` и кэш в DevTools
+3. перезагрузите страницу
 
-## Minimal Post-Change Check
+## Минимальная проверка после изменений
 
-After changes, a quick check is usually enough:
+1. Поднимите локальный сервер.
+2. Откройте `index.html`, `mobile_cocktails.html`, `cocktail_trainer.html` и `cocktail_builder.html`.
+3. Убедитесь, что категории загружаются, поиск и фильтры работают, а новые коктейли видны в интерфейсе.
+4. Если менялись данные, запустите `npm run check:ids`.
 
-1. Start a local server.
-2. Open `index.html`, `mobile_cocktails.html`, `cocktail_trainer.html`, `cocktail_builder.html`.
-3. Confirm categories load, search/filters work, and new recipes appear.
-4. If data changed, run `npm run check:ids`.
+## Идея продукта в одном абзаце
+
+`Cocktail List` - это легковесный офлайн-дружелюбный инструмент для барной команды: здесь можно быстро найти рецепт, проверить знания персонала и поддерживать базу коктейлей без сложной админки и серверной части.
