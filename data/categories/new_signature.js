@@ -66,7 +66,7 @@ if (typeof window.registerCocktails === 'function') {
       },
       {
         name: "Luxardo Bitter",
-        qty: "25 dashes"
+        qty: "25ml"
       }
     ]
   },
@@ -540,7 +540,7 @@ if (typeof window.registerCocktails === 'function') {
             },
             {
                 name: "Luxardo Bitter",
-                qty: "25 dashes"
+                qty: "25ml"
             }
         ]
     },
